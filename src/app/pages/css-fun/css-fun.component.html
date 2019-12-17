@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="row align-items-center">
+        <div class="col-lg-6">
+            <div class="arrow-button-wrap text-center">
+                <button>CLICK ON THIS<div class="bottom-line left"></div><div class="arrow"></div><div class="bottom-line right"></div></button>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="heart" (click)="status=!status"  
+            [ngClass]="status ? 'active' : ''"></div>
+        </div>
+    </div>
+</div>
+
