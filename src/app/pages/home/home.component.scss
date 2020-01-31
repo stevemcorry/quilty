@@ -1,0 +1,73 @@
+.home-wrapper{
+}
+
+.carousel{
+    height: 100vh;
+    width: 100vw;
+}
+.carousel-inner, .carousel-item{
+    height: 100%;
+    width: 100%;
+}
+.inner-background{
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.one{
+    background-image: url('../../../assets/images/surfers.jpg');
+}
+.two{
+    background-image: url('../../../assets/images/bikers.jpg');
+}
+.three{
+    background-image: url('../../../assets/images/dessert.jpg');
+}
+.four{
+    background-image: url('../../../assets/images/home-img.jpg');
+}
+
+
+//to-top
+
+.to-top{
+    position: fixed;
+    bottom: 20px;
+    right: 8%;
+    z-index: 1;
+    transform:translate(9999px);
+    opacity: 0;
+    cursor: pointer;
+    height: 60px;
+    width: 40px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-image: url('../../../assets/images/to-top.svg');
+    animation: fadeOut .4s linear;
+    &.active{
+        transform:translate(0px);
+        opacity: 1;
+        animation: fadeIn .3s linear;
+    }
+    &:hover{
+        background-image: url('../../../assets/images/to-top-hover.svg');
+    }
+    &.bottom{
+        bottom: 420px;
+        @media screen and (min-width: 768px) {
+            bottom: 220px;
+        }
+    }
+}
+@keyframes fadeIn {
+    from{opacity: 0;}
+    to{opacity: 1;}
+}
+@keyframes fadeOut {
+    0%{opacity: 1; transform:translate(0px);}
+    50%{opacity: 0; transform:translate(0px);}
+    100%{opacity: 0; transform:translate(9999px);}
+}

@@ -16,6 +16,8 @@ import { FooterComponent } from './templates/footer/footer.component';
 import { BoredComponent } from './pages/bored/bored.component';
 
 import { environment } from '../environments/environment';
+import { MessagesComponent } from './pages/messages/messages.component';
+import { PixelizeComponent } from './pages/pixelize/pixelize.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { environment } from '../environments/environment';
     HomeComponent,
     HeaderComponent,
     FooterComponent,
+    MessagesComponent,
+    PixelizeComponent,
   ],
   imports: [
     BrowserModule,

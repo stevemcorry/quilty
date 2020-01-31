@@ -1,0 +1,18 @@
+<div class="container messages-wrap">
+    <div class="row">
+        <div class="col text-center">
+            <h1>Messaging</h1>
+            <h1>:)</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div>Your Username</div>
+            <input [(ngModel)]="username" type="text" (keyup.enter)="sendMessage()">
+            <div>What is your Message</div>
+            <input [(ngModel)]="message" type="text" (keyup.enter)="sendMessage()">
+            <button (click)="sendMessage()">Send Message</button>
+        </div>
+    </div>
+    
+</div>

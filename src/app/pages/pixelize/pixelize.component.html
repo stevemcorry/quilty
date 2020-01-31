@@ -1,0 +1,33 @@
+<div class="pixelize-wrap">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col mt-5">
+                <h1>Pixelize your image</h1>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col">
+                <img id="myImg" width=300>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col">
+                <label for="pic" class="pic-label">Choose your picture:</label>
+                <br>
+                <input type="file" name="pic" id="pic" accept="image/*" class="picInput">
+                <br>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col">
+                <h6>How many pixels wide? (up to 100)</h6>
+                <input [(ngModel)]="gridCount" type="number" placeholder="Enter Grid Count">
+                <br>
+                <button class="pixelize-button mt-4" [ngClass]="{'pixel-on': showPixelButton}" (click)="tryimage()">PIXELIZE IMAGE</button>
+            </div>
+        </div>
+        <div class="row text-center justify-content-center mt-5">
+            <div id="getME"></div>
+        </div>
+    </div>
+</div>

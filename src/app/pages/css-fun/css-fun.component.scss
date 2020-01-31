@@ -1,3 +1,7 @@
+.css-fun-wrap{
+  padding-top: 60px;
+  min-height: 100vh;
+}
 .arrow-button-wrap{
     margin: 50px;
     button{
@@ -103,10 +107,11 @@
   background-color: red;
   height: 200px;
   width: 200px;
-  transform: rotate(45deg) scale(.1);
+  transform: rotate(45deg) scale(.7);
   margin: 150px auto;
   border-radius: 15px;
   transition: all .5s ease;
+  cursor: pointer;
 }
 .heart::before, .heart::after{
   content: "";
@@ -133,19 +138,19 @@
 }
 @keyframes broken {
   0% {
-    transform: rotate(45deg) scale(.1);
+    transform: rotate(45deg) scale(.7);
   }
   20% {
     transform: rotate(45deg) scale(.85);
   }
   50% {
-    transform: rotate(45deg) scale(1);
+    transform: rotate(45deg) scale(.7);
   }
   70% {
-    transform: rotate(45deg) scale(.75);
+    transform: rotate(45deg) scale(.85);
   }
   100% {
-    transform: rotate(45deg) scale(1);
+    transform: rotate(45deg) scale(.7);
     background-color: blue;
   }
 }
@@ -157,3 +162,167 @@
     background-color: blue;
   }
 }
+
+//goey and menu
+.menu {
+  height: 100px;
+  margin: 0 auto;
+  position: relative;
+  -webkit-filter: url(#goo);
+  filter: url(#goo);
+}
+.menu-wrapper {
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+}
+.menu-items {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.menu-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+}
+.item1{
+  transform: rotate(90deg);
+  .menu-item-button{
+    transform: translate3d(0px, 0px, 0px);
+    transition: all .5s ease;
+    i{
+      transform: rotate(-90deg);
+    }
+  }
+}
+.menu-toggle-button:focus ~ .menu-items{
+  .menu-item-button{
+    transform: translate3d(0px, -90px, 0px);
+  }
+}
+.menu-toggle-button:focus ~ .menu-toggle-overlay{
+z-index: 3;
+}
+.menu-toggle-button:focus .fa-plus{
+transform: rotate(135deg);
+}
+.menu-toggle-button, .menu-item-bounce, .menu-item-button {
+  background: #f59393;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  margin-left: -40px;
+  margin-top: -40px;
+  height: 80px;
+  color: #fff;
+  border: none;
+  outline: none;
+  position: relative;
+}
+.menu-item-button {
+  width: 60px;
+  height: 60px;
+  margin-left: -30px;
+  margin-top: -30px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #AD4C4C;
+transition: all .3s ease;
+}
+.menu-toggle-button {
+  background: transparent;
+  position: absolute;
+  top: 0;
+left: 0;
+z-index: 1;
+}
+.menu-toggle-overlay{
+position: absolute;
+top: 0;
+left: 0;
+width: 80px;
+height: 80px;
+margin-left: -40px;
+margin-top: -40px;
+cursor: pointer;
+}
+button:focus {
+outline: none;
+}
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: translate(0, 0);
+}
+.menu-toggle-icon {
+  font-size: 30px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+}
+.menu-item-bounce {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.fa-plus:before {
+content: "+";
+font-size: 60px;
+  line-height: 72px;
+}
+.fa-plus{
+transition: all .2s ease;
+}
+.icon {
+  display: inline-block;
+  position: relative;
+  font-family: 'vicons';
+  font-size: inherit;
+  font-style: normal;
+  line-height: inherit;
+  vertical-align: middle;
+  text-rendering: auto;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: translate(0, 0);
+}
+.icon:before {
+  display: inline-block;
+  width: 100%;
+}
+.icon-reply:before {
+  content: "\e603";
+}
+.icon-box:before {
+  content: "\e600";
+}
+
+
+
+.item2{
+  transform: rotate(180deg);
+  .menu-item-button{
+    transition-delay: .1s;
+  }
+  }
+  .item3{
+  transform: rotate(240deg);
+  .menu-item-button{
+    transition-delay: .2s;
+  }
+  }

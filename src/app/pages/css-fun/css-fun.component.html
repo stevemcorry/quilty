@@ -1,13 +1,57 @@
-<div class="container">
-    <div class="row align-items-center">
-        <div class="col-lg-6">
-            <div class="arrow-button-wrap text-center">
-                <button>CLICK ON THIS<div class="bottom-line left"></div><div class="arrow"></div><div class="bottom-line right"></div></button>
+<div class="css-fun-wrap">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="arrow-button-wrap text-center">
+                    <button>Hover Animation<div class="bottom-line left"></div><div class="arrow"></div><div class="bottom-line right"></div></button>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="heart" (click)="status=!status"  
+                [ngClass]="status ? 'active' : ''" title="click me"></div>
             </div>
         </div>
-        <div class="col-lg-6">
-            <div class="heart" (click)="status=!status"  
-            [ngClass]="status ? 'active' : ''"></div>
+        <div class="row">
+
+            <div class="menu">
+                <div class="menu-wrapper">
+                    <button class="menu-toggle-button">
+                        <i class="fa fa-plus menu-toggle-icon"></i>
+                    </button>
+                    <div class="menu-toggle-overlay"></div>
+                    <ul class="menu-items">
+                        <li class="menu-item item1">
+                            <button class="menu-item-button">
+                                <i class="menu-item-icon icon icon-reply"></i>
+                            </button>
+                            <div class="menu-item-bounce"></div>
+                        </li>
+                        <!-- <li class="menu-item item2">
+                            <button class="menu-item-button">
+                                <i class="menu-item-icon icon icon-box"></i>
+                            </button>
+                            <div class="menu-item-bounce"></div>
+                        </li>
+                        <li class="menu-item item3">
+                            <button class="menu-item-button">
+                                <i class="menu-item-icon icon icon-trash"></i>
+                            </button>
+                            <div class="menu-item-bounce"></div>
+                        </li> -->
+                    </ul>
+                </div>
+            </div>
+            
+            <svg version="1.1">
+                <defs>
+                    <filter id="goo">
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+                        <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+                    </filter>
+                </defs>
+            </svg>
+            
         </div>
     </div>
 </div>

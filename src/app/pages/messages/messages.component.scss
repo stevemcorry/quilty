@@ -1,0 +1,20 @@
+.messages-wrap{
+    padding-top: 60px;
+    min-height: 100vh;
+    ul{
+        list-style-type: none;
+        li{
+            cursor: auto;
+            span{
+                display: none;
+                color: red;
+            }
+            &:hover{
+                span{
+                    display: inline;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

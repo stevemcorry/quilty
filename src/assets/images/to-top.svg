@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36px" height="55px" viewBox="0 0 36 55" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 60 (101010) - https://sketch.com -->
+    <title>237ED47D-9359-4F1A-BC8C-E27BD9CAEC97</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <path d="M6.44318182,2.29184075 L1.57244318,7.16257953 C1.39346509,7.34155771 1.176138,7.43104545 0.920454545,7.43104545 C0.664771418,7.43104545 0.447444082,7.34155771 0.268465909,7.16257953 C0.0894877364,6.98360135 0,6.76627401 0,6.51059087 C0,6.25490741 0.0894877364,6.03758031 0.268465909,5.85860222 L5.82954545,0.297522509 C6.238638,-0.111570867 6.66050891,-0.0987867752 7.09517045,0.335874783 L12.6179018,5.85860222 C12.7968791,6.03758031 12.8863636,6.25490741 12.8863636,6.51059087 C12.8863636,6.76627401 12.7968791,6.98360135 12.6179018,7.16257953 C12.4389164,7.34155771 12.2215909,7.43104545 11.9659091,7.43104545 C11.7102273,7.43104545 11.4929018,7.34155771 11.3139164,7.16257953 L6.44318182,2.29184075 Z" id="path-1"></path>
+    </defs>
+    <g id="Asset-Artboard-Page" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.8">
+        <g id="btn/back-to-top-copy-7-btn/back-to-top-2" transform="translate(0.640449, 0.000000)">
+            <g id="Group-15">
+                <circle id="Oval" stroke="#00A7E1" stroke-width="2" cx="17.5" cy="17.5" r="16.5"></circle>
+                <g id="icon/link-copy-icon/chevron-top" transform="translate(9.000000, 9.000000)">
+                    <g id="COLOR/-drk-gry" transform="translate(2.454545, 4.909091)">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="Mask" fill="#3A3A3A" xlink:href="#path-1"></use>
+                        <g id="COLOR/-drk-gry-COLOR/-blue" mask="url(#mask-2)">
+                            <g transform="translate(-6.545455, -9.000000)">
+                                <rect id="Rectangle" fill="#2EC3E7" fill-rule="evenodd" x="0" y="0" width="26.181818" height="26.181818"></rect>
+                                <rect id="Rectangle-Copy-8" fill="#00A7E1" fill-rule="nonzero" x="0" y="0" width="26.181818" height="26.181818"></rect>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+            <text id="Top" font-family="AvenirNext-DemiBold, Avenir Next" font-size="13" font-weight="500" line-spacing="23" letter-spacing="1" fill="#00A7E1">
+                <tspan x="3.5195" y="48">TOP</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

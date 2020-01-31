@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -20,16 +21,10 @@ export class MessagesService {
     private db: AngularFireDatabase
     ) { }
 
-  sendMessage(text){
-
-  let url = `https://us-central1-new-angular-firebase.cloudfunctions.net/addMessage`;
-  var params = {text: text};
-
-  return this.http.post(url, params, this.httpOptions).subscribe(res=>{
-    console.log(res);
-  }, err =>{
-    console.log('error', err)
-  })
+sendMessage(text, user){
+  
+  text = {original: text, user: user}
+  return this.db.list('/messages').push(text)
 
 }
 
@@ -47,14 +42,25 @@ helloWorld(){
 messages;
 getMessages(){
 
-  return this.db.list('/messages').valueChanges()
+  // return this.todos$ = this.db.list('/messages');
+  return this.db.list('/messages').snapshotChanges()
+  .pipe(map(items => {
+    return items.map(a => {
+      const data:any = a.payload.val();
+      const key = a.payload.key;
+      return {
+        key: key,
+        original: data.original,
+        uppercase: data.uppercase,
+        user: data.user
+      }
+    });
+  }));
+}
 
-  // let url = `https://us-central1-new-angular-firebase.cloudfunctions.net/getMessages`;
-  // return this.http.get(url, this.httpOptions).subscribe(res=>{
-  //   console.log(res)
-  // }, err =>{
-  //   console.log('error', err)
-  // })
+deleteMessage(key){
+
+  return this.db.list('/messages/' + key).remove();
 
 }
 

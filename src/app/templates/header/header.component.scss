@@ -1,0 +1,20 @@
+header{
+    position: fixed;
+    display: flex;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    padding: 10px auto;
+    height: 50px;
+    transition: all .3s ease;
+    a{
+        color: #292929;
+    }
+}
+#header.active{
+    background-color: white;
+    box-shadow: 0px 0px 5px lightgrey;
+    height: 30px;
+}

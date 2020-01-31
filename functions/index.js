@@ -1,5 +1,7 @@
 const functions = require('firebase-functions');
 
+const axios = require('axios');
+const cheerio = require('cheerio');
 
 //for database:
 
@@ -29,13 +31,6 @@ exports.helloWorld = functions.https.onRequest((req, res) => {
     });
 });
 
-exports.getMessages = functions.https.onRequest((req, res) => {
-    cors(req, res, () => {
-        const snapshot = admin.database().ref('/messages');
-        return res.send(snapshot);
-    });
-});
-
 exports.addMessage = functions.https.onRequest((req, res) => {
 
     cors(req, res, () => {
@@ -48,12 +43,40 @@ exports.addMessage = functions.https.onRequest((req, res) => {
 
 exports.makeUppercase = functions.database.ref('/messages/{pushId}/original')
     .onCreate((snapshot, context) => {
-        // Grab the current value of what was written to the Realtime Database.
         const original = snapshot.val();
         console.log('Uppercasing', context.params.pushId, original);
         const uppercase = original.toUpperCase();
-        // You must return a Promise when performing asynchronous tasks inside a Functions such as
-        // writing to the Firebase Realtime Database.
-        // Setting an "uppercase" sibling in the Realtime Database returns a Promise.
         return snapshot.ref.parent.child('uppercase').set(uppercase);
+});
+
+
+exports.scrape = functions.https.onRequest((req, res) => {
+
+    cors(req, res, () => {
+
+        const url = req.body.url;
+        axios.get(url).then(response=>{
+            let data = response.data;
+            const $ = cheerio.load(data);
+            var dataArr = [];
+            $('div.search-result-listview-items search-result-listview-item').each((i,elem) => {
+                dataArr.push({
+                    title: $(elem).text(),
+                    link : $(elem).find('a.storylink').attr('href')
+                });
+            });
+            var obj = {
+                html: data,
+                title: "TITLE",
+                cheer: dataArr
+            };
+            return res.send(obj);
+        })
+        .catch(error=>{
+            console.log('error',error)
+            return res.send(error);
+        })
+    });
+
+
 });
