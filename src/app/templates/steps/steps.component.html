@@ -1,0 +1,21 @@
+<h3>Steps</h3>
+<div class="step-wrapper row">
+    <div class="col text-center mt-5 mb-5">
+        <ol class="steps">
+            <li class="step" *ngFor="let step of executeArray">
+                <span *ngIf="step.type == 'pattern'" 
+                    data-toggle="modal" 
+                    data-target="#patternModal">
+                    {{step.type}}
+                </span>
+                <span *ngIf="step.type == 'delay'" 
+                    data-toggle="modal" 
+                    data-target="#delayModal">
+                    {{step.type}} {{step.data}}ms
+                </span>
+            </li>
+        </ol>
+        <button *ngIf="executeArray[0]" data-toggle="modal" data-target="#saveDesignModal">Save Design</button>
+    </div>
+</div>
+

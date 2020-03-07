@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PixelizeComponent } from './pixelize.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { FormsModule } from '@angular/forms';
 
 describe('PixelizeComponent', () => {
   let component: PixelizeComponent;
@@ -8,6 +10,10 @@ describe('PixelizeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule,
+        FormsModule
+      ],
       declarations: [ PixelizeComponent ]
     })
     .compileComponents();

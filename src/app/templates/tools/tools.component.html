@@ -1,0 +1,97 @@
+<h3>Tools</h3>
+<div class="row">
+    <div class="col-auto">
+        <button [ngClass]="colorOption == 'single' ? 'active' : ''" (click)="colorOption = 'single'">color one cell</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-auto">
+        <button [ngClass]="colorOption == 'row' ? 'active' : ''" (click)="colorOption = 'row'">color row &#8646;</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-auto">
+        <button [ngClass]="colorOption == 'col' ? 'active' : ''" (click)="colorOption = 'col'">color column &#8645;</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-auto">
+        <button [ngClass]="colorOption == 'board' ? 'active' : ''" (click)="colorOption = 'board'">color board</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-auto">
+        <button (click)="shiftLeft()">Shift one col left</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-auto">
+        <button (click)="shiftRight()">Shift one col right</button>
+    </div>
+</div>
+
+
+
+<!-- Quilting stuff -->
+
+<!-- <div class="row">
+    <div class="col-auto">
+        <button [ngClass]="colorOption == 'backSlash' ? 'active' : ''" (click)="colorOption = 'backSlash'">Back Slash</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-auto">
+        <button [ngClass]="colorOption == 'forwardSlash' ? 'active' : ''" (click)="colorOption = 'forwardSlash'">Forward Slash</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-auto">
+        <button [ngClass]="colorOption == 'horizontal' ? 'active' : ''" (click)="colorOption = 'horizontal'">Horizontal Split</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-auto">
+        <button [ngClass]="colorOption == 'vertical' ? 'active' : ''" (click)="colorOption = 'vertical'">Vertical Split</button>
+    </div>
+</div> -->
+
+<!-- end quilting stuff -->
+
+<h5 class="mt-5" *ngIf="colorArray[0]" >Quick Colors:</h5>
+<div class="row">
+    <div class="col-auto">
+        <div class="quick-color" 
+            *ngFor="let color of colorArray" 
+            [ngStyle]="{'background-color': color }"
+            (click)="quickColorClick(color)">
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<!-- Other Projects Modal -->
+<!-- <div class="modal fade" id="savedDesignsModal" tabindex="-1" role="dialog" aria-labelledby="savedDesignsModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="savedDesignsModalLabel">Edit Pattern</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <input placeholder="Name your Creation" [(ngModel)]="patternName" type="text">
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" (click)="saveDesign()" data-dismiss="modal">Save changes</button>
+        </div>
+        </div>
+    </div>
+</div> -->

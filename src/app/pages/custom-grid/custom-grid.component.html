@@ -1,0 +1,141 @@
+<div class="container custom-wrap">
+
+    <div class="row">
+        <div class="col-md-3 mt-5">
+            <div class="sticky-top pt-5">
+
+                <app-steps  
+                    [gridSize]="gridSize"
+                    [delayTime]="delayTime"
+                    [executeArray]="executeArray">
+                </app-steps>
+
+            </div>
+        </div>
+        <div class="col-md-6 mt-5">
+            <div class="row">
+                <div class="col text-center">
+                    <h1>Make your own grid</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-center">
+                    <h6>Pick your color:</h6>
+                    <input id="color-pick" (colorPickerChange)="customColor=$event; colorChanged()" [(colorPicker)]="customColor" [style.background]="customColor"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-center">
+                    <h6>Grid Size</h6>
+                    <input [(ngModel)]="gridSize" type="number">
+                    <button class="mb-5" (click)="makeGridButton()">rebuild grid</button>
+                    <div id="grid-table"></div>
+                </div>
+            </div>
+            <div class="row mt-5 text-center justify-content-center">
+            <!-- </div>
+            <div class="row mt-3 text-center justify-content-center"> -->
+            </div>
+
+            <div class="row">
+                <div class="col text-center mt-5">
+                    <input [(ngModel)]="delayTime" type="number" step="10" placeholder="Delay Time (ms)">
+                    <button class="mb-5" (click)="stepsComp.addDelay()">Add delay</button>
+                    <button class="mb-5" (click)="stepsComp.addStep()">Add Step</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-center mt-5 mb-5">
+                    <h1>Demo:</h1>
+                    <button (click)="showDemo()">show demo</button>
+                    <div id="demo-table" class="mt-5"></div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col text-center mt-5 mb-5">
+                    <h1>Look at other people's demos!</h1>
+                    <div class="quick-color" 
+                        *ngFor="let pattern of savedPatterns">
+                        <div (click)="playSavedPattern(pattern.steps)">{{pattern.name}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mt-5">
+            <div class="tools-wrapper sticky-top pt-5">
+                <app-tools 
+                    (quickColorEvent)="quickColorChange($event)"
+                    (shiftEmit)="shiftGrid($event)">
+                </app-tools>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- Save Modal -->
+<div class="modal fade" id="saveDesignModal" tabindex="-1" role="dialog" aria-labelledby="saveDesignModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="saveDesignModalLabel">Save</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <input placeholder="Name your Creation" [(ngModel)]="patternName" type="text">
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" (click)="saveDesign()" data-dismiss="modal">Save changes</button>
+        </div>
+        </div>
+    </div>
+</div>
+
+<!-- Pattern Modal -->
+<div class="modal fade" id="patternModal" tabindex="-1" role="dialog" aria-labelledby="patternModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="patternModal">Edit</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div id="modal-grid"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Delete</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Delay Modal -->
+<div class="modal fade" id="delayModal" tabindex="-1" role="dialog" aria-labelledby="delayModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="delayModal">Edit Delay</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div id="modal-grid"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Remove Delay</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>

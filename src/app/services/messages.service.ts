@@ -28,6 +28,29 @@ sendMessage(text, user){
 
 }
 
+addPattern(pattern, name){
+  
+  var obj = {steps: pattern, name: name}
+  return this.db.list('/patterns').push(obj)
+
+}
+getPatterns(){
+
+  // return this.todos$ = this.db.list('/messages');
+  return this.db.list('/patterns').snapshotChanges()
+  .pipe(map(items => {
+    return items.map(a => {
+      const data:any = a.payload.val();
+      const key = a.payload.key;
+      return {
+        key: key,
+        name: data.name,
+        steps: data.steps,
+      }
+    });
+  }));
+}
+
 helloWorld(){
 
   let url = `https://us-central1-new-angular-firebase.cloudfunctions.net/helloWorld`;

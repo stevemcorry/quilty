@@ -5,6 +5,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { BoredComponent } from './pages/bored/bored.component';
 import { MessagesComponent } from './pages/messages/messages.component';
 import { PixelizeComponent } from './pages/pixelize/pixelize.component';
+import { CustomGridComponent } from './pages/custom-grid/custom-grid.component';
+import { MuscleBeachComponent } from './pages/muscle-beach/muscle-beach.component';
 
 
 const routes: Routes = [
@@ -12,6 +14,8 @@ const routes: Routes = [
   { path: 'bored', component: BoredComponent},
   { path: 'messaging', component: MessagesComponent },
   { path: 'pixelize', component: PixelizeComponent },
+  { path: 'custom-grid', component: CustomGridComponent },
+  { path: 'muscle-beach', component: MuscleBeachComponent },
   { path: '', component: HomeComponent },
 ];
 

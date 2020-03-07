@@ -19,6 +19,14 @@ import { environment } from '../environments/environment';
 import { MessagesComponent } from './pages/messages/messages.component';
 import { PixelizeComponent } from './pages/pixelize/pixelize.component';
 
+import { ColorPickerModule } from 'ngx-color-picker';
+import { CustomGridComponent } from './pages/custom-grid/custom-grid.component';
+import { ToolsComponent } from './templates/tools/tools.component';
+import { StepsComponent } from './templates/steps/steps.component';
+import { PatternModalComponent } from './modals/pattern-modal/pattern-modal.component';
+import { DelayModalComponent } from './modals/delay-modal/delay-modal.component';
+import { MuscleBeachComponent } from './pages/muscle-beach/muscle-beach.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +37,12 @@ import { PixelizeComponent } from './pages/pixelize/pixelize.component';
     FooterComponent,
     MessagesComponent,
     PixelizeComponent,
+    CustomGridComponent,
+    ToolsComponent,
+    StepsComponent,
+    PatternModalComponent,
+    DelayModalComponent,
+    MuscleBeachComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,6 +52,7 @@ import { PixelizeComponent } from './pages/pixelize/pixelize.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
+    ColorPickerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
