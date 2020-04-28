@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LocationStrategy } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-firebase';
+  active: boolean;
+  constructor(private url:LocationStrategy) { }
+
+  ngOnInit() {
+
+      console.log(this.url.path());
+      if(this.url.path()==='/phaser'){
+        this.active=false; 
+      }
+
+  }
+
 }

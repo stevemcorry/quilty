@@ -1,0 +1,13 @@
+.collide-area{
+    position: relative;
+    height: 600px;
+    width: 100%;
+    border: 1px solid lightgrey;
+    margin: 10px 0;
+    .collider{
+        height: 10px;
+        width: 10px;
+        background-color: black;
+        border-radius: 50%;
+    }
+}

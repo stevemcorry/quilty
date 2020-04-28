@@ -1,0 +1,86 @@
+.project-wrap{
+    position: relative;
+    display: inline-block;
+    height: 200px;
+    width: 200px;
+    margin: 10px 20px;
+    text-align: center;
+    .project-box{
+        position: relative;
+        height: 100%;
+        width: 100%;
+        display: inline-block;
+        overflow: hidden;
+        transform: rotate(45deg);
+        transition: all .3s ease;
+        img{
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+            transform: rotate(-45deg);
+            transition: all .3s ease;
+            cursor: pointer;
+            &.active{
+                animation: imgShrink .3s ease forwards;
+            }
+        }
+        .project-inner, .project-inner2{
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            transform: rotate(0deg);
+            transition: all .3s ease;
+        }
+        .project-inner2{
+            transform: rotate(0deg);
+        }
+    }
+    @media screen and (min-width: 992px) {
+        &.active .project-box{
+            transform: rotate(30deg);
+            .project-inner,.project-inner2{
+                transform: rotate(30deg);
+            }
+            img{
+                transform: rotate(-90deg);
+            }
+        }
+        &.active .project-description{
+            bottom: -30px;
+            text-shadow: 1px 1px 0px lightgrey;
+            transform: rotateX(0deg);
+        }
+    }
+    .project-description{
+        position: absolute;
+        display: inline-block;
+        bottom: -10px;
+        left: 0;
+        width: 100%;
+        font-size: 22px;
+        transform: rotateX(90deg);
+        transition: all .3s ease;
+        @media screen and (min-width: 992px) {
+
+        }
+    }
+}
+
+@keyframes imgShrink {
+    0%{
+    }
+    50%{
+        border-radius: 50%;
+    }
+    100%{
+        border-radius: 50%;
+        height: 90%;
+        width: 90%;
+    }
+}

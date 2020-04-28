@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Pick your username to start a game</h1>
+            <input type="text" placeholder="Enter your username" [(ngModel)]="username">
+            <p>Enter game code if you're joining friends</p>
+            <input type="text" placeholder="Game Code" [(ngModel)]="gameCode">
+            <br>
+            <button (click)="startGame()">Start!</button>
+        </div>
+    </div>
+</div>
+<app-alerty></app-alerty>

@@ -1,0 +1,18 @@
+<div class="project-wrap" 
+    [ngClass]="{active: turnOnProject}"
+    [ngStyle]="{'transform': 'rotate(-'+ projectRotation +'deg)'}">
+    <div class="project-box">
+        <div class="project-inner">
+            <div class="project-inner2">
+                <img 
+                    src="{{picture}}" 
+                    alt="" 
+                    (mouseenter)="turnOnProject = true" 
+                    (mouseleave)="turnOnProject = false; imageActive = false" 
+                    (click)="imageActive = true"
+                    [ngClass]="{active: imageActive}">
+            </div>
+        </div>
+    </div>
+    <div class="project-description barlow">{{projectDescription}}</div>
+</div>

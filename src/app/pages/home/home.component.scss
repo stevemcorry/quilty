@@ -1,4 +1,13 @@
 .home-wrapper{
+
+}
+.intro-animation{
+    position: absolute;
+    top: 40%;
+    left: calc(50% - 150px);
+    width: 300px;
+    z-index: 1;
+    text-align: center;
 }
 
 .carousel{
@@ -28,7 +37,6 @@
 .four{
     background-image: url('../../../assets/images/home-img.jpg');
 }
-
 
 //to-top
 

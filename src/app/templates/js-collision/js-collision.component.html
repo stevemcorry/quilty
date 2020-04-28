@@ -1,0 +1,9 @@
+<div class="container mb-5">
+    <span>Click in the box below to add dots</span>
+    <br>
+    <button class="clear" (click)="clearDots()">Clear Dots</button>
+    <button class="clear" *ngIf="!gravity" (click)="gravity = true; turnOnGravity()">Add Gravity</button>
+    <button class="clear" *ngIf="gravity" (click)="gravity = false">Remove Gravity</button>
+    <div id="collide-area" class="collide-area">
+    </div>
+</div>

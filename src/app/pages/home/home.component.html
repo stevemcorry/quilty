@@ -1,10 +1,36 @@
 <div class="home-wrapper">
     <div id="homeCarousel" class="carousel slide" data-ride="carousel">
+        <div class="intro-animation">
+            <h1 class="stephen raleway">Stephen Corry</h1>
+            <app-intro-animation 
+                [text]="'Web'" 
+                [delay]="300" 
+                [delete]="true" 
+                [deleteDelay]="1800">
+            </app-intro-animation>
+            <app-intro-animation 
+                [text]="'App'" 
+                [delay]="2600"
+                [delete]="true" 
+                [deleteDelay]="1200">
+            </app-intro-animation>
+            <app-intro-animation 
+                [text]="'Software'" 
+                [delay]="4200"
+                [delete]="true" 
+                [deleteDelay]="1800">
+            </app-intro-animation>
+            <div class="ml-2 d-inline-block"></div>
+            <app-intro-animation 
+                [text]="'Developer'" 
+                [delay]="600">
+            </app-intro-animation>
+        </div>
         <div class="carousel-inner">
           <div class="carousel-item active">
             <div class="inner-background one"></div>
           </div>
-          <div class="carousel-item">
+          <!-- <div class="carousel-item">
             <div class="inner-background two"></div>
           </div>
           <div class="carousel-item">
@@ -12,150 +38,87 @@
           </div>
           <div class="carousel-item">
             <div class="inner-background four"></div>
-          </div>
+          </div> -->
+        </div>
+    </div>
+
+    <h1 class="text-center my-5">My Projects</h1>
+    
+    <div class="container projects-container mb-5" 
+        [ngStyle]="{'transform': 'rotate('+ projectRotation +'deg)'}"
+        #projectsContainer>
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <app-project-show 
+                    [picture]="'./assets/images/home-img.jpg'"
+                    [projectDescription]="'hey there dude'"
+                    [projectRotation]="projectRotation">
+                </app-project-show>
+            </div>
+            <div class="col-auto">
+                <app-project-show 
+                    [picture]="'./assets/images/bikers.jpg'"
+                    [projectDescription]="'round 2 bb'"
+                    [projectRotation]="projectRotation">
+                </app-project-show>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <app-project-show 
+                    [picture]="'./assets/images/mario-small.png'"
+                    [projectDescription]="'round 3 bb'"
+                    [projectRotation]="projectRotation">
+                </app-project-show>
+            </div>
+            <div class="col-auto">
+                <app-project-show 
+                    [picture]="'./assets/images/surfers.jpg'"
+                    [projectDescription]="'round 4 bb'"
+                    [projectRotation]="projectRotation">
+                </app-project-show>
+            </div>
+            <div class="col-auto d-none d-lg-block">
+                <app-project-show 
+                    [picture]="'./assets/images/dessert.jpg'"
+                    [projectDescription]="'round 5 bb'"
+                    [projectRotation]="projectRotation">
+                </app-project-show>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <app-project-show 
+                    [picture]="'./assets/images/home-img.jpg'"
+                    [projectDescription]="'hey there dude'"
+                    [projectRotation]="projectRotation">
+                </app-project-show>
+            </div>
+            <div class="col-auto">
+                <app-project-show 
+                    [picture]="'./assets/images/bikers.jpg'"
+                    [projectDescription]="'round 2 bb'"
+                    [projectRotation]="projectRotation">
+                </app-project-show>
+            </div>
+            <div class="col-auto d-lg-none">
+                <app-project-show 
+                    [picture]="'./assets/images/dessert.jpg'"
+                    [projectDescription]="'round 5 bb'"
+                    [projectRotation]="projectRotation">
+                </app-project-show>
+            </div>
         </div>
     </div>
 
     <div class="container">
       <div class="jumbotron">
-          <h1 class="text-center">THIS IS JUMBO MY GUY</h1>
+          <h1 class="text-center">Fun JS Physics</h1>
       </div>
     </div>
 
-    <div class="jumbotron">
-        <h1 class="text-center">NOW THIS IS TRULY JUMBO</h1>
-    </div>
-
-    <div class="container">
-        <div class="jumbotron">
-            <h1 class="text-center">THIS IS JUMBO AGAIN</h1>
-        </div>
-    </div>
-
-    <div class="jumbotron" id="scrolly-polly-olly">
-        <h1 class="text-center">BUT NOT AS JUMBO AS THIS</h1>
-    </div>
-
-    <div class="container">
-        <div class="jumbotron">
-            <h1 class="text-center">THIS IS JUMBO MY GUY</h1>
-        </div>
-    </div>
-
-    <div class="jumbotron">
-        <h1 class="text-center">NOW THIS IS TRULY JUMBO</h1>
-    </div>
-
-    <div class="container">
-        <div class="jumbotron">
-            <h1 class="text-center">THIS IS JUMBO AGAIN</h1>
-        </div>
-    </div>
-
-    <div class="jumbotron">
-        <h1 class="text-center">BUT NOT AS JUMBO AS THIS</h1>
-    </div>
-
-    <div class="container">
-        <div class="jumbotron">
-            <h1 class="text-center">THIS IS JUMBO MY GUY</h1>
-        </div>
-    </div>
-
-    <div class="jumbotron">
-        <h1 class="text-center">NOW THIS IS TRULY JUMBO</h1>
-    </div>
-
-    <div class="container">
-        <div class="jumbotron">
-            <h1 class="text-center">THIS IS JUMBO AGAIN</h1>
-        </div>
-    </div>
-
-    <div class="jumbotron">
-        <h1 class="text-center">BUT NOT AS JUMBO AS THIS</h1>
-    </div>
-
-    <div class="container">
-        <div class="jumbotron">
-            <h1 class="text-center">THIS IS JUMBO MY GUY</h1>
-        </div>
-    </div>
-
-    <div class="jumbotron">
-        <h1 class="text-center">NOW THIS IS TRULY JUMBO</h1>
-    </div>
-
-    <div class="container">
-        <div class="jumbotron">
-            <h1 class="text-center">THIS IS JUMBO AGAIN</h1>
-        </div>
-    </div>
-
-    <div class="jumbotron">
-        <h1 class="text-center">BUT NOT AS JUMBO AS THIS</h1>
-    </div>
-
-    <div class="container">
-        <div class="jumbotron">
-            <h1 class="text-center">THIS IS JUMBO MY GUY</h1>
-        </div>
-    </div>
-
-    <div class="jumbotron">
-        <h1 class="text-center">NOW THIS IS TRULY JUMBO</h1>
-    </div>
-
-    <div class="container">
-        <div class="jumbotron">
-            <h1 class="text-center">THIS IS JUMBO AGAIN</h1>
-        </div>
-    </div>
-
-    <div class="jumbotron">
-        <h1 class="text-center">BUT NOT AS JUMBO AS THIS</h1>
-    </div>
-
-    <div class="container">
-        <div class="jumbotron">
-            <h1 class="text-center">THIS IS JUMBO MY GUY</h1>
-        </div>
-    </div>
-
-    <div class="jumbotron">
-        <h1 class="text-center">NOW THIS IS TRULY JUMBO</h1>
-    </div>
-
-    <div class="container">
-        <div class="jumbotron">
-            <h1 class="text-center">THIS IS JUMBO AGAIN</h1>
-        </div>
-    </div>
-
-    <div class="jumbotron">
-        <h1 class="text-center">BUT NOT AS JUMBO AS THIS</h1>
-    </div>
-
-    <div class="container">
-        <div class="jumbotron">
-            <h1 class="text-center">THIS IS JUMBO MY GUY</h1>
-        </div>
-    </div>
-
-    <div class="jumbotron">
-        <h1 class="text-center">NOW THIS IS TRULY JUMBO</h1>
-    </div>
-
-    <div class="container">
-        <div class="jumbotron">
-            <h1 class="text-center">THIS IS JUMBO AGAIN</h1>
-        </div>
-    </div>
-
-    <div class="jumbotron">
-        <h1 class="text-center">BUT NOT AS JUMBO AS THIS</h1>
-    </div>
+    <app-js-collision></app-js-collision>
     
-    <a id="to-top" class="to-top avenir-medium blue"></a>
+    <!-- <a id="to-top" class="to-top avenir-medium blue"></a> -->
 
 </div>

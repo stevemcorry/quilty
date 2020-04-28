@@ -1,0 +1,75 @@
+<app-header></app-header>
+<app-alerty></app-alerty>
+<div class="coup-wrap container">
+    <div class="row justify-content-center">
+        <div class="col-auto player-wrap mx-1 mt-5" *ngFor="let player of players; let i = index" [ngClass]="{active: turn == i}">
+            <div class="row justify-content-center">
+                <div class="col-auto">
+                    <div *ngIf="player.card1.assigned" [ngClass]="{dead: player.card1.isDead}" class="card">
+                        <div *ngIf="player.card1.isDead" class="card-name">
+                            {{player.card1.name}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <div *ngIf="player.card2.assigned" [ngClass]="{dead: player.card2.isDead}" class="card">
+                        <div *ngIf="player.card2.isDead" class="card-name">
+                            {{player.card2.name}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">{{player.name}} <span *ngIf="player.name == userPlayerObj.name">(me)</span></div>
+            <div class="text-center">{{player.coins}} coins</div>
+            
+        </div>
+    </div>
+    <div class="row justify-content-center mt-5" *ngIf="gameStarted">
+        <div class="col-auto" *ngIf="userPlayerObj.myTurn == turn">
+            <button *ngIf="userPlayerObj.coins < 10" (click)="takeAction('one')">Take One Coin</button>
+            <button *ngIf="userPlayerObj.coins >= 10" class="inactive">Take One Coin</button>
+            <button *ngIf="userPlayerObj.coins < 10" (click)="takeAction('two')">Take Two Coins</button>
+            <button *ngIf="userPlayerObj.coins >= 10" class="inactive">Take Two Coins</button>
+            <button *ngIf="userPlayerObj.coins < 10" (click)="takeAction('three')">Take Three Coins</button>
+            <button *ngIf="userPlayerObj.coins >= 10" class="inactive">Take Three Coins</button>
+            <button *ngIf="userPlayerObj.coins < 10" (click)="takeAction('steal')">Steal From a Player</button>
+            <button *ngIf="userPlayerObj.coins >= 10" class="inactive">Steal From a Player</button>
+            <button *ngIf="userPlayerObj.coins > 2" (click)="takeAction('assasinate')">Assasinate a player</button>
+            <button *ngIf="userPlayerObj.coins <= 2" class="inactive">Assasinate a player</button>
+            <button *ngIf="userPlayerObj.coins >= 7" (click)="takeAction('coup')">Coup a Player</button>
+            <button *ngIf="userPlayerObj.coins < 7" class="inactive">Coup a Player</button>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-2">
+        <div class="col-auto">
+
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-5" *ngIf="gameStarted">
+        <div class="col-auto" *ngIf="userPlayerObj.name">
+            <div class="">Your hand:</div>
+            <div class="row justify-content-center">
+                <div class="col-auto">
+                    <div [ngClass]="{dead: userPlayerObj.card1.isDead}" class="card">
+                        <div class="card-name">
+                            {{userPlayerObj.card1.name}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <div [ngClass]="{dead: userPlayerObj.card2.isDead}" class="card">
+                        <div class="card-name">
+                            {{userPlayerObj.card2.name}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+        <div class="col-auto">
+            <button *ngIf="!gameStarted" (click)="startGame()">Start Game</button>
+        </div>
+    </div>
+</div>

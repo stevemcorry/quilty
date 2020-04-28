@@ -1,6 +1,27 @@
 .css-fun-wrap{
   padding-top: 60px;
   min-height: 100vh;
+
+  text{
+    stroke-width: 2px;
+    stroke-linecap: round;
+    stroke: #a06ba5;
+    stroke-dashoffset: -272px;
+    fill: none;
+
+    stroke-dasharray: 1000px 5px 1000px;
+  }
+  .svgboi{
+    font-size: 80px;
+  }
+
+  .active,.active::before,.active::after{
+    animation: color 1.5s forwards;
+  }
+  .active{
+    animation: broken 1.5s forwards;
+  }
+
 }
 .arrow-button-wrap{
     margin: 50px;
@@ -129,12 +150,6 @@
 .heart:after{
   height: 250px;
   top: -115px
-}
-.active,.active::before,.active::after{
-  animation: color 1.5s forwards;
-}
-.active{
-  animation: broken 1.5s forwards;
 }
 @keyframes broken {
   0% {

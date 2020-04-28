@@ -1,0 +1,19 @@
+.platformer-wrap{
+    min-height: 100vh;
+    padding-top: 100px;
+    #game-area{
+        height: 80vh;
+        width: 95%;
+        margin: auto;
+        border: 1px solid lightgrey;
+        position: relative;
+    }
+    .player{
+        position: absolute;
+        background-color: red;
+    }
+    .wall{
+        position: absolute;
+        background-color: blue;
+    }
+}

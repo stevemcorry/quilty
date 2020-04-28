@@ -1,0 +1,45 @@
+.coup-wrap{
+    margin-top: 60px;
+    .player-wrap{
+        min-width: 150px;
+        padding: 30px 5px;
+        border: 1px solid lightgrey;
+        &.active{
+            border-color: blue;
+        }
+    }
+    .card{
+        height: 50px;
+        width: 30px;
+        position: relative;
+        background-color: lightgrey;
+        overflow: visible;
+        display: flex;
+        align-items: center;
+        padding-top: 11px;
+        &.dead{
+            &::before,&::after{
+                content: "";
+                position: absolute;
+                top: -1px;
+                left: 48%;
+                height: 50px;
+                width: 2px;
+                background: red;
+                transform: rotate(35deg);
+            }
+            &::after{
+                transform: rotate(-35deg);
+            }
+        }
+    }
+    .card-name{
+        white-space: nowrap;
+    }
+    button{
+        &.inactive{
+            background-color: lightgrey;
+            pointer-events: none;
+        }
+    }
+}

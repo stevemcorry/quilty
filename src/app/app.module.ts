@@ -26,6 +26,16 @@ import { StepsComponent } from './templates/steps/steps.component';
 import { PatternModalComponent } from './modals/pattern-modal/pattern-modal.component';
 import { DelayModalComponent } from './modals/delay-modal/delay-modal.component';
 import { MuscleBeachComponent } from './pages/muscle-beach/muscle-beach.component';
+import { IntroAnimationComponent } from './templates/intro-animation/intro-animation.component';
+import { HomeCarouselComponent } from './templates/home-carousel/home-carousel.component';
+import { ProjectShowComponent } from './templates/project-show/project-show.component';
+import { JsCollisionComponent } from './templates/js-collision/js-collision.component';
+import { PlatformerComponent } from './pages/platformer/platformer.component';
+import { PhaserComponent } from './pages/phaser/phaser.component';
+import { GamesComponent } from './pages/games/games.component';
+import { CoupComponent } from './pages/coup/coup.component';
+import { CouphomeComponent } from './pages/couphome/couphome.component';
+import { AlertyComponent } from './templates/alerty/alerty.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +53,16 @@ import { MuscleBeachComponent } from './pages/muscle-beach/muscle-beach.componen
     PatternModalComponent,
     DelayModalComponent,
     MuscleBeachComponent,
+    IntroAnimationComponent,
+    HomeCarouselComponent,
+    ProjectShowComponent,
+    JsCollisionComponent,
+    PlatformerComponent,
+    PhaserComponent,
+    GamesComponent,
+    CoupComponent,
+    CouphomeComponent,
+    AlertyComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +74,7 @@ import { MuscleBeachComponent } from './pages/muscle-beach/muscle-beach.componen
     AngularFireDatabaseModule,
     ColorPickerModule,
   ],
-  providers: [],
+  providers: [AlertyComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
