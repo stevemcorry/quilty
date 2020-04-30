@@ -12,13 +12,17 @@ export class HomeComponent implements OnInit {
   @HostListener("window:scroll", [])
   onScroll(): void {
     var element = this.projectsContainer.nativeElement;
+    if(window.innerWidth < 768){
+      this.projectRotation = 0;
+      return;
+    }
     if ((element.offsetTop - 200) <= window.scrollY) {
       this.projectRotation = 0;
     } else if(((element.offsetTop - 200) - window.scrollY) < 800){
       var rotate = ((element.offsetTop - 200) - window.scrollY)/10;
       this.projectRotation = rotate;
     }else {
-      // console.log((element.offsetTop - 200) - window.scrollY);
+      // console.log("else",(element.offsetTop - 200) - window.scrollY);
     }
   }
 

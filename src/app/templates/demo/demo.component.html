@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col text-center mt-2 mb-5">
+        <button (click)="showDemo()" data-toggle="modal" data-target="#demoModal">show preview</button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col text-center mt-5 mb-5">
+        <h1>Look at other people's demos!</h1>
+        <div class="quick-color" 
+            *ngFor="let pattern of savedPatterns">
+            <div (click)="playSavedPattern(pattern.steps)" data-toggle="modal" data-target="#demoModal">{{pattern.name}}</div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="demoModal" tabindex="-1" role="dialog" aria-labelledby="demoModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            <div id="demo-table" class="mt-5"></div>
+            <button type="button" class="btn btn-primary float-right mt-3" data-dismiss="modal">Close</button>
+        </div>
+        </div>
+    </div>
+</div>

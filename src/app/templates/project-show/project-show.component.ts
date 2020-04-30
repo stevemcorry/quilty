@@ -11,6 +11,7 @@ export class ProjectShowComponent implements OnInit {
   @Input() picture = "";
   @Input() projectRotation = 0;
   turnOnProject = false;
+  imageActive = false;
 
   constructor() { }
 

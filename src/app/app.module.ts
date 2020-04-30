@@ -36,6 +36,8 @@ import { GamesComponent } from './pages/games/games.component';
 import { CoupComponent } from './pages/coup/coup.component';
 import { CouphomeComponent } from './pages/couphome/couphome.component';
 import { AlertyComponent } from './templates/alerty/alerty.component';
+import { DemoComponent } from './templates/demo/demo.component';
+import { TravelStuffComponent } from './pages/travel-stuff/travel-stuff.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +65,8 @@ import { AlertyComponent } from './templates/alerty/alerty.component';
     CoupComponent,
     CouphomeComponent,
     AlertyComponent,
+    DemoComponent,
+    TravelStuffComponent,
   ],
   imports: [
     BrowserModule,

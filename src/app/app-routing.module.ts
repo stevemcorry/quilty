@@ -12,6 +12,7 @@ import { PhaserComponent } from './pages/phaser/phaser.component';
 import { CoupComponent } from './pages/coup/coup.component';
 import { GamesComponent } from './pages/games/games.component';
 import { CouphomeComponent } from './pages/couphome/couphome.component';
+import { TravelStuffComponent } from './pages/travel-stuff/travel-stuff.component';
 
 
 const routes: Routes = [
@@ -26,7 +27,8 @@ const routes: Routes = [
   { path: 'phaser', component: PhaserComponent },
   { path: 'games',  component: GamesComponent },
   { path: 'coup', component: CouphomeComponent },
-  { path: 'coup/:id', component: CoupComponent }
+  { path: 'coup/:id', component: CoupComponent },
+  { path: 'travel-track', component: TravelStuffComponent }
 ];
 
 @NgModule({

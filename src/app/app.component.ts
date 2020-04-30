@@ -8,7 +8,7 @@ import { LocationStrategy } from '@angular/common';
 })
 export class AppComponent {
   title = 'angular-firebase';
-  active: boolean;
+  active: boolean = true;
   constructor(private url:LocationStrategy) { }
 
   ngOnInit() {

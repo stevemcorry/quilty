@@ -1,7 +1,7 @@
 <div class="container custom-wrap">
 
     <div class="row">
-        <div class="col-md-3 mt-5">
+        <div class="col-md-3 mt-md-5 order-3 order-md-1">
             <div class="sticky-top pt-5">
 
                 <app-steps  
@@ -12,7 +12,7 @@
 
             </div>
         </div>
-        <div class="col-md-6 mt-5">
+        <div class="col-md-6 mt-5 order-1 order-md-2">
             <div class="row">
                 <div class="col text-center">
                     <h1>Make your own grid</h1>
@@ -32,39 +32,18 @@
                     <div id="grid-table"></div>
                 </div>
             </div>
-            <div class="row mt-5 text-center justify-content-center">
-            <!-- </div>
-            <div class="row mt-3 text-center justify-content-center"> -->
-            </div>
 
             <div class="row">
                 <div class="col text-center mt-5">
                     <input [(ngModel)]="delayTime" type="number" step="10" placeholder="Delay Time (ms)">
-                    <button class="mb-5" (click)="stepsComp.addDelay()">Add delay</button>
-                    <button class="mb-5" (click)="stepsComp.addStep()">Add Step</button>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col text-center mt-5 mb-5">
-                    <h1>Demo:</h1>
-                    <button (click)="showDemo()">show demo</button>
-                    <div id="demo-table" class="mt-5"></div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col text-center mt-5 mb-5">
-                    <h1>Look at other people's demos!</h1>
-                    <div class="quick-color" 
-                        *ngFor="let pattern of savedPatterns">
-                        <div (click)="playSavedPattern(pattern.steps)">{{pattern.name}}</div>
-                    </div>
+                    <!-- <button class="mb-5" (click)="stepsComp.addDelay()">Add delay</button> -->
+                    <button class="mb-5" (click)="stepsComp.addStep()">Save step</button>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-3 mt-5">
-            <div class="tools-wrapper sticky-top pt-5">
+        <div class="col-md-3 mt-md-5 order-2 order-md-3">
+            <div class="tools-wrapper sticky-top pt-md-5">
                 <app-tools 
                     (quickColorEvent)="quickColorChange($event)"
                     (shiftEmit)="shiftGrid($event)">
@@ -73,6 +52,8 @@
         </div>
 
     </div>
+
+    <app-demo [executeArray]="executeArray"></app-demo>
 
 </div>
 

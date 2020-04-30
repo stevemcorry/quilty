@@ -19,7 +19,7 @@ export class CustomGridComponent implements OnInit {
   delayTime = 100;
   patternName = "";
   colorArray = [];
-  savedPatterns = [];
+  // savedPatterns = [];
   executeArray = [];
 
   mouseDown = 0;
@@ -53,7 +53,7 @@ export class CustomGridComponent implements OnInit {
 
   ngOnInit() {
     this.makeGrid(document.getElementById('grid-table'), "");
-    this.getSavedDesigns();
+    // this.getSavedDesigns();
   }
 
   makeGridButton(){
@@ -141,37 +141,6 @@ export class CustomGridComponent implements OnInit {
       this.toolsComp.colorArray = this.colorArray;
     }
   }
-
-  showDemo(){
-    this.playOnDemoGrid(this.executeArray)
-  }
-  playSavedPattern(arr){
-    for(let x of arr){
-      if(x.type == "pattern"){
-        if(this.gridSize*this.gridSize != x.data.length){
-          this.gridSize = Math.sqrt( x.data.length );
-          this.makeGrid(document.getElementById('grid-table'), "");
-          this.playOnDemoGrid(arr);
-        } else {
-          this.playOnDemoGrid(arr);
-        }
-        break;
-      }
-    }
-  }
-  playOnDemoGrid(arr){
-    this.makeGrid(document.getElementById('demo-table'), "Demo");
-    var totalTime = 0;
-    for(let x of arr){
-      if(x.type == "pattern"){
-        setTimeout(()=>{
-          this.executeFunction(x.data)
-        }, totalTime);
-      } else{
-        totalTime = totalTime + x.data;
-      }
-    }
-  }
   executeFunction(data){
     for(let x of data){
       var grid = document.getElementById('gridIdDemo' + x.id);
@@ -181,38 +150,10 @@ export class CustomGridComponent implements OnInit {
   saveDesign(){
     this.messageService.addPattern(this.executeArray, this.patternName)
   }
-  getSavedDesigns(){
-    this.messageService.getPatterns().subscribe(res=>{
-      this.savedPatterns = res;
-      this.forBoard(res[3].steps)
-    })
-  }
   quickColorChange($event){
     this.customColor = $event;
     this.toolsComp.customColor = this.customColor;
   }
-  forBoard(arr){
-    var stringy = ""
-    for(let x of arr){
-      if(x.type == "pattern"){
-        for(let i of x.data){
-          let splt = i.color.substring(3);
-          let plz = splt.split(', ');
-          plz[0] = plz[0].substring(1)
-          plz[2] = plz[2].substring(0, plz.length);
-          var hex = "0x" + this.fullColorHex(plz[0].substring(1,3),plz[1], plz[2]);
-          // let srng = "leds["+ i.id +"] = CHSV " + splt + ";";
-          let srng = "leds["+ i.id +"] = " + hex + ";";
-          stringy += srng;
-        }
-        stringy += "FastLED.show();";
-      } else {
-        stringy += "delay(" + x.data + ");";
-      }
-    }
-    console.log(stringy);
-  }
-
 
   rgbToHex(rgb){ 
     var hex = Number(rgb).toString(16);
@@ -226,7 +167,7 @@ export class CustomGridComponent implements OnInit {
     var green = this.rgbToHex(g);
     var blue = this.rgbToHex(b);
     return red+green+blue;
-  };
+  }
   shiftGrid(direction){
 
     var table = document.getElementById('grid-table');
@@ -275,28 +216,4 @@ export class CustomGridComponent implements OnInit {
 
     }
   }
-
-
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
-/*
-while its still on my mind for the quilting idea:
-
-custom pattern, with step by step instructions
-
-
-
-
-*/

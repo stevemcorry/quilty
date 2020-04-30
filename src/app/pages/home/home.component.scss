@@ -11,8 +11,11 @@
 }
 
 .carousel{
-    height: 100vh;
+    height: 80vh;
     width: 100vw;
+    @media screen and (min-width: 768px) {
+        height: 100vh;
+    }
 }
 .carousel-inner, .carousel-item{
     height: 100%;

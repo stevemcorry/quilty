@@ -42,6 +42,8 @@ export class StepsComponent implements OnInit {
       data: colorArr
     }
     this.executeArray.push(executeObj);
+    
+    this.addDelay();
   }
 
 
