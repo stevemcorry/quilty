@@ -25,6 +25,11 @@ export class HomeComponent implements OnInit {
       // console.log("else",(element.offsetTop - 200) - window.scrollY);
     }
   }
+  projectInfo = {
+    projectDescription: "",
+    projectTitle: "",
+    picture: ""
+  }
 
   constructor(
   ) { }
@@ -88,6 +93,13 @@ export class HomeComponent implements OnInit {
     // }
 
   }
+
+  projectClicked(event){
+    console.log(event)
+    this.projectInfo = event;
+  }
+
+
   ngOnDestroy() {
     
   }

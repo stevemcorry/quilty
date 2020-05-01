@@ -82,3 +82,11 @@
     50%{opacity: 0; transform:translate(0px);}
     100%{opacity: 0; transform:translate(9999px);}
 }
+
+#projectShowModal{
+    .modal-project-image{
+        width: 100%;
+        height: 500px;
+        object-fit: contain;
+    }
+}

@@ -2,7 +2,10 @@
     [ngClass]="{active: turnOnProject}"
     [ngStyle]="{'transform': 'rotate(-'+ projectRotation +'deg)'}"
     (mouseenter)="turnOnProject = true" 
-    (mouseleave)="turnOnProject = false; imageActive = false" >
+    (mouseleave)="turnOnProject = false; imageActive = false"
+    (click)="openProject()"
+    data-toggle="modal" 
+    data-target="#projectShowModal">
     <div class="project-box">
         <div class="project-inner">
             <div class="project-inner2">
@@ -14,5 +17,5 @@
             </div>
         </div>
     </div>
-    <div class="project-description barlow">{{projectDescription}}</div>
+    <div class="project-description barlow">{{projectTitle}}</div>
 </div>

@@ -32,12 +32,6 @@
           </div>
           <!-- <div class="carousel-item">
             <div class="inner-background two"></div>
-          </div>
-          <div class="carousel-item">
-            <div class="inner-background three"></div>
-          </div>
-          <div class="carousel-item">
-            <div class="inner-background four"></div>
           </div> -->
         </div>
     </div>
@@ -51,15 +45,19 @@
             <div class="col-auto">
                 <app-project-show 
                     [picture]="'./assets/images/home-img.jpg'"
-                    [projectDescription]="'EnrollPro'"
-                    [projectRotation]="projectRotation">
+                    [projectTitle]="'EnrollPro'"
+                    [projectDescription]="'Contact management software for Doterra sellers to keep track of communitation with customers. Built in Angular 4.'"
+                    [projectRotation]="projectRotation"
+                    (projectClick)="projectClicked($event)">
                 </app-project-show>
             </div>
             <div class="col-auto">
                 <app-project-show 
                     [picture]="'./assets/images/bikers.jpg'"
-                    [projectDescription]="'EnrollPro (App)'"
-                    [projectRotation]="projectRotation">
+                    [projectTitle]="'EnrollPro (App)'"
+                    [projectDescription]="'Contact management software for Doterra sellers to keep track of communitation with customers. Built in Ionic 3.'"
+                    [projectRotation]="projectRotation"
+                    (projectClick)="projectClicked($event)">
                 </app-project-show>
             </div>
         </div>
@@ -67,22 +65,28 @@
             <div class="col-auto">
                 <app-project-show 
                     [picture]="'./assets/images/mario-small.png'"
-                    [projectDescription]="'Couposts'"
-                    [projectRotation]="projectRotation">
+                    [projectTitle]="'Couposts'"
+                    [projectDescription]=""
+                    [projectRotation]="projectRotation"
+                    (projectClick)="projectClicked($event)">
                 </app-project-show>
             </div>
             <div class="col-auto">
                 <app-project-show 
                     [picture]="'./assets/images/surfers.jpg'"
-                    [projectDescription]="'Code Sprint'"
-                    [projectRotation]="projectRotation">
+                    [projectTitle]="'Code Sprint'"
+                    [projectDescription]=""
+                    [projectRotation]="projectRotation"
+                    (projectClick)="projectClicked($event)">
                 </app-project-show>
             </div>
             <div class="col-auto d-none d-lg-block">
                 <app-project-show 
                     [picture]="'./assets/images/dessert.jpg'"
-                    [projectDescription]="'Pixelizer'"
-                    [projectRotation]="projectRotation">
+                    [projectTitle]="'Pixelizer'"
+                    [projectDescription]=""
+                    [projectRotation]="projectRotation"
+                    (projectClick)="projectClicked($event)">
                 </app-project-show>
             </div>
         </div>
@@ -90,22 +94,28 @@
             <div class="col-auto">
                 <app-project-show 
                     [picture]="'./assets/images/home-img.jpg'"
-                    [projectDescription]="'Foto Pro'"
-                    [projectRotation]="projectRotation">
+                    [projectTitle]="'Foto Pro'"
+                    [projectDescription]=""
+                    [projectRotation]="projectRotation"
+                    (projectClick)="projectClicked($event)">
                 </app-project-show>
             </div>
             <div class="col-auto">
                 <app-project-show 
                     [picture]="'./assets/images/bikers.jpg'"
-                    [projectDescription]="'Custom Grid'"
-                    [projectRotation]="projectRotation">
+                    [projectTitle]="'Custom Grid'"
+                    [projectDescription]=""
+                    [projectRotation]="projectRotation"
+                    (projectClick)="projectClicked($event)">
                 </app-project-show>
             </div>
             <div class="col-auto d-lg-none">
                 <app-project-show 
                     [picture]="'./assets/images/dessert.jpg'"
-                    [projectDescription]="'Pixelizer'"
-                    [projectRotation]="projectRotation">
+                    [projectTitle]="'Pixelizer'"
+                    [projectDescription]=""
+                    [projectRotation]="projectRotation"
+                    (projectClick)="projectClicked($event)">
                 </app-project-show>
             </div>
         </div>
@@ -122,4 +132,28 @@
     
     <!-- <a id="to-top" class="to-top avenir-medium blue"></a> -->
 
+</div>
+
+
+
+<!-- Project Modal -->
+<div class="modal fade" id="projectShowModal" tabindex="-1" role="dialog" aria-labelledby="projectShowModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="projectShowModalLabel">{{projectInfo.projectTitle}}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <img class="modal-project-image" src="{{projectInfo.picture}}" alt="{{projectInfo.projectTitle}}">
+            <div>{{projectInfo.projectDescription}}</div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" (click)="visitSite()" data-dismiss="modal">Visit Site</button>
+        </div>
+        </div>
+    </div>
 </div>
