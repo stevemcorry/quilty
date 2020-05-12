@@ -13,7 +13,9 @@ export class ToolsComponent implements OnInit {
   colorOption = 'single';
   customColor = "#00c3ff";
   gridSize = 7;
-  colorArray = [];
+  colorArray = [
+    "#ffffff"
+  ];
 
   constructor() { }
 
@@ -39,8 +41,9 @@ export class ToolsComponent implements OnInit {
     targetElement.classList.add("vertical-split");
   }
   colorSingleCell(targetElement){
+    console.log(this.customColor)
     if(targetElement.style.backgroundColor == this.hexToRgb(this.customColor)){
-      // targetElement.style.backgroundColor = "rgb(255, 255, 255)";
+      targetElement.style.backgroundColor = "rgb(255, 255, 255)";
     } else {
       targetElement.style.backgroundColor = this.customColor;
     }
@@ -73,7 +76,8 @@ export class ToolsComponent implements OnInit {
     } : null;
   }
   hexToRgb(hex) {
-    var obj = this.hexToRgbObj(hex)
+    console.log(hex,'hexs')
+    var obj = this.hexToRgbObj(hex);
     return "rgb(" + obj.r + ", " + obj.g + ", " + obj.b + ")"
   }
   quickColorClick(color){

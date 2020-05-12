@@ -21,7 +21,21 @@
             <div class="row">
                 <div class="col text-center">
                     <h6>Pick your color:</h6>
-                    <input id="color-pick" (colorPickerChange)="customColor=$event; colorChanged()" [(colorPicker)]="customColor" [style.background]="customColor"/>
+
+                    <div class="color-show" [style.background]="customColor"></div>
+                    <color-hue-picker 
+                      id="color-pick"
+                      (onChange)="colorChanged($event)" 
+                      (onChangeComplete)="colorChanged($event)" 
+                      [color]="customColor">
+                    </color-hue-picker>
+                    <color-shade-picker
+                      id="color-pick" 
+                      (onChange)="colorChanged($event)" 
+                      (onChangeComplete)="colorChanged($event)" 
+                      [color]="customColor">
+                    </color-shade-picker>
+                    <!-- <input id="color-pick" (colorPickerChange)="customColor=$event; colorChanged()" [(colorPicker)]="customColor" [style.background]="customColor"/> -->
                 </div>
             </div>
             <div class="row">

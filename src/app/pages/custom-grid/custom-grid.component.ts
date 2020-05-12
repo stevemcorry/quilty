@@ -3,6 +3,8 @@ import { ToolsComponent } from 'src/app/templates/tools/tools.component';
 import { MessagesService } from 'src/app/services/messages.service';
 import { StepsComponent } from 'src/app/templates/steps/steps.component';
 
+import { ColorEvent } from 'ngx-color';
+
 
 @Component({
   selector: 'app-custom-grid',
@@ -14,11 +16,13 @@ export class CustomGridComponent implements OnInit {
 
   @ViewChild(ToolsComponent, {static: false}) toolsComp:ToolsComponent;
   @ViewChild(StepsComponent, {static: false}) stepsComp:StepsComponent;
-  customColor = "#00c3ff";
+  customColor = "#00ccff";
   gridSize = 7;
   delayTime = 100;
   patternName = "";
-  colorArray = [];
+  colorArray = [
+    "#ffffff"
+  ];
   // savedPatterns = [];
   executeArray = [];
 
@@ -60,7 +64,9 @@ export class CustomGridComponent implements OnInit {
     this.toolsComp.gridSize = this.gridSize;
     this.makeGrid(document.getElementById('grid-table'), "");
   }
-  colorChanged(){
+  colorChanged($event: ColorEvent){
+    console.log($event);
+    this.customColor = $event.color.hex;
     this.toolsComp.customColor = this.customColor;
   }
   colorGrid(){
@@ -151,6 +157,7 @@ export class CustomGridComponent implements OnInit {
     this.messageService.addPattern(this.executeArray, this.patternName)
   }
   quickColorChange($event){
+    console.log($event)
     this.customColor = $event;
     this.toolsComp.customColor = this.customColor;
   }

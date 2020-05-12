@@ -14,9 +14,10 @@
         transform: rotate(45deg);
         transition: all .3s ease;
         img{
-            object-fit: cover;
             height: 100%;
             width: 100%;
+            object-fit: cover;
+            object-position: top;
             transform: rotate(-45deg);
             transition: all .3s ease;
             cursor: pointer;
@@ -56,7 +57,7 @@
             padding: 10px 10px 15px;
             text-shadow: 1px 1px 0px lightgrey;
             transform: rotateX(0deg);
-            background-color: rgba(255, 255, 255, 0.664);
+            background-color: rgba(255, 255, 255, 0.8);
         }
     }
     .project-description{

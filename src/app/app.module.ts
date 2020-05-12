@@ -19,7 +19,6 @@ import { environment } from '../environments/environment';
 import { MessagesComponent } from './pages/messages/messages.component';
 import { PixelizeComponent } from './pages/pixelize/pixelize.component';
 
-import { ColorPickerModule } from 'ngx-color-picker';
 import { CustomGridComponent } from './pages/custom-grid/custom-grid.component';
 import { ToolsComponent } from './templates/tools/tools.component';
 import { StepsComponent } from './templates/steps/steps.component';
@@ -38,6 +37,11 @@ import { CouphomeComponent } from './pages/couphome/couphome.component';
 import { AlertyComponent } from './templates/alerty/alerty.component';
 import { DemoComponent } from './templates/demo/demo.component';
 import { TravelStuffComponent } from './pages/travel-stuff/travel-stuff.component';
+
+//colors
+import { ColorPickerModule } from 'ngx-color-picker';
+import { ColorHueModule } from 'ngx-color/hue';
+import { ColorShadeModule } from 'ngx-color/shade';
 
 @NgModule({
   declarations: [
@@ -77,6 +81,8 @@ import { TravelStuffComponent } from './pages/travel-stuff/travel-stuff.componen
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     ColorPickerModule,
+    ColorHueModule,
+    ColorShadeModule,
   ],
   providers: [AlertyComponent],
   bootstrap: [AppComponent]

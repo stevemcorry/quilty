@@ -24,6 +24,7 @@
     "bootstrap": "^4.4.1",
     "firebase": "^7.6.0",
     "jquery": "^3.4.1",
+    "ngx-color": "^5.1.2",
     "ngx-color-picker": "^9.0.0",
     "phaser": "^3.22.0",
     "popper": "^1.0.1",
