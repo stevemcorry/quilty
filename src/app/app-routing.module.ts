@@ -13,6 +13,7 @@ import { CoupComponent } from './pages/coup/coup.component';
 import { GamesComponent } from './pages/games/games.component';
 import { CouphomeComponent } from './pages/couphome/couphome.component';
 import { TravelStuffComponent } from './pages/travel-stuff/travel-stuff.component';
+import { ChecklistComponent } from './pages/checklist/checklist.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'games',  component: GamesComponent },
   { path: 'coup', component: CouphomeComponent },
   { path: 'coup/:id', component: CoupComponent },
+  { path: 'checklist', component: ChecklistComponent },
   { path: 'travel-track', component: TravelStuffComponent }
 ];
 

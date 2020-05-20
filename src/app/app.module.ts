@@ -42,6 +42,7 @@ import { TravelStuffComponent } from './pages/travel-stuff/travel-stuff.componen
 import { ColorPickerModule } from 'ngx-color-picker';
 import { ColorHueModule } from 'ngx-color/hue';
 import { ColorShadeModule } from 'ngx-color/shade';
+import { ChecklistComponent } from './pages/checklist/checklist.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { ColorShadeModule } from 'ngx-color/shade';
     AlertyComponent,
     DemoComponent,
     TravelStuffComponent,
+    ChecklistComponent,
   ],
   imports: [
     BrowserModule,
