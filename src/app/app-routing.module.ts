@@ -14,6 +14,8 @@ import { GamesComponent } from './pages/games/games.component';
 import { CouphomeComponent } from './pages/couphome/couphome.component';
 import { TravelStuffComponent } from './pages/travel-stuff/travel-stuff.component';
 import { ChecklistComponent } from './pages/checklist/checklist.component';
+import { InstaComponent } from './pages/insta/insta.component';
+import { AuthComponent } from './pages/auth/auth.component';
 
 
 const routes: Routes = [
@@ -30,6 +32,8 @@ const routes: Routes = [
   { path: 'coup', component: CouphomeComponent },
   { path: 'coup/:id', component: CoupComponent },
   { path: 'checklist', component: ChecklistComponent },
+  { path: 'insta', component: InstaComponent },
+  { path: 'auth', component: AuthComponent },
   { path: 'travel-track', component: TravelStuffComponent }
 ];
 

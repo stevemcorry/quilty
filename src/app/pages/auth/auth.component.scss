@@ -1,0 +1,22 @@
+.auth-wrap{
+    padding-top: 60px;
+    height: 100vh;
+}
+.redirectWrap{
+    margin-top: 80px;
+    text-align: center;
+}
+.spinO{
+    display: inline-block;
+    font: 28px sans-serif;
+    margin-left: 3px;
+    transition: all .8s ease;
+}
+.spinOn{
+    transform: translateY(-8px);
+    // transition: all .8s ease;
+}
+.spinDown{
+    transform: translateY(8px);
+    // transition: all .8s ease;
+}

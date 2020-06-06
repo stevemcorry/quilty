@@ -1,0 +1,46 @@
+<div class="auth-wrap container">
+    <h1></h1>
+
+    <div class="redirectWrap" *ngIf="!finishedVerify">
+        <div class="spinO" 
+          [ngClass]="{spinOn: loadingProgress == 'L'}">
+          V
+        </div>
+        <div class="spinO" 
+          [ngClass]="{spinDown: loadingProgress == 'o'}">
+          e
+        </div>
+        <div class="spinO" 
+          [ngClass]="{spinOn: loadingProgress == 'a'}">
+          r
+        </div>
+        <div class="spinO" 
+          [ngClass]="{spinDown: loadingProgress == 'd'}">
+          i
+        </div>
+        <div class="spinO" 
+          [ngClass]="{spinOn: loadingProgress == 'i'}">
+          f
+        </div>
+        <div class="spinO" 
+          [ngClass]="{spinDown: loadingProgress == 'n'}">
+          y
+        </div>
+        <div class="spinO" 
+          [ngClass]="{spinOn: loadingProgress == 'g'}">
+          i
+        </div>
+        <div class="spinO" 
+          [ngClass]="{spinDown: loadingProgress == '.'}">
+          n
+        </div>
+        <div class="spinO" 
+          [ngClass]="{spinOn: loadingProgress == ','}">
+          g
+        </div>
+    </div>
+
+    <div class="fb-login-button" scope="public_profile,email,instagram_basic" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false" data-width="" onlogin="checkStatus()"></div>
+
+    <div (click)="checkStatus()">Check</div>
+</div>

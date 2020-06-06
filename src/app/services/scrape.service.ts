@@ -13,6 +13,7 @@ export class ScrapeService {
       'Access-Control-Allow-Origin': '*'
     })
   };
+  access = '?access_token='
 
   constructor(
     private http: HttpClient,
@@ -36,6 +37,10 @@ export class ScrapeService {
       console.log('error', err)
     })
   
+  }
+
+  instaAccess(code){
+    return this.http.get(`https://api.instagram.com/v1/users/self/media/recent`+ this.access + code)
   }
 
 

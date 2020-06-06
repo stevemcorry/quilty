@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule }    from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
+import { FacebookModule } from 'ngx-facebook';
+
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -38,11 +40,14 @@ import { AlertyComponent } from './templates/alerty/alerty.component';
 import { DemoComponent } from './templates/demo/demo.component';
 import { TravelStuffComponent } from './pages/travel-stuff/travel-stuff.component';
 
+
 //colors
 import { ColorPickerModule } from 'ngx-color-picker';
 import { ColorHueModule } from 'ngx-color/hue';
 import { ColorShadeModule } from 'ngx-color/shade';
 import { ChecklistComponent } from './pages/checklist/checklist.component';
+import { InstaComponent } from './pages/insta/insta.component';
+import { AuthComponent } from './pages/auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -73,12 +78,15 @@ import { ChecklistComponent } from './pages/checklist/checklist.component';
     DemoComponent,
     TravelStuffComponent,
     ChecklistComponent,
+    InstaComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    FacebookModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
