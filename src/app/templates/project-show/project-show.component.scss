@@ -13,16 +13,16 @@
         overflow: hidden;
         transform: rotate(45deg);
         transition: all .3s ease;
-        img{
+        .project-img{
             height: 100%;
             width: 100%;
-            object-fit: cover;
-            object-position: top;
+            background-size: cover;
+            background-position: top;
             transform: rotate(-45deg);
             transition: all .3s ease;
             cursor: pointer;
             &.active{
-                animation: imgShrink .3s ease forwards;
+                // animation: imgShrink .3s ease forwards;
             }
         }
         .project-inner, .project-inner2{
@@ -48,7 +48,7 @@
             .project-inner,.project-inner2{
                 transform: rotate(30deg);
             }
-            img{
+            .project-img{
                 transform: rotate(-90deg);
             }
         }

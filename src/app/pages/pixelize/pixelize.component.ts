@@ -87,8 +87,12 @@ export class PixelizeComponent implements OnInit {
     let pixelArr = ctx.getImageData(0, 0, w, h).data;
     let sample_size = Math.floor(h/this.gridCount);
     let sample_size_w = Math.floor(w/this.gridCount);
-    var table = document.createElement("table")
-    table = document.getElementById('getME').appendChild(table);
+    var table = document.createElement("table");
+    var getme = document.getElementById('getME');
+    if(getme.firstChild){
+      getme.removeChild(getme.firstChild);
+    }
+    table = getme.appendChild(table);
     table.addEventListener('click',this.deleteTable);
     var yCount = 0;
     var xCount = 0;

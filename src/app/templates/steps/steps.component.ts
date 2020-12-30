@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter  } from '@angular/core';
+import html2canvas from "html2canvas"
+
 
 @Component({
   selector: 'app-steps',
@@ -11,19 +13,15 @@ export class StepsComponent implements OnInit {
   @Input() executeArray;
   @Input() gridSize;
   @Input() delayTime;
+  @Output() editEmit = new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-
-  addDelay(){
-    let executeObj = {
-      type: "delay",
-      data: this.delayTime
-    }
-    this.executeArray.push(executeObj);
+  editStep(step){
+    this.editEmit.emit(step.data);
   }
   addStep(){
     var colorArr = [];
@@ -37,13 +35,32 @@ export class StepsComponent implements OnInit {
       };
       colorArr.push(obj);
     }
-    let executeObj = {
-      type: "pattern",
-      data: colorArr
-    }
-    this.executeArray.push(executeObj);
+    // let executeObj = {
+    //   type: "pattern",
+    //   data: colorArr,
+    //   delay: this.delayTime
+    // }
+    // this.executeArray.push(executeObj);
     
-    this.addDelay();
+    this.pdfDownload(colorArr);
+  }
+  pdfDownload(colorArr) {
+    var scroll = window.scrollY;
+    console.log(scroll);
+    window.scrollTo(0,0)
+    html2canvas(document.querySelector('#grid-table')).then(canvas => {
+        var imgData = canvas.toDataURL("image/png");
+
+        let executeObj = {
+          data: colorArr,
+          delay: this.delayTime,
+          img: imgData
+        }
+        this.executeArray.push(executeObj);
+
+        window.scrollTo(0,scroll)
+        // document.getElementById('steps').appendChild(canvas);
+    });
   }
 
 

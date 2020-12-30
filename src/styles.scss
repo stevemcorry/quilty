@@ -1,8 +1,31 @@
+
+//colors
+// $baby-powder: #fcfcfcff;
+// $brink-pink: #f7567cff;
+// $cornsilk: #fffae3ff;
+// $middle-blue-green: #99e1d9ff;
+// $independence: #5d576bff;
+
+$very-light-gray: #ebebeb;
+$light-gray: #d1d1d1;
+$gainsboro: #dbdbdb;
+$light-sky-blue: #85c7f2;
+$granite-gray: #636363;
+$davys-grey: #4c4c4c;
+
+$color0 : $very-light-gray;
+$color1 : $light-gray;
+$color2 : $gainsboro;
+$color3 : $light-sky-blue;
+$color4 : $granite-gray;
+$color5 : $davys-grey;
+
 //global stuff
 
 body {
     // font-family: 'Barlow Condensed', sans-serif;
     font-family: 'Raleway', sans-serif;
+    color: $color5;
 }
 
 //fonts
@@ -18,6 +41,56 @@ body {
 }
 
 
-//colors
+.color0{
+    color: $color0;
+}
+.color1{
+    color: $color1;
+}
+.color2{
+    color: $color2;
+}
+.color3{
+    color: $color3;
+}
+.color4{
+    color: $color4;
+}
+.color5{
+    color: $color5;
+}
+
+.color0-bg{
+    background-color: $color0;
+}
+.color1-bg{
+    background-color: $color1;
+}
+.color2-bg{
+    background-color: $color2;
+}
+.color3-bg{
+    background-color: $color3;
+}
+.color4-bg{
+    background-color: $color4;
+}
+.color5-bg{
+    background-color: $color5;
+}
 
 
+//component library
+.main-btn{
+    border: 2px solid $color5;
+    background: transparent;
+    padding: 4px 35px;
+    transition: all .3s ease;
+    font-size: 20px;
+    &:hover{
+        background-color: $color0;
+    }
+    &:focus{
+        outline: none;
+    }
+}

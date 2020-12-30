@@ -24,6 +24,8 @@ export class CustomGridComponent implements OnInit {
     "#ffffff"
   ];
   // savedPatterns = [];
+
+  matrix = [];
   executeArray = [];
 
   mouseDown = 0;
@@ -33,9 +35,6 @@ export class CustomGridComponent implements OnInit {
     var index = Array.prototype.indexOf.call(document.getElementById('saveDesignModal').classList, "show");
     if(index != -1){return}
     switch(event.key){
-      case "d":
-        this.stepsComp.addDelay();
-        break;
       case "s":
         this.stepsComp.addStep();
         break;
@@ -65,7 +64,6 @@ export class CustomGridComponent implements OnInit {
     this.makeGrid(document.getElementById('grid-table'), "");
   }
   colorChanged($event: ColorEvent){
-    console.log($event);
     this.customColor = $event.color.hex;
     this.toolsComp.customColor = this.customColor;
   }
@@ -118,25 +116,27 @@ export class CustomGridComponent implements OnInit {
     while (table.firstChild) {
       table.removeChild(table.firstChild);
     }
-    for (let y = 0; y < this.gridSize; y++) {
+    for(var y=0; y<this.gridSize; y++) {
       var row = document.createElement("div");
       row.setAttribute("id", "rowId" + demo + y);
       row.setAttribute("class", "grid-row");
       row.style.height = (100/this.gridSize) + "%";
       table.prepend(row);
-      for (let x = 0; x < this.gridSize; x++) {
-        var td = document.createElement("div");
-        td.addEventListener('mousedown',this.colorGrid.bind(this), false);
-        td.addEventListener('mouseover',this.mouseOver.bind(this), false);
-        td.style.width = (100/this.gridSize) + "%";
-        td.classList.add('individual-cell');
-        var place = ((y*this.gridSize)+x);
-        td.setAttribute("id", "gridId" + demo + place);
-        if(this.isEven(y)){
-          row.appendChild(td);
-        } else {
-          row.prepend(td);
-        }
+      this.matrix[y] = [];
+      for(var x=0; x<this.gridSize; x++) {
+          this.matrix[y][x] = undefined;
+          var td = document.createElement("div");
+          td.addEventListener('mousedown',this.colorGrid.bind(this), false);
+          td.addEventListener('mouseover',this.mouseOver.bind(this), false);
+          td.style.width = (100/this.gridSize) + "%";
+          td.classList.add('individual-cell');
+          var place = ((y*this.gridSize)+x);
+          td.setAttribute("id", "gridId" + demo + place);
+          if(this.isEven(y)){
+            row.appendChild(td);
+          } else {
+            row.prepend(td);
+          }
       }
     }
   }
@@ -149,7 +149,7 @@ export class CustomGridComponent implements OnInit {
   }
   executeFunction(data){
     for(let x of data){
-      var grid = document.getElementById('gridIdDemo' + x.id);
+      var grid = document.getElementById('gridId' + x.id);
       grid.style.backgroundColor = x.color;
     }
   }
@@ -157,7 +157,6 @@ export class CustomGridComponent implements OnInit {
     this.messageService.addPattern(this.executeArray, this.patternName)
   }
   quickColorChange($event){
-    console.log($event)
     this.customColor = $event;
     this.toolsComp.customColor = this.customColor;
   }
@@ -202,20 +201,18 @@ export class CustomGridComponent implements OnInit {
       }
 
     } else {
-
+      var firstNode;
       for(let x  = 0; x < this.gridSize; x++){
-        for(let i = this.gridSize-1; i > 0; i--){
-          var nodey:any = children[i].childNodes[x];
-          if(x == this.gridSize -1){
-            lastCol.push(nodey.style.backgroundColor);
-            var nodey2: any = children[i].childNodes[x-1];
+        for(let i = this.gridSize-1; i >= 0; i--){
+          var nodey:any = children[x].childNodes[i];
+          if(i == this.gridSize-1){
+            firstNode = nodey.style.backgroundColor;
+            var nodey2: any = children[x].childNodes[i-1];
             nodey.style.backgroundColor = nodey2.style.backgroundColor;
-          } 
-          else if(x == 0){
-            nodey.style.backgroundColor = lastCol[i];
-          } 
-          else {
-            var nodey2: any = children[i].childNodes[x-1];
+          } else if(i == 0){
+            nodey.style.backgroundColor = firstNode;
+          } else {
+            var nodey2: any = children[x].childNodes[i-1];
             nodey.style.backgroundColor = nodey2.style.backgroundColor;
           }
         }
@@ -223,4 +220,10 @@ export class CustomGridComponent implements OnInit {
 
     }
   }
+
+  showEdit(grid){
+    console.log(grid);
+    this.executeFunction(grid);
+  }
+
 }

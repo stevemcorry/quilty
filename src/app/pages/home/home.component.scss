@@ -1,13 +1,25 @@
 .home-wrapper{
     padding-bottom: 50px;
 }
+.stephen{
+    font-size: 2.5rem;
+    @media screen and (min-width: 768px) {
+        font-size: 3rem;
+    }
+    @media screen and (min-width: 992px) {
+        font-size: 4rem;
+    }
+}
 .intro-animation{
     position: absolute;
     top: 40%;
-    left: calc(50% - 150px);
-    width: 300px;
+    left: 0%;
+    width: min(100%, 500px);
     z-index: 1;
     text-align: center;
+    @media screen and (min-width: 500px) {
+        left: calc(50% - 250px);
+    }
 }
 
 .carousel{
@@ -28,18 +40,19 @@
     background-size: cover;
     background-repeat: no-repeat;
 }
-.one{
+// .one{
+//     background-image: url('../../../assets/images/home/home1.png');
+// }
+// .two{
+//     background-image: url('../../../assets/images/home/home2.png');
+// }
+.three{
+    background-image: url('../../../assets/images/home/home3.png');
     background-image: url('../../../assets/images/surfers.jpg');
 }
-.two{
-    background-image: url('../../../assets/images/bikers.jpg');
-}
-.three{
-    background-image: url('../../../assets/images/dessert.jpg');
-}
-.four{
-    background-image: url('../../../assets/images/home-img.jpg');
-}
+// .four{
+//     background-image: url('../../../assets/images/home/home4.png');
+// }
 
 //to-top
 
@@ -83,10 +96,42 @@
     100%{opacity: 0; transform:translate(9999px);}
 }
 
+
+
+//modal
 #projectShowModal{
+    .modal-dialog{
+        width: min(90%, 800px);
+        max-width: 800px;
+        margin: auto;
+        margin-top: min(calc(50vh - 250px), 200px);
+    }
+    .modal-content{
+        border-radius: 0;
+    }
+    .modal-body{
+        padding: .5rem 1rem;
+    }
     .modal-project-image{
         width: 100%;
-        height: 500px;
+        height: auto;
+        max-height: 500px;
         object-fit: contain;
+    }
+    .custom-close{
+        display: inline-block;
+        position: absolute;
+        top: 3px;
+        right: 8px;
+        width: 23px;
+        height: 23px;
+        background-color: white;
+        border: none;
+        font-size: 35px;
+        line-height: 17px;
+        z-index: 1;
+        &:focus{
+            outline: none;
+        }
     }
 }

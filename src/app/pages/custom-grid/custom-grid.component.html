@@ -7,7 +7,8 @@
                 <app-steps  
                     [gridSize]="gridSize"
                     [delayTime]="delayTime"
-                    [executeArray]="executeArray">
+                    [executeArray]="executeArray"
+                    (editEmit)="showEdit($event)">
                 </app-steps>
 
             </div>
@@ -15,7 +16,7 @@
         <div class="col-md-6 mt-5 order-1 order-md-2">
             <div class="row">
                 <div class="col text-center">
-                    <h1>Make your own grid</h1>
+                    <h1>Make Your Own Grid</h1>
                 </div>
             </div>
             <div class="row">
@@ -23,18 +24,18 @@
                     <h6>Pick your color:</h6>
 
                     <div class="color-show" [style.background]="customColor"></div>
-                    <color-hue-picker 
+                    <!-- <color-hue-picker 
                       id="color-pick"
                       (onChange)="colorChanged($event)" 
                       (onChangeComplete)="colorChanged($event)" 
                       [color]="customColor">
-                    </color-hue-picker>
-                    <color-shade-picker
+                    </color-hue-picker> -->
+                    <color-slider
                       id="color-pick" 
                       (onChange)="colorChanged($event)" 
                       (onChangeComplete)="colorChanged($event)" 
                       [color]="customColor">
-                    </color-shade-picker>
+                    </color-slider>
                     <!-- <input id="color-pick" (colorPickerChange)="customColor=$event; colorChanged()" [(colorPicker)]="customColor" [style.background]="customColor"/> -->
                 </div>
             </div>
@@ -49,9 +50,9 @@
 
             <div class="row">
                 <div class="col text-center mt-5">
-                    <input [(ngModel)]="delayTime" type="number" step="10" placeholder="Delay Time (ms)">
+                    <!-- <input [(ngModel)]="delayTime" type="number" step="10" placeholder="Delay Time (ms)"> -->
                     <!-- <button class="mb-5" (click)="stepsComp.addDelay()">Add delay</button> -->
-                    <button class="mb-5" (click)="stepsComp.addStep()">Save step</button>
+                    <button class="mb-5" (click)="stepsComp.addStep()">Save frame</button>
                 </div>
             </div>
         </div>

@@ -1,61 +1,27 @@
-<h3>Tools</h3>
-<div class="row">
-    <div class="col-auto">
-        <button [ngClass]="colorOption == 'single' ? 'active' : ''" (click)="colorOption = 'single'">color one cell</button>
+<h3>Tools <span (click)="showTips=!showTips" title="hide/show tools">?</span></h3>
+<div class="row tool-row">
+    <div class="col-auto my-2">
+        <button [ngClass]="colorOption == 'single' ? 'active' : ''" (click)="colorOption = 'single'"><span *ngIf="showTips">color one cell</span> &#128853;</button>
+    </div>
+    <div class="col-auto my-2">
+        <button [ngClass]="colorOption == 'row' ? 'active' : ''" (click)="colorOption = 'row'"><span *ngIf="showTips">color row</span> &#8646;</button>
+    </div>
+    <div class="col-auto my-2">
+        <button [ngClass]="colorOption == 'col' ? 'active' : ''" (click)="colorOption = 'col'"><span *ngIf="showTips">color column</span> &#8645;</button>
     </div>
 </div>
-<div class="row">
-    <div class="col-auto">
-        <button [ngClass]="colorOption == 'row' ? 'active' : ''" (click)="colorOption = 'row'">color row &#8646;</button>
+<div class="row tool-row">
+    <div class="col-auto my-2">
+        <button [ngClass]="colorOption == 'board' ? 'active' : ''" (click)="colorOption = 'board'"><span *ngIf="showTips">color board</span> &#9638;</button>
     </div>
-</div>
-<div class="row">
-    <div class="col-auto">
-        <button [ngClass]="colorOption == 'col' ? 'active' : ''" (click)="colorOption = 'col'">color column &#8645;</button>
+    <div class="col-auto my-2">
+        <button (click)="shiftLeft()"><span *ngIf="showTips">Shift one column left</span> &#8606;</button>
     </div>
-</div>
-<div class="row">
-    <div class="col-auto">
-        <button [ngClass]="colorOption == 'board' ? 'active' : ''" (click)="colorOption = 'board'">color board</button>
-    </div>
-</div>
-<div class="row">
-    <div class="col-auto">
-        <button (click)="shiftLeft()">Shift one col left</button>
-    </div>
-</div>
-<div class="row">
-    <div class="col-auto">
-        <button (click)="shiftRight()">Shift one col right</button>
+    <div class="col-auto my-2">
+        <button (click)="shiftRight()"><span *ngIf="showTips">Shift one column right</span> &#8608;</button>
     </div>
 </div>
 
-
-
-<!-- Quilting stuff -->
-
-<!-- <div class="row">
-    <div class="col-auto">
-        <button [ngClass]="colorOption == 'backSlash' ? 'active' : ''" (click)="colorOption = 'backSlash'">Back Slash</button>
-    </div>
-</div>
-<div class="row">
-    <div class="col-auto">
-        <button [ngClass]="colorOption == 'forwardSlash' ? 'active' : ''" (click)="colorOption = 'forwardSlash'">Forward Slash</button>
-    </div>
-</div>
-<div class="row">
-    <div class="col-auto">
-        <button [ngClass]="colorOption == 'horizontal' ? 'active' : ''" (click)="colorOption = 'horizontal'">Horizontal Split</button>
-    </div>
-</div>
-<div class="row">
-    <div class="col-auto">
-        <button [ngClass]="colorOption == 'vertical' ? 'active' : ''" (click)="colorOption = 'vertical'">Vertical Split</button>
-    </div>
-</div> -->
-
-<!-- end quilting stuff -->
 
 <h5 class="mt-5" *ngIf="colorArray[0]" >Quick Colors:</h5>
 <div class="row">

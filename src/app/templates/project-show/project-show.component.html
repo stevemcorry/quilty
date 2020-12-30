@@ -9,13 +9,19 @@
     <div class="project-box">
         <div class="project-inner">
             <div class="project-inner2">
-                <img 
-                    src="{{picture}}" 
+                <div class="project-img"
+                    [style.background-image]="'url(' + picture + ')'" 
                     alt="" 
                     (click)="imageActive = true"
                     [ngClass]="{active: imageActive}">
+                    <div class="project-description barlow">{{projectTitle}}</div>
+                </div>
+                <!-- <img 
+                    src="{{picture}}" 
+                    alt="" 
+                    (click)="imageActive = true"
+                    [ngClass]="{active: imageActive}"> -->
                 </div>
             </div>
         </div>
-        <div class="project-description barlow">{{projectTitle}}</div>
 </div>

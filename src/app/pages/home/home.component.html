@@ -1,6 +1,9 @@
-<div class="home-wrapper">
-    <div id="homeCarousel" class="carousel slide" data-ride="carousel">
-        <div class="intro-animation">
+<div class="home-wrapper color0-bg">
+    <div #homeCarousel 
+        id="homeCarousel" 
+        class="carousel slide" 
+        data-ride="carousel">
+        <div class="intro-animation color5">
             <h1 class="stephen raleway">Stephen Corry</h1>
             <app-intro-animation 
                 [text]="'Web'" 
@@ -27,11 +30,17 @@
             </app-intro-animation>
         </div>
         <div class="carousel-inner">
-          <div class="carousel-item active">
+          <!-- <div class="carousel-item active">
             <div class="inner-background one"></div>
           </div>
-          <!-- <div class="carousel-item">
+          <div class="carousel-item">
             <div class="inner-background two"></div>
+          </div> -->
+          <div class="carousel-item active">
+            <div class="inner-background three"></div>
+          </div>
+          <!-- <div class="carousel-item">
+            <div class="inner-background four"></div>
           </div> -->
         </div>
     </div>
@@ -48,6 +57,7 @@
                     [projectTitle]="'EnrollPro'"
                     [projectDescription]="'Contact management software for Doterra sellers to keep track of communitation with customers. Built in Angular 4.'"
                     [projectRotation]="projectRotation"
+                    [projectURL]="'https://enroll.pro'"
                     (projectClick)="projectClicked($event)">
                 </app-project-show>
             </div>
@@ -57,6 +67,7 @@
                     [projectTitle]="'EnrollPro (App)'"
                     [projectDescription]="'Contact management software for Doterra sellers to keep track of communitation with customers. Built in Ionic 3.'"
                     [projectRotation]="projectRotation"
+                    [projectURL]="'https://enroll.pro'"
                     (projectClick)="projectClicked($event)">
                 </app-project-show>
             </div>
@@ -68,6 +79,7 @@
                     [projectTitle]="'Couposts'"
                     [projectDescription]="'A website built to connect businesses and instagram users to post marketing images for coupons.'"
                     [projectRotation]="projectRotation"
+                    [projectURL]="'https://coupost-7fc1b.web.app/'"
                     (projectClick)="projectClicked($event)">
                 </app-project-show>
             </div>
@@ -77,6 +89,7 @@
                     [projectTitle]="'Code Sprint'"
                     [projectDescription]="'A side scroller game built with Phaser 3'"
                     [projectRotation]="projectRotation"
+                    [projectURL]="'https://hackdaysgame.firebaseapp.com/'"
                     (projectClick)="projectClicked($event)">
                 </app-project-show>
             </div>
@@ -86,6 +99,7 @@
                     [projectTitle]="'Rooming Board'"
                     [projectDescription]="'A website built to help college students buy and sell housing contracts.'"
                     [projectRotation]="projectRotation"
+                    [projectURL]="rooming"
                     (projectClick)="projectClicked($event)">
                 </app-project-show>
             </div>
@@ -94,9 +108,10 @@
             <div class="col-auto">
                 <app-project-show 
                     [picture]="'./assets/images/projects/fodopro.png'"
-                    [projectTitle]="'Foto Pro'"
+                    [projectTitle]="'Fodo Pro'"
                     [projectDescription]="'A website build to help find a photographer based on specialties and styles of photography'"
                     [projectRotation]="projectRotation"
+                    [projectURL]="'https://fodopro.com'"
                     (projectClick)="projectClicked($event)">
                 </app-project-show>
             </div>
@@ -106,6 +121,7 @@
                     [projectTitle]="'Custom Grid'"
                     [projectDescription]="'Create your own pixel art!'"
                     [projectRotation]="projectRotation"
+                    [projectURL]="'/custom-grid'"
                     (projectClick)="projectClicked($event)">
                 </app-project-show>
             </div>
@@ -115,6 +131,7 @@
                     [projectTitle]="'Rooming Board'"
                     [projectDescription]="'A website built to help college students buy and sell housing contracts.'"
                     [projectRotation]="projectRotation"
+                    [projectURL]="rooming"
                     (projectClick)="projectClicked($event)">
                 </app-project-show>
             </div>
@@ -122,9 +139,9 @@
     </div>
 
     <div class="container">
-      <div class="jumbotron">
+      <div class="jumbotron color2-bg">
           <h1 class="text-center">Contact Me</h1>
-          <h4 class="text-center">stevemcorry@gmail.com</h4>
+          <h4 class="text-center"><a href="mailto: stevemcorry@gmail.com">stevemcorry@gmail.com</a></h4>
       </div>
     </div>
 
@@ -139,21 +156,20 @@
 <!-- Project Modal -->
 <div class="modal fade" id="projectShowModal" tabindex="-1" role="dialog" aria-labelledby="projectShowModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="projectShowModalLabel">{{projectInfo.projectTitle}}</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+        <div class="modal-content color5">
+            <button type="button" class="color5 custom-close" data-dismiss="modal" aria-label="Close">
+                <span data-dismiss="modal" aria-label="Close">&times;</span>
             </button>
-        </div>
-        <div class="modal-body">
-            <img class="modal-project-image" src="{{projectInfo.picture}}" alt="{{projectInfo.projectTitle}}">
-            <div>{{projectInfo.projectDescription}}</div>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Visit Site</button>
-        </div>
+            <div class="modal-body row align-items-center">
+                <div class="col-sm pl-2">
+                    <img class="modal-project-image" src="{{projectInfo.picture}}" alt="{{projectInfo.projectTitle}}">
+                </div>
+                <div class="col-sm">
+                    <h2 class="modal-title barlow" id="projectShowModalLabel">{{projectInfo.projectTitle}}</h2>
+                    <div class="raleway mt-2 mb-4">{{projectInfo.projectDescription}}</div>
+                    <a [href]="projectInfo.url" target="_blank" class="color5 main-btn barlow">Visit Site</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

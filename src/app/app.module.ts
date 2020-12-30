@@ -45,9 +45,12 @@ import { TravelStuffComponent } from './pages/travel-stuff/travel-stuff.componen
 import { ColorPickerModule } from 'ngx-color-picker';
 import { ColorHueModule } from 'ngx-color/hue';
 import { ColorShadeModule } from 'ngx-color/shade';
+import { ColorSliderModule } from 'ngx-color/slider';
+
 import { ChecklistComponent } from './pages/checklist/checklist.component';
 import { InstaComponent } from './pages/insta/insta.component';
 import { AuthComponent } from './pages/auth/auth.component';
+import { SwolecityComponent } from './pages/swolecity/swolecity.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +83,7 @@ import { AuthComponent } from './pages/auth/auth.component';
     ChecklistComponent,
     InstaComponent,
     AuthComponent,
+    SwolecityComponent,
   ],
   imports: [
     BrowserModule,
@@ -93,6 +97,7 @@ import { AuthComponent } from './pages/auth/auth.component';
     ColorPickerModule,
     ColorHueModule,
     ColorShadeModule,
+    ColorSliderModule
   ],
   providers: [AlertyComponent],
   bootstrap: [AppComponent]

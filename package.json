@@ -23,6 +23,7 @@
     "angularfire2": "^5.2.3",
     "bootstrap": "^4.4.1",
     "firebase": "^7.6.0",
+    "html2canvas": "^1.0.0-rc.7",
     "jquery": "^3.4.1",
     "ngx-color": "^5.1.2",
     "ngx-color-picker": "^9.0.0",

@@ -9,6 +9,7 @@ export class HomeComponent implements OnInit {
 
   projectRotation = 0;
   @ViewChild('projectsContainer', {static:false}) projectsContainer: ElementRef;
+  @ViewChild('homeCarousel', {static:false})homeCarousel:any;
   @HostListener("window:scroll", [])
   onScroll(): void {
     var element = this.projectsContainer.nativeElement;
@@ -28,14 +29,17 @@ export class HomeComponent implements OnInit {
   projectInfo = {
     projectDescription: "",
     projectTitle: "",
-    picture: ""
+    picture: "",
+    url: ""
   }
+  rooming = 'https://theroomingboard.com';
 
   constructor(
   ) { }
   
 
   ngOnInit() {
+    // this.homeCarousel.interval(1000)
 
     // var showHeight = document.getElementById('scrolly-polly-olly').scrollHeight + window.innerHeight;
     // var footerHeight = document.getElementById('footer').clientHeight;

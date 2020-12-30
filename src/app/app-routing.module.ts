@@ -16,6 +16,7 @@ import { TravelStuffComponent } from './pages/travel-stuff/travel-stuff.componen
 import { ChecklistComponent } from './pages/checklist/checklist.component';
 import { InstaComponent } from './pages/insta/insta.component';
 import { AuthComponent } from './pages/auth/auth.component';
+import { SwolecityComponent } from './pages/swolecity/swolecity.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'pixelize', component: PixelizeComponent },
   { path: 'custom-grid', component: CustomGridComponent },
   { path: 'muscle-beach', component: MuscleBeachComponent },
+  { path: 'swolecity', component: SwolecityComponent },
   // { path: 'game', component: PlatformerComponent },
   { path: 'phaser', component: PhaserComponent },
   { path: 'games',  component: GamesComponent },

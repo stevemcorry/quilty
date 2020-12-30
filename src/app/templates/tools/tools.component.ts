@@ -10,6 +10,7 @@ export class ToolsComponent implements OnInit {
   @Output() quickColorEvent = new EventEmitter<string>();
   @Output() shiftEmit = new EventEmitter<string>();
   
+  showTips = false;
   colorOption = 'single';
   customColor = "#00c3ff";
   gridSize = 7;
@@ -41,7 +42,6 @@ export class ToolsComponent implements OnInit {
     targetElement.classList.add("vertical-split");
   }
   colorSingleCell(targetElement){
-    console.log(this.customColor)
     if(targetElement.style.backgroundColor == this.hexToRgb(this.customColor)){
       targetElement.style.backgroundColor = "rgb(255, 255, 255)";
     } else {
@@ -76,7 +76,6 @@ export class ToolsComponent implements OnInit {
     } : null;
   }
   hexToRgb(hex) {
-    console.log(hex,'hexs')
     var obj = this.hexToRgbObj(hex);
     return "rgb(" + obj.r + ", " + obj.g + ", " + obj.b + ")"
   }
