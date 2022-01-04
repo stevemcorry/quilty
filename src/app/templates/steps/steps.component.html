@@ -1,9 +1,12 @@
-<h3>Steps</h3>
+<h3 class="d-inline">Steps</h3>
+<button class="ml-2" *ngIf="oldBoard[0]" (click)="continueOld()">Continue from last</button>
 <div class="step-wrapper row">
     <div class="col text-center mt-5 mb-5">
         <ol id="steps" class="steps">
-            <li class="step" *ngFor="let step of executeArray" (click)="editStep(step)">
-                <img [src]="step.img" height="40" width="40" alt="">
+            <li class="step" [ngClass]="{active: activeStep == i}" *ngFor="let step of executeArray;let i = index">
+                <button class="step-delete" (click)="deleteStep(step, i)">Delete</button>
+                <img [src]="step.img" height="40" width="40" alt="" (click)="viewStep(step, i)">
+                <!-- <button (click)="editStep(step)">Edit</button> -->
             </li>
         </ol>
         <button *ngIf="executeArray[0]" data-toggle="modal" data-target="#saveDesignModal">Save Design</button>

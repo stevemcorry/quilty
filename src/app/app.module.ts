@@ -45,12 +45,17 @@ import { TravelStuffComponent } from './pages/travel-stuff/travel-stuff.componen
 import { ColorPickerModule } from 'ngx-color-picker';
 import { ColorHueModule } from 'ngx-color/hue';
 import { ColorShadeModule } from 'ngx-color/shade';
+import { ColorChromeModule } from 'ngx-color/chrome';
 import { ColorSliderModule } from 'ngx-color/slider';
 
 import { ChecklistComponent } from './pages/checklist/checklist.component';
 import { InstaComponent } from './pages/insta/insta.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { SwolecityComponent } from './pages/swolecity/swolecity.component';
+import { NachoHeaderComponent } from './templates/nacho-header/nacho-header.component';
+import { NachoGalleryComponent } from './pages/nacho-gallery/nacho-gallery.component';
+import { ShowDemosComponent } from './pages/show-demos/show-demos.component';
+import { JsFunComponent } from './pages/js-fun/js-fun.component';
 
 @NgModule({
   declarations: [
@@ -84,6 +89,10 @@ import { SwolecityComponent } from './pages/swolecity/swolecity.component';
     InstaComponent,
     AuthComponent,
     SwolecityComponent,
+    NachoHeaderComponent,
+    NachoGalleryComponent,
+    ShowDemosComponent,
+    JsFunComponent,
   ],
   imports: [
     BrowserModule,
@@ -97,7 +106,8 @@ import { SwolecityComponent } from './pages/swolecity/swolecity.component';
     ColorPickerModule,
     ColorHueModule,
     ColorShadeModule,
-    ColorSliderModule
+    ColorSliderModule,
+    ColorChromeModule
   ],
   providers: [AlertyComponent],
   bootstrap: [AppComponent]

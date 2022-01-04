@@ -34,6 +34,12 @@ addPattern(pattern, name){
   return this.db.list('/patterns').push(obj)
 
 }
+
+async setMainPattern(main, name){
+  await this.db.list('/').set("mainPattern", main);
+  return this.db.list('/').set("mainCheck", name)
+}
+
 getPatterns(){
 
   // return this.todos$ = this.db.list('/messages');
@@ -85,6 +91,49 @@ deleteMessage(key){
 
   return this.db.list('/messages/' + key).remove();
 
+}
+
+
+//NACHO ART
+
+
+getArt(){
+  // return this.todos$ = this.db.list('/messages');
+  return this.db.list('/nacho-art').snapshotChanges()
+  .pipe(map(items => {
+    return items.map(a => {
+      const data:any = a.payload.val();
+      const key = a.payload.key;
+      return {
+        key: key,
+        author: data.author,
+        title: data.title,
+        img: data.img,
+        dontSell: data.dontSell,
+        bids: this.bids(data.bids)
+      }
+    });
+  }));
+}
+
+bids(bids){
+  if(bids){
+    let arr = [];
+    Object.keys(bids).map(a => {
+      arr.push(bids[a]);
+    });
+    return arr;
+  }
+}
+
+addArt(author, title, img){
+  var obj = {author: author, title: title, img: img}
+  return this.db.list('/nacho-art').push(obj)
+}
+
+submitBid(name, amount, key){
+  var obj = {bidder: name, amount: amount}
+  return this.db.list('/nacho-art/'+ key + '/bids').push(obj)
 }
 
 }

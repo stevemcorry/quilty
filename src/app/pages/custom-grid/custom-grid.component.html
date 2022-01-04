@@ -1,7 +1,7 @@
-<div class="container custom-wrap">
+<div class="container-fluid custom-wrap">
 
     <div class="row">
-        <div class="col-md-3 mt-md-5 order-3 order-md-1">
+        <div class="col-md-2 col-xl-3 mt-md-5 order-3 order-md-1">
             <div class="sticky-top pt-5">
 
                 <app-steps  
@@ -13,37 +13,19 @@
 
             </div>
         </div>
-        <div class="col-md-6 mt-5 order-1 order-md-2">
+        <div class="col-md-8 col-xl-6 mt-5 order-1 order-md-2">
             <div class="row">
                 <div class="col text-center">
                     <h1>Make Your Own Grid</h1>
                 </div>
             </div>
-            <div class="row">
-                <div class="col text-center">
-                    <h6>Pick your color:</h6>
 
-                    <div class="color-show" [style.background]="customColor"></div>
-                    <!-- <color-hue-picker 
-                      id="color-pick"
-                      (onChange)="colorChanged($event)" 
-                      (onChangeComplete)="colorChanged($event)" 
-                      [color]="customColor">
-                    </color-hue-picker> -->
-                    <color-slider
-                      id="color-pick" 
-                      (onChange)="colorChanged($event)" 
-                      (onChangeComplete)="colorChanged($event)" 
-                      [color]="customColor">
-                    </color-slider>
-                    <!-- <input id="color-pick" (colorPickerChange)="customColor=$event; colorChanged()" [(colorPicker)]="customColor" [style.background]="customColor"/> -->
-                </div>
-            </div>
             <div class="row">
-                <div class="col text-center">
-                    <h6>Grid Size</h6>
+                <div class="col px-0 text-center">
+                    <!-- <h6>Grid Size</h6>
                     <input [(ngModel)]="gridSize" type="number">
-                    <button class="mb-5" (click)="makeGridButton()">rebuild grid</button>
+                    <button class="mb-5" (click)="makeGridButton()">rebuild grid</button> -->
+                    <button class="mb-2" (click)="stepsComp.addStep()">Save frame</button>
                     <div id="grid-table"></div>
                 </div>
             </div>
@@ -52,23 +34,25 @@
                 <div class="col text-center mt-5">
                     <!-- <input [(ngModel)]="delayTime" type="number" step="10" placeholder="Delay Time (ms)"> -->
                     <!-- <button class="mb-5" (click)="stepsComp.addDelay()">Add delay</button> -->
-                    <button class="mb-5" (click)="stepsComp.addStep()">Save frame</button>
+                    <!-- <button class="mb-5" (click)="stepsComp.addStep()">Save frame</button> -->
                 </div>
             </div>
         </div>
 
-        <div class="col-md-3 mt-md-5 order-2 order-md-3">
+        <div class="col-md-2 col-xl-3 mt-md-5 order-2 order-md-3">
             <div class="tools-wrapper sticky-top pt-md-5">
                 <app-tools 
                     (quickColorEvent)="quickColorChange($event)"
-                    (shiftEmit)="shiftGrid($event)">
+                    (shiftEmit)="shiftGrid($event)"
+                    [gridSize]="gridSize"
+                    [customColor]="customColor">
                 </app-tools>
             </div>
         </div>
 
     </div>
 
-    <app-demo [executeArray]="executeArray"></app-demo>
+    <app-demo [executeArray]="executeArray" [gridSize]="gridSize"></app-demo>
 
 </div>
 
@@ -135,3 +119,27 @@
       </div>
     </div>
   </div>
+
+  <!-- Color Modal -->
+
+<div class="modal fade" id="colorPickModal" tabindex="-1" role="dialog" aria-labelledby="colorPickModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+      <div class="modal-header">
+          <h5 class="modal-title" id="colorPickModalLabel">Choose your color</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <div class="modal-body d-flex align-items-center">
+          <color-chrome 
+              id="color-pick"
+              (onChange)="colorChanged($event)" 
+              (onChangeComplete)="colorChanged($event)" 
+              [color]="customColor">
+          </color-chrome>
+          <div class="color-show" [style.background]="customColor"></div>
+      </div>
+      </div>
+  </div>
+</div>

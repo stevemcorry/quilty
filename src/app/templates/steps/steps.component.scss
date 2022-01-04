@@ -1,3 +1,27 @@
 .step{
+    position: relative;
     margin-bottom: 5px;
+    .step-delete{
+        position: absolute;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity .2s ease;
+    }
+    &:hover .step-delete{
+        display: inline;
+        pointer-events: all;
+        opacity: 1;
+        
+    }
+    &.active::after{
+        content: "*";
+        position: absolute;
+        top: 0;
+        right: 8px;
+        font-size: 65px;
+        line-height: 65px;
+        color: lightblue;
+    }
 }

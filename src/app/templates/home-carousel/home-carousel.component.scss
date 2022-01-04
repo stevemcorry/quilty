@@ -1,0 +1,112 @@
+.home-carousel-wrap{
+    margin: 30px;
+    @media screen and (min-width: 992px) {
+        margin: 60px;
+    }
+    h2{
+        position: relative;
+        z-index: 1;
+    }
+    span{
+        position: absolute;
+        display: inline-block;
+    }
+    .span1{
+        top: 0px;
+        right: -15px;
+    }
+    .span2{
+        top: 0px;
+        right: -22px;
+    }
+    .activeS{
+        animation: sAnimate 2s linear 0s forwards;
+    }
+    .activeCo{
+        animation: colonFall 1.5s .3s linear forwards;
+    }
+    .html-wrap{
+        padding: 15px;
+        height: 400px;
+        width: 100%;
+        // background-color: grey;
+    }
+
+    .name-wrap{
+        // text-align: center;
+        height: 275px;
+        width: 385px;
+        &.highlight div{
+            background-color: #d4d4d4;
+        }
+    }
+    .name-wrap > div{
+        display: none;
+        &.active{
+            font-size: 25px;
+            line-height: 20px;
+            display: inline-block;
+            @media screen and (min-width: 992px) {
+                font-size: 28px;
+                line-height: 23px;
+            }
+        }
+        &.d-block{
+            visibility: hidden;
+            height: 3px;
+        }
+        &.space{
+            margin-left: 8px;
+        }
+        &.tab{
+            visibility: hidden;
+            margin-left: 15px;
+        }
+    }
+    .css-wrap{
+        padding: 15px;
+        height: 400px;
+        width: 100%;
+    }
+}
+
+@keyframes colonFall {
+    0% {top: 2px}
+    20% {top: 8px}
+    40% {top: 32px}
+    60% {top: 128px}
+    80% {top: 512px}
+    100% {top: 800px; display: none; visibility: hidden}
+}
+@keyframes sAnimate {
+    0% {
+        transform: rotate(0deg);
+    }
+    15%{
+        transform: rotate(90deg);
+        top: 10px;
+        right: -20px;
+    }
+    30%{
+        transform: rotate(200deg);
+        top: 20px;
+        right: -15px;
+    }
+    50% {
+        transform: rotate(160deg);
+        top: 20px;
+    }
+    80% {
+        transform: rotate(180deg);
+        top: 20px;
+    }
+    99%{
+        transform: rotate(178deg);
+        font-size: 24px;
+        top: 236px;
+        right: -10px;
+    }
+    100%{
+        visibility: hidden;
+    }
+}

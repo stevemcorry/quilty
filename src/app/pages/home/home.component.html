@@ -45,98 +45,105 @@
         </div>
     </div>
 
-    <h1 class="text-center my-5">My Projects</h1>
+    <app-nacho-header></app-nacho-header>
+    <div class="projects-container">
+        
+        <h1 class="text-center my-5">My Projects</h1>
     
-    <div class="container projects-container mb-5" 
-        [ngStyle]="{'transform': 'rotate('+ projectRotation +'deg)'}"
-        #projectsContainer>
-        <div class="row justify-content-center">
-            <div class="col-auto">
-                <app-project-show 
-                    [picture]="'./assets/images/projects/enrollPro.png'"
-                    [projectTitle]="'EnrollPro'"
-                    [projectDescription]="'Contact management software for Doterra sellers to keep track of communitation with customers. Built in Angular 4.'"
-                    [projectRotation]="projectRotation"
-                    [projectURL]="'https://enroll.pro'"
-                    (projectClick)="projectClicked($event)">
-                </app-project-show>
+        <div class="container projects-container mb-5" 
+            [ngStyle]="{'transform': 'rotate('+ projectRotation +'deg)'}"
+            #projectsContainer>
+            <div class="row justify-content-center">
+                <div class="col-auto">
+                    <app-project-show 
+                        [picture]="'./assets/images/projects/enrollPro.png'"
+                        [projectTitle]="'EnrollPro'"
+                        [projectDescription]="'Contact management software for Doterra sellers to keep track of communitation with customers. Built in Angular 4.'"
+                        [projectRotation]="projectRotation"
+                        [projectURL]="'https://enroll.pro'"
+                        (projectClick)="projectClicked($event)">
+                    </app-project-show>
+                </div>
+                <div class="col-auto">
+                    <app-project-show 
+                        [picture]="'./assets/images/projects/enrollProMobile.jpeg'"
+                        [projectTitle]="'EnrollPro (App)'"
+                        [projectDescription]="'Contact management software for Doterra sellers to keep track of communitation with customers. Built in Ionic 3.'"
+                        [projectRotation]="projectRotation"
+                        [projectURL]="'https://enroll.pro'"
+                        (projectClick)="projectClicked($event)">
+                    </app-project-show>
+                </div>
             </div>
-            <div class="col-auto">
-                <app-project-show 
-                    [picture]="'./assets/images/projects/enrollProMobile.jpeg'"
-                    [projectTitle]="'EnrollPro (App)'"
-                    [projectDescription]="'Contact management software for Doterra sellers to keep track of communitation with customers. Built in Ionic 3.'"
-                    [projectRotation]="projectRotation"
-                    [projectURL]="'https://enroll.pro'"
-                    (projectClick)="projectClicked($event)">
-                </app-project-show>
+            <div class="row justify-content-center">
+                <div class="col-auto">
+                    <app-project-show 
+                        [picture]="'./assets/images/projects/couposts.png'"
+                        [projectTitle]="'Couposts'"
+                        [projectDescription]="'A website built to connect businesses and instagram users to post marketing images for coupons.'"
+                        [projectRotation]="projectRotation"
+                        [projectURL]="'https://coupost-7fc1b.web.app/'"
+                        (projectClick)="projectClicked($event)">
+                    </app-project-show>
+                </div>
+                <div class="col-auto">
+                    <app-project-show 
+                        [picture]="'./assets/images/projects/hackdays.png'"
+                        [projectTitle]="'Code Sprint'"
+                        [projectDescription]="'A side scroller game built with Phaser 3'"
+                        [projectRotation]="projectRotation"
+                        [projectURL]="'https://hackdaysgame.firebaseapp.com/'"
+                        (projectClick)="projectClicked($event)">
+                    </app-project-show>
+                </div>
+                <div class="col-auto d-none d-lg-block">
+                    <app-project-show 
+                        [picture]="'./assets/images/projects/roomingboard.png'"
+                        [projectTitle]="'Rooming Board'"
+                        [projectDescription]="'A website built to help college students buy and sell housing contracts.'"
+                        [projectRotation]="projectRotation"
+                        [projectURL]="rooming"
+                        (projectClick)="projectClicked($event)">
+                    </app-project-show>
+                </div>
             </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-auto">
-                <app-project-show 
-                    [picture]="'./assets/images/projects/couposts.png'"
-                    [projectTitle]="'Couposts'"
-                    [projectDescription]="'A website built to connect businesses and instagram users to post marketing images for coupons.'"
-                    [projectRotation]="projectRotation"
-                    [projectURL]="'https://coupost-7fc1b.web.app/'"
-                    (projectClick)="projectClicked($event)">
-                </app-project-show>
+            <div class="row justify-content-center">
+                <div class="col-auto">
+                    <app-project-show 
+                        [picture]="'./assets/images/projects/mouth3.png'"
+                        [projectTitle]="'Dirty Mouth Co'"
+                        [projectDescription]="'Personal website I made for my girlfriend to show off and sell her art.'"
+                        [projectRotation]="projectRotation"
+                        [projectURL]="'https://dirty-mouth.web.app/'"
+                        (projectClick)="projectClicked($event)">
+                    </app-project-show>
+                </div>
+                <div class="col-auto">
+                    <app-project-show 
+                        [picture]="'./assets/images/projects/grid.png'"
+                        [projectTitle]="'Custom Grid'"
+                        [projectDescription]="'Create your own pixel art!'"
+                        [projectRotation]="projectRotation"
+                        [projectURL]="'/custom-grid'"
+                        (projectClick)="projectClicked($event)">
+                    </app-project-show>
+                </div>
+                <div class="col-auto d-lg-none">
+                    <app-project-show 
+                        [picture]="'./assets/images/projects/roomingboard.png'"
+                        [projectTitle]="'Rooming Board'"
+                        [projectDescription]="'A website built to help college students buy and sell housing contracts.'"
+                        [projectRotation]="projectRotation"
+                        [projectURL]="rooming"
+                        (projectClick)="projectClicked($event)">
+                    </app-project-show>
+                </div>
             </div>
-            <div class="col-auto">
-                <app-project-show 
-                    [picture]="'./assets/images/projects/hackdays.png'"
-                    [projectTitle]="'Code Sprint'"
-                    [projectDescription]="'A side scroller game built with Phaser 3'"
-                    [projectRotation]="projectRotation"
-                    [projectURL]="'https://hackdaysgame.firebaseapp.com/'"
-                    (projectClick)="projectClicked($event)">
-                </app-project-show>
-            </div>
-            <div class="col-auto d-none d-lg-block">
-                <app-project-show 
-                    [picture]="'./assets/images/projects/roomingboard.png'"
-                    [projectTitle]="'Rooming Board'"
-                    [projectDescription]="'A website built to help college students buy and sell housing contracts.'"
-                    [projectRotation]="projectRotation"
-                    [projectURL]="rooming"
-                    (projectClick)="projectClicked($event)">
-                </app-project-show>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-auto">
-                <app-project-show 
-                    [picture]="'./assets/images/projects/fodopro.png'"
-                    [projectTitle]="'Fodo Pro'"
-                    [projectDescription]="'A website build to help find a photographer based on specialties and styles of photography'"
-                    [projectRotation]="projectRotation"
-                    [projectURL]="'https://fodopro.com'"
-                    (projectClick)="projectClicked($event)">
-                </app-project-show>
-            </div>
-            <div class="col-auto">
-                <app-project-show 
-                    [picture]="'./assets/images/projects/grid.png'"
-                    [projectTitle]="'Custom Grid'"
-                    [projectDescription]="'Create your own pixel art!'"
-                    [projectRotation]="projectRotation"
-                    [projectURL]="'/custom-grid'"
-                    (projectClick)="projectClicked($event)">
-                </app-project-show>
-            </div>
-            <div class="col-auto d-lg-none">
-                <app-project-show 
-                    [picture]="'./assets/images/projects/roomingboard.png'"
-                    [projectTitle]="'Rooming Board'"
-                    [projectDescription]="'A website built to help college students buy and sell housing contracts.'"
-                    [projectRotation]="projectRotation"
-                    [projectURL]="rooming"
-                    (projectClick)="projectClicked($event)">
-                </app-project-show>
-            </div>
+
         </div>
     </div>
+
+    <!-- <app-home-carousel></app-home-carousel> -->
 
     <div class="container">
       <div class="jumbotron color2-bg">

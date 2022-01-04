@@ -17,11 +17,15 @@ import { ChecklistComponent } from './pages/checklist/checklist.component';
 import { InstaComponent } from './pages/insta/insta.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { SwolecityComponent } from './pages/swolecity/swolecity.component';
+import { NachoGalleryComponent } from './pages/nacho-gallery/nacho-gallery.component';
+import { ShowDemosComponent } from './pages/show-demos/show-demos.component';
+import { JsFunComponent } from './pages/js-fun/js-fun.component';
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'css-fun', component: CssFunComponent },
+  { path: 'js-fun', component: JsFunComponent },
   { path: 'bored', component: BoredComponent},
   { path: 'messaging', component: MessagesComponent },
   { path: 'pixelize', component: PixelizeComponent },
@@ -36,7 +40,9 @@ const routes: Routes = [
   { path: 'checklist', component: ChecklistComponent },
   { path: 'insta', component: InstaComponent },
   { path: 'auth', component: AuthComponent },
-  { path: 'travel-track', component: TravelStuffComponent }
+  { path: 'travel-track', component: TravelStuffComponent },
+  { path: 'nacho-gallery', component: NachoGalleryComponent },
+  { path: 'show-demos', component: ShowDemosComponent }
 ];
 
 @NgModule({

@@ -8,9 +8,14 @@ import { MessagesService } from 'src/app/services/messages.service';
 })
 export class DemoComponent implements OnInit {
 
-  gridSize = 7;
-  savedPatterns = [];
+  @Input() gridSize = 21;
   @Input() executeArray;
+  savedPatterns = [];
+  sleeptime = 300;
+  selectedPattern;
+  selectedName;
+  selectedDelay = 100;
+  selectedBrightness = 100;
 
   constructor(private messageService: MessagesService) { }
 
@@ -43,7 +48,6 @@ export class DemoComponent implements OnInit {
         stringy += "delay(" + x.data + ");";
       }
     }
-    console.log(stringy);
   }
   rgbToHex(rgb){ 
     var hex = Number(rgb).toString(16);
@@ -58,23 +62,26 @@ export class DemoComponent implements OnInit {
     var blue = this.rgbToHex(b);
     return red+green+blue;
   };
+
   showDemo(){
     setTimeout(()=>{
       this.playOnDemoGrid(this.executeArray)
     },300)
   }
-  playOnDemoGrid(arr){
+
+  async playOnDemoGrid(arr){
     this.makeGrid(document.getElementById('demo-table'), "Demo");
-    var totalTime = 0;
     for(let x of arr){
-      if(x.type == "pattern"){
-        setTimeout(()=>{
-          this.executeFunction(x.data)
-        }, totalTime);
-      } else{
-        totalTime = totalTime + x.data;
-      }
+      // await this.timer(x.data);
+      await this.sleep(this.sleeptime).then(v => this.executeFunction(x.data))
+
     }
+  }
+  async timer(data){
+    return this.sleep(this.sleeptime).then(v => this.executeFunction(data))
+  }
+  sleep(ms){
+    return new Promise(resolve => setTimeout(resolve, ms))
   }
   makeGrid(table, demo){
     while (table.firstChild) {
@@ -100,19 +107,20 @@ export class DemoComponent implements OnInit {
       }
     }
   }
-  playSavedPattern(arr){
+  playSavedPattern(pattern){
+    let arr = pattern.steps;
+    this.selectedPattern = pattern.steps;
+    this.selectedName = pattern.name;
     setTimeout(()=>{
       for(let x of arr){
-        if(x.type == "pattern"){
-          if(this.gridSize*this.gridSize != x.data.length){
-            this.gridSize = Math.sqrt( x.data.length );
-            this.makeGrid(document.getElementById('grid-table'), "");
-            this.playOnDemoGrid(arr);
-          } else {
-            this.playOnDemoGrid(arr);
-          }
-          break;
+        if(this.gridSize*this.gridSize != x.data.length){
+          this.gridSize = Math.sqrt( x.data.length );
+          this.makeGrid(document.getElementById('demo-table'), "");
+          this.playOnDemoGrid(arr);
+        } else {
+          this.playOnDemoGrid(arr);
         }
+        break;
       }
     },300)
   }
@@ -122,11 +130,41 @@ export class DemoComponent implements OnInit {
     else
       return false;
   }
+
   executeFunction(data){
-    for(let x of data){
-      var grid = document.getElementById('gridIdDemo' + x.id);
-      grid.style.backgroundColor = x.color;
+    for(let x in data){
+      if(data[x].id || data[x].id === 0){
+        var grid = document.getElementById('gridIdDemo' + data[x].id);
+        grid.style.backgroundColor = data[x].color;
+      } else{
+        var grid = document.getElementById('gridIdDemo' + x);
+        grid.style.backgroundColor = data[x].color;
+      }
     }
+  }
+  setMain(){
+    let data = this.selectedPattern.slice(0);
+    let newJson = [];
+    for(let step of data){
+      if(step.data){
+        let mainData:any = [];
+        for( let indata of step.data){
+          delete indata.id;
+          if(indata.color == ''){indata.color = "rgb(0, 0, 0)"}
+          mainData.push(indata.color);
+        }
+        mainData = mainData.join('');
+        mainData = mainData.replaceAll('rgb(', "");
+        mainData = mainData.split(')');
+        newJson.push(mainData);
+      }
+    }
+    let obj = {
+      name : this.selectedName,
+      delay : this.selectedDelay,
+      brightness: this.selectedBrightness
+    }
+    this.messageService.setMainPattern(newJson, obj);
   }
 
 }

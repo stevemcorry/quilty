@@ -1,0 +1,26 @@
+.nacho-wrap{
+    height: 100%;
+    width: 100%;
+    min-height: 200px;
+    background-position: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url('../../../assets/images/nacho/creation.png');
+    padding-bottom: 25px;
+    @media screen and (min-width: 576px) {
+        min-height: 320px;
+    }
+    @media screen and (min-width: 992px) {
+        background-position: center;
+        min-height: 420px;
+    }
+    @media screen and (min-width: 1200px) {
+        background-position: center;
+        min-height: 500px;
+    }
+}
+.teel-bg{
+    background-color: #A8D0D8;
+    // background-color: #E01810;
+    // color: white;
+}

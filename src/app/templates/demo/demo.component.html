@@ -9,7 +9,7 @@
         <h1>Look at other people's demos!</h1>
         <div class="quick-color" 
             *ngFor="let pattern of savedPatterns">
-            <div (click)="playSavedPattern(pattern.steps)" data-toggle="modal" data-target="#demoModal">{{pattern.name}}</div>
+            <div (click)="playSavedPattern(pattern)" data-toggle="modal" data-target="#demoModal">{{pattern.name}}</div>
         </div>
     </div>
 </div>
@@ -22,7 +22,14 @@
             <span aria-hidden="true">&times;</span>
             </button>
             <div id="demo-table" class="mt-5"></div>
-            <button type="button" class="btn btn-primary float-right mt-3" data-dismiss="modal">Close</button>
+            <div class="text-center mt-3">
+                <label for="" class="mr-2">Animation Speed (in miliseconds): </label>
+                <input type="text" placeholder="Animaion Speed" [(ngModel)]="selectedDelay">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary float-left mt-3" (click)="setMain()">Set As Main</button>
+            <button type="button" class="btn btn-danger float-right mt-3" data-dismiss="modal">Close</button>
         </div>
         </div>
     </div>

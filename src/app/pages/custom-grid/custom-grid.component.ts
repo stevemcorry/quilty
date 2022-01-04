@@ -2,8 +2,9 @@ import { Component, OnInit, ViewEncapsulation, HostListener, ViewChild } from '@
 import { ToolsComponent } from 'src/app/templates/tools/tools.component';
 import { MessagesService } from 'src/app/services/messages.service';
 import { StepsComponent } from 'src/app/templates/steps/steps.component';
+import { DemoComponent } from 'src/app/templates/demo/demo.component';
 
-import { ColorEvent } from 'ngx-color';
+// import { ColorEvent } from 'ngx-color';
 
 
 @Component({
@@ -16,13 +17,15 @@ export class CustomGridComponent implements OnInit {
 
   @ViewChild(ToolsComponent, {static: false}) toolsComp:ToolsComponent;
   @ViewChild(StepsComponent, {static: false}) stepsComp:StepsComponent;
+  @ViewChild(DemoComponent, {static: false}) demoComp:DemoComponent;
   customColor = "#00ccff";
-  gridSize = 7;
+  gridSize = 21;
   delayTime = 100;
   patternName = "";
   colorArray = [
     "#ffffff"
   ];
+  oldFrame = [];
   // savedPatterns = [];
 
   matrix = [];
@@ -56,6 +59,7 @@ export class CustomGridComponent implements OnInit {
 
   ngOnInit() {
     this.makeGrid(document.getElementById('grid-table'), "");
+    this.customColor = "#" + Math.floor(Math.random()*16777215).toString(16);
     // this.getSavedDesigns();
   }
 
@@ -63,13 +67,14 @@ export class CustomGridComponent implements OnInit {
     this.toolsComp.gridSize = this.gridSize;
     this.makeGrid(document.getElementById('grid-table'), "");
   }
-  colorChanged($event: ColorEvent){
+  colorChanged($event){
     this.customColor = $event.color.hex;
-    this.toolsComp.customColor = this.customColor;
   }
   colorGrid(){
+    this.stepsComp.oldBoard = [];
+    this.stepsComp.activeStep = null;
     var targetElement:any = event.target || event.srcElement;
-    this.checkColorArr();
+    this.toolsComp.checkColorArr();
     switch(this.toolsComp.colorOption){
       case 'single':
         this.toolsComp.colorSingleCell(targetElement);
@@ -97,6 +102,7 @@ export class CustomGridComponent implements OnInit {
         this.toolsComp.addVertical(targetElement);
         break;
     }
+    this.willCheck();
   }
   mouseOver(){
     var targetElement:any = event.target || event.srcElement;
@@ -140,13 +146,13 @@ export class CustomGridComponent implements OnInit {
       }
     }
   }
-  checkColorArr(){
-    var index = Array.prototype.indexOf.call(this.colorArray, this.customColor);
-    if(index == -1){
-      this.colorArray.push(this.customColor);
-      this.toolsComp.colorArray = this.colorArray;
-    }
-  }
+  // checkColorArr(){
+  //   var index = Array.prototype.indexOf.call(this.colorArray, this.customColor);
+  //   if(index == -1){
+  //     this.colorArray.push(this.customColor);
+  //     this.toolsComp.colorArray = this.colorArray;
+  //   }
+  // }
   executeFunction(data){
     for(let x of data){
       var grid = document.getElementById('gridId' + x.id);
@@ -200,7 +206,7 @@ export class CustomGridComponent implements OnInit {
         }
       }
 
-    } else {
+    } else if(direction == "right") {
       var firstNode;
       for(let x  = 0; x < this.gridSize; x++){
         for(let i = this.gridSize-1; i >= 0; i--){
@@ -218,12 +224,70 @@ export class CustomGridComponent implements OnInit {
         }
       }
 
+    } else if(direction == "up"){
+      const tempTop:any = children[0];
+      let topRow = [];
+      for(let x = 0; x < this.gridSize; x++){
+        for(let i = 0; i < this.gridSize; i++){
+          if(x==0){
+            topRow.push(tempTop.childNodes[i].style.backgroundColor);
+          }
+          var nodey:any = children[x].childNodes[i];
+          if(x == this.gridSize - 1){
+            nodey.style.backgroundColor = topRow[i];
+          } else {
+            var nodey2: any = children[x+1].childNodes[i];
+            nodey.style.backgroundColor = nodey2.style.backgroundColor;
+          }
+        }
+      }
+    } else if(direction == "down"){
+      const tempTop:any = children[this.gridSize-1];
+      let bottomRow = [];
+      for(let x = this.gridSize-1; x >= 0; x--){
+        for(let i = 0; i < this.gridSize; i++){
+          if(x == this.gridSize - 1){
+            bottomRow.push(tempTop.childNodes[i].style.backgroundColor);
+          }
+          var nodey:any = children[x].childNodes[i];
+          if(x == 0){
+            nodey.style.backgroundColor = bottomRow[i];
+          } else {
+            var nodey2: any = children[x-1].childNodes[i];
+            nodey.style.backgroundColor = nodey2.style.backgroundColor;
+          }
+        }
+      }
+    }
+
+  }
+  willCheck(){
+    let gemArr = [45,39,37,29,31,33,26,24,22,15,17,19,11,9,3]
+    let goodArr = [];
+    for(let x = 0; x < this.gridSize*this.gridSize; x++){
+      var grid = document.getElementById('gridId' + x).style.backgroundColor;
+      if( grid != "" && grid != "rgb(255, 255, 255)" ){
+        if(gemArr.indexOf(x) != -1){
+          goodArr.push(x);
+        } else {
+          gemArr.splice(0);
+        }
+      }
+    }
+    if(goodArr.length == 15){
+      alert('Have a watermellon');
     }
   }
 
+  setMain(){
+    this.demoComp.setMain();
+  }
   showEdit(grid){
-    console.log(grid);
-    this.executeFunction(grid);
+    if(grid.type == 'view'){ 
+      this.executeFunction(grid.data);
+    } else{
+      this.executeFunction(grid.data);
+    }
   }
 
 }

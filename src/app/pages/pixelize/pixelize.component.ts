@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MessagesService } from 'src/app/services/messages.service';
 
 declare var EXIF: any;
 
@@ -9,11 +10,13 @@ declare var EXIF: any;
 })
 export class PixelizeComponent implements OnInit {
 
-  constructor() { 
-
+  constructor(
+    public messageService: MessagesService
+    ) { 
+    
   }
 
-  gridCount = 7;
+  gridCount = 21;
   uploadImage;
   showPixelButton = false;
 
@@ -33,6 +36,9 @@ export class PixelizeComponent implements OnInit {
     }
   }
 
+  setMain(){
+    this.messageService.setMainPattern('', '')
+  }
   tryimage() {
     var img = new Image();    
     var that = this;
@@ -84,6 +90,8 @@ export class PixelizeComponent implements OnInit {
 
 
   drawPixels(ctx, h, w){
+    let dataArr = [];
+    let total = 0
     let pixelArr = ctx.getImageData(0, 0, w, h).data;
     let sample_size = Math.floor(h/this.gridCount);
     let sample_size_w = Math.floor(w/this.gridCount);
@@ -107,15 +115,20 @@ export class PixelizeComponent implements OnInit {
         let p = (x + (y*w)) * 4;
         var rgba = "rgba(" + pixelArr[p] + "," + pixelArr[p + 1] + "," + pixelArr[p + 2] + "," + pixelArr[p + 3] + ")";
         var td = document.createElement("td");
-        td.height = "20px";
-        td.width = "20px";
+        td.height = "20";
+        td.width = "20";
+        td.id = total.toString();
         td.style.backgroundColor = rgba;
         if(xCount < this.gridCount){
+
           row.appendChild(td);
+          dataArr.push(rgba);
+          total++
           xCount++;
         }
       }
     }
+    console.log('dataARr, ', dataArr, total)
   }
 
 

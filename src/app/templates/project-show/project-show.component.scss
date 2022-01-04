@@ -20,6 +20,7 @@
             background-position: top;
             transform: rotate(-45deg);
             transition: all .3s ease;
+            background-color: white;
             cursor: pointer;
             &.active{
                 // animation: imgShrink .3s ease forwards;

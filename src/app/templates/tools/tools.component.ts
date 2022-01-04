@@ -1,5 +1,6 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
+import { ColorEvent } from 'ngx-color';
 @Component({
   selector: 'app-tools',
   templateUrl: './tools.component.html',
@@ -8,12 +9,14 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class ToolsComponent implements OnInit {
 
   @Output() quickColorEvent = new EventEmitter<string>();
+  @Output() colorPick = new EventEmitter<string>();
   @Output() shiftEmit = new EventEmitter<string>();
-  
+  @Input() gridSize;
+  @Input() customColor;
+
   showTips = false;
   colorOption = 'single';
-  customColor = "#00c3ff";
-  gridSize = 7;
+  //customColor = "#00c3ff";
   colorArray = [
     "#ffffff"
   ];
@@ -24,7 +27,18 @@ export class ToolsComponent implements OnInit {
 
   }
 
+  colorChanged($event: ColorEvent){
+    this.customColor = $event.color.hex;
+    this.colorPick.emit(this.customColor);
+  }
 
+  checkColorArr(){
+    var index = Array.prototype.indexOf.call(this.colorArray, this.customColor);
+    if(index == -1){
+      this.colorArray.push(this.customColor);
+      this.colorArray = this.colorArray;
+    }
+  }
   addForwardSlash(targetElement){
     targetElement.classList = "individual-cell";
     targetElement.classList.add("forward-slash");
@@ -80,13 +94,26 @@ export class ToolsComponent implements OnInit {
     return "rgb(" + obj.r + ", " + obj.g + ", " + obj.b + ")"
   }
   quickColorClick(color){
-    this.quickColorEvent.emit(color);
+    this.customColor = color;
+    this.colorPick.emit(this.customColor);
   }
   shiftLeft(){
     this.shiftEmit.emit("left");
   }
   shiftRight(){
     this.shiftEmit.emit("right");
+  }
+  shiftUp(){
+    this.shiftEmit.emit("up");
+  }
+  shiftDown(){
+    this.shiftEmit.emit("down");
+  }
+  clearBoard(){
+    for(let x = 0; x < this.gridSize*this.gridSize; x++){
+      var elm = document.getElementById('gridId'+x)
+      elm.style.backgroundColor = "#ffffff";
+    }
   }
 
 }
