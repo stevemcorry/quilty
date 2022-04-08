@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync as  } from '@angular/core/testing';
 
 import { DelayModalComponent } from './delay-modal.component';
 
@@ -6,7 +6,7 @@ describe('DelayModalComponent', () => {
   let component: DelayModalComponent;
   let fixture: ComponentFixture<DelayModalComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ DelayModalComponent ]
     })

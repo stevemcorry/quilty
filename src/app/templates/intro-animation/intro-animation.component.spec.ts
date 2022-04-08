@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync as  } from '@angular/core/testing';
 
 import { IntroAnimationComponent } from './intro-animation.component';
 
@@ -6,7 +6,7 @@ describe('IntroAnimationComponent', () => {
   let component: IntroAnimationComponent;
   let fixture: ComponentFixture<IntroAnimationComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ IntroAnimationComponent ]
     })

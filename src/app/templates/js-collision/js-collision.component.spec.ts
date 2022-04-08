@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync as  } from '@angular/core/testing';
 
 import { JsCollisionComponent } from './js-collision.component';
 
@@ -6,7 +6,7 @@ describe('JsCollisionComponent', () => {
   let component: JsCollisionComponent;
   let fixture: ComponentFixture<JsCollisionComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ JsCollisionComponent ]
     })

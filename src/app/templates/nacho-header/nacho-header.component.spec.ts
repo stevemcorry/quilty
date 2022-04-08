@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync as  } from '@angular/core/testing';
 
 import { NachoHeaderComponent } from './nacho-header.component';
 
@@ -6,7 +6,7 @@ describe('NachoHeaderComponent', () => {
   let component: NachoHeaderComponent;
   let fixture: ComponentFixture<NachoHeaderComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ NachoHeaderComponent ]
     })
