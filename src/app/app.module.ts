@@ -3,11 +3,10 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule }    from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
-import { FacebookModule } from 'ngx-facebook';
+// import { FacebookModule } from 'ngx-facebook';
 
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -41,6 +40,9 @@ import { DemoComponent } from './templates/demo/demo.component';
 import { TravelStuffComponent } from './pages/travel-stuff/travel-stuff.component';
 
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+
 //colors
 import { ColorPickerModule } from 'ngx-color-picker';
 import { ColorHueModule } from 'ngx-color/hue';
@@ -56,6 +58,9 @@ import { NachoHeaderComponent } from './templates/nacho-header/nacho-header.comp
 import { NachoGalleryComponent } from './pages/nacho-gallery/nacho-gallery.component';
 import { ShowDemosComponent } from './pages/show-demos/show-demos.component';
 import { JsFunComponent } from './pages/js-fun/js-fun.component';
+import { CssPhotoColumnsComponent } from './templates/css-photo-columns/css-photo-columns.component';
+import { SortPipe } from './pipes/sort.pipe';
+import { PlantsComponent } from './pages/plants/plants.component';
 
 @NgModule({
   declarations: [
@@ -93,21 +98,24 @@ import { JsFunComponent } from './pages/js-fun/js-fun.component';
     NachoGalleryComponent,
     ShowDemosComponent,
     JsFunComponent,
+    CssPhotoColumnsComponent,
+    SortPipe,
+    PlantsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    FacebookModule.forRoot(),
+    // FacebookModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule,
-    AngularFireDatabaseModule,
+    AngularFireStorageModule,
     ColorPickerModule,
     ColorHueModule,
     ColorShadeModule,
     ColorSliderModule,
-    ColorChromeModule
+    ColorChromeModule,
+    NgbModule,
   ],
   providers: [AlertyComponent],
   bootstrap: [AppComponent]

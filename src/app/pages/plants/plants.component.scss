@@ -1,0 +1,105 @@
+.plant-wrap{
+    padding-top: 70px;
+    .plant-box{
+        background: linear-gradient(rgb(236, 236, 236), rgb(245, 245, 245) );
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        border-radius: 20px;
+        padding: 15px;
+        text-align: center;
+        margin: auto;
+        margin-top: 20px;
+        width: 100%;
+        min-height: 260px;
+        @media screen and (min-width: 768px) {
+            width: 230px;
+            min-height: 240px;
+        }
+        .watered-icon{
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 30px;
+            width: 30px;
+            margin: auto;
+        }
+    }
+}
+.product-image{
+    height: 120px;
+    width: 120px;
+    object-fit: contain;
+}
+.water-drop{
+    background-image: url('/assets/images/plants/water.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 50px;
+    width: 50px;
+    margin: auto;
+    cursor: pointer;
+}
+.uploading{
+    transform: rotate(10deg);
+}
+.watered-icon{
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 50px;
+    width: 50px;
+    margin: auto;
+}
+.watered{
+    background-image: url('/assets/images/plants/happy.png');
+}
+.almost{
+    background-image: url('/assets/images/plants/almost.png');
+}
+.help{
+    background-image: url('/assets/images/plants/help.png');
+}
+
+#plantAdd, #plantEdit{
+    .modal-dialog{
+        margin: auto;
+        margin-top: min(calc(50vh - 250px), 200px);
+    }
+    .modal-content{
+        border-radius: 0;
+    }
+    .modal-body{
+        padding: .5rem 1rem;
+        flex-direction: column;
+    }
+    .custom-close{
+        display: inline-block;
+        position: absolute;
+        top: 3px;
+        right: 8px;
+        width: 23px;
+        height: 23px;
+        background-color: white;
+        border: none;
+        font-size: 35px;
+        line-height: 17px;
+        z-index: 1;
+        &:focus{
+            outline: none;
+        }
+    }
+    .product-image{
+        margin: auto;
+        object-fit: contain;
+        height: 200px;
+        width: 200px;
+    }
+    .carousel-control-next-icon, .carousel-control-prev-icon{
+        background-color: #02c22d;
+        border-radius: 50%;
+        border: 5px solid #02c22d;
+    }
+}

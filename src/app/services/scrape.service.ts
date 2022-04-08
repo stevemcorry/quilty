@@ -22,7 +22,7 @@ export class ScrapeService {
 
   scrapeUrl(scrapeUrl){
 
-    let url = `https://us-central1-new-angular-firebase.cloudfunctions.net/scrape`;
+    let url = `https://us-central1-steve-corry.cloudfunctions.net/scrape`;
     scrapeUrl = `https://stevecorry.com`;
     // scrapeUrl = `https://news.ycombinator.com`;
     // scrapeUrl = `https://www.amazon.com/s?k=oculus&ref=nb_sb_noss`;

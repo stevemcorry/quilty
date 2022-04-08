@@ -1,6 +1,56 @@
-<div class="js-fun-wrap container">
+<div class="js-fun-wrap">
+<div class="container">
     <h1>JS30</h1>
+
+    <h3>Day 19:</h3>
+    <div class="row day19">
+        <div class="col">
+            <div class="photobooth">
+                <div class="controls">
+                  <button onClick="takePhoto()">Take Photo</button>
+                  <div class="rgb">
+                    <label for="rmin">Red Min:</label>
+                    <input type="range" min=0 max=255 name="rmin">
+                    <label for="rmax">Red Max:</label>
+                    <input type="range" min=0 max=255 name="rmax">
+            
+                    <br>
+            
+                    <label for="gmin">Green Min:</label>
+                    <input type="range" min=0 max=255 name="gmin">
+                    <label for="gmax">Green Max:</label>
+                    <input type="range" min=0 max=255 name="gmax">
+            
+                    <br>
+            
+                    <label for="bmin">Blue Min:</label>
+                    <input type="range" min=0 max=255 name="bmin">
+                    <label for="bmax">Blue Max:</label>
+                    <input type="range" min=0 max=255 name="bmax">
+                  </div>
+                </div>
+            
+                <canvas #photo class="photo"></canvas>
+                <video #player class="player"></video>
+                <div #strip class="strip"></div>
+              </div>
+        </div>
+    </div>
+
+
+    <h3>Day 17: </h3>
+    <div class="row day17">
+        <div class="col">
+            <ul>
+                <li *ngFor="let band of bands | sort">{{band}}</li>
+            </ul>
+        </div>
+    </div>
     <h3>Day 1: Drum Kit</h3>
+    <label class="switch">
+        <input type="checkbox" [(ngModel)]="day1">
+        <span class="slider round"></span>
+    </label>
     <div class="row">
         <div class="col-auto">
             <div data-key="65" class="key">
@@ -57,7 +107,12 @@
             </div>
         </div>
     </div>
+
     <h3>Day 2: JS Clock</h3>
+    <label class="switch">
+        <input type="checkbox" [(ngModel)]="day2">
+        <span class="slider round"></span>
+    </label>
     <div class="row">
         <div class="clock">
             <div class="clock-face">
@@ -67,6 +122,154 @@
             </div>
         </div>
     </div>
+
+    <h3>Day 3: </h3>
+    <div class="row day3">
+
+        <div class="controls">
+            <label for="spacing">Spacing:</label>
+            <input #spacing id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px" (change)="cssControl()">
+
+            <label for="blur">Blur:</label>
+            <input #blur id="blur" type="range" name="blur" min="0" max="25" value="10" data-sizing="px" (change)="cssControl()">
+
+            <label for="base">Base Color</label>
+            <input #base id="base" type="color" name="base" value="#ffc600" (change)="cssControl()">
+        </div>
+
+        <img #hike src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
+
+    </div>
+
+
+    <h3>Day 4: </h3>
+    <div class="row">
+        <h4 (click)="day4()"> Click here then check the console :)</h4>
+    </div>
+
+    
+    <h3>Day 5:</h3>
+</div>
+    <app-css-photo-columns></app-css-photo-columns>
+
+<div class="container">
+    <h3>Day 6:</h3>
+    <div class="row day6">
+        <form class="search-form">
+            <input type="text" class="search" placeholder="City or State" [(ngModel)]="cityCheck" (keyup)="findMatches()" name="citySearch">
+            <ul class="suggestions">
+                <li *ngFor="let city of filteredCities">
+                    <span>{{city.city}}, {{city.state}}</span>
+                    <span>{{city.population}}</span>
+                </li>
+              <li>Filter for a city</li>
+              <li>or a state</li>
+            </ul>
+          </form>
+    </div>
+
+
+    <h3>Day 7:</h3>
+    <div class="row">
+        <h4 (click)="day7()"> Click here then check the console :)</h4>
+    </div>
+
+
+
+    <h3>Day 8:</h3>
+</div>
+    <div class="day8">
+        <canvas #canvasEl id="draw" (mousemove)="draw($event)" (mouseup)="isDrawing = false" (mousedown)="downMouse($event)" (mouseleave)="isDrawing = false"></canvas>
+    </div>
+
+<div class="container">
+    <h3>Day 9</h3>
+    <div class="row">
+        <h4 #greenBoy (click)="makeGreen()"> Click here to change the color</h4>
+    </div>
+
+    <h3>Day 10</h3>
+    <div class="row day10">
+        <div class="inbox">
+            <div class="item">
+              <input type="checkbox">
+              <p>This is an inbox layout.</p>
+            </div>
+            <div class="item">
+              <input type="checkbox">
+              <p>Check one item</p>
+            </div>
+            <div class="item">
+              <input type="checkbox">
+              <p>Hold down your Shift key</p>
+            </div>
+            <div class="item">
+              <input type="checkbox">
+              <p>Check a lower item</p>
+            </div>
+            <div class="item">
+              <input type="checkbox">
+              <p>Everything in between should also be set to checked</p>
+            </div>
+            <div class="item">
+              <input type="checkbox">
+              <p>Try to do it without any libraries</p>
+            </div>
+            <div class="item">
+              <input type="checkbox">
+              <p>Just regular JavaScript</p>
+            </div>
+            <div class="item">
+              <input type="checkbox">
+              <p>Good Luck!</p>
+            </div>
+            <div class="item">
+              <input type="checkbox">
+              <p>Don't forget to tweet your result!</p>
+            </div>
+          </div>
+
+    </div>
+
+    <h3>Day 11</h3>
+    <div class="row day11">
+        <div class="player">
+            <video #videoPlayer class="player__video viewer" src="/assets/video/652333414.mp4"></video>
+       
+            <div class="player__controls">
+              <div class="progress">
+               <div #progressBar class="progress__filled"></div>
+              </div>
+              <button *ngIf="!playingVideo" class="player__button toggle" title="Toggle Play" (click)="playVideo(true)">▶</button>
+              <button *ngIf="playingVideo" class="player__button toggle" title="Toggle Play" (click)="playVideo(false)">❚ ❚</button>
+              <input type="range" name="volume" class="player__slider" min="0" max="1" step="0.05" value="1">
+              <input type="range" name="playbackRate" class="player__slider" min="0.5" max="2" step="0.1" value="1">
+              <button data-skip="-10" class="player__button" (click)="addTimeToVideo(-10)">« 10s</button>
+              <button data-skip="25" class="player__button" (click)="addTimeToVideo(25)">25s »</button>
+            </div>
+          </div>
+    </div>
+
+    <h3>Day12</h3>
+    <div class="row day12">
+        <h4>Type the code "steveboy"</h4>
+    </div>
+
+    <h3>Day16</h3>
+    <div class="row day16">
+        <div class="col d-flex justify-content-center align-items-center">
+            <h4 #wow class="p5 text-center">WOW!</h4>
+        </div>
+    </div>
+
+    <h3>GIFF</h3>
+    <div class="row gif">
+        <!-- <img #gifElements height="100" width="100" src="/assets/images/mouth__animation.GIF" alt=""> -->
+        <video #mouth height="100" width="100" autoplay loop muted playsinline>
+            <source src="/assets/images/mouth.mp4" type="video/mp4">
+        </video>
+    </div>
+</div>
 </div>
 
 <audio data-key="65" src="assets/sounds/clap.wav"></audio>

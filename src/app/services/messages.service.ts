@@ -59,7 +59,7 @@ getPatterns(){
 
 helloWorld(){
 
-  let url = `https://us-central1-new-angular-firebase.cloudfunctions.net/helloWorld`;
+  let url = `https://us-central1-steve-corry.cloudfunctions.net/helloWorld`;
   return this.http.get(url, this.httpOptions).subscribe(res=>{
     console.log(res)
   }, err =>{
@@ -134,6 +134,37 @@ addArt(author, title, img){
 submitBid(name, amount, key){
   var obj = {bidder: name, amount: amount}
   return this.db.list('/nacho-art/'+ key + '/bids').push(obj)
+}
+
+//PLANTS
+
+getPlants(){
+  // return this.todos$ = this.db.list('/messages');
+  return this.db.list('/plants').snapshotChanges()
+  .pipe(map(items => {
+    return items.map(a => {
+      const data:any = a.payload.val();
+      console.log({data})
+      const key = a.payload.key;
+      return {
+        key: key,
+        name: data.name,
+        care: data.care,
+        img: data.img,
+        imgLog: data.imgLog,
+        lastWater: data.lastWater ? data.lastWater : null,
+        waterLog: data.waterLog ? data.waterLog : [],
+      }
+    });
+  }));
+}
+addPlant(plant){
+  return this.db.list('/plants').push(plant);
+}
+editPlant(plant){
+  return this.db.object('/plants/'+plant.key).set(plant).then(()=>{
+    document.getElementById('closeButton').click();
+  })
 }
 
 }

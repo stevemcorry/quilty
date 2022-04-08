@@ -1,0 +1,91 @@
+<div class="plant-wrap container">
+    <div class="row">
+        <div class="col">
+            <h3 class="text-center">My plants</h3>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-6 col-md-auto" *ngFor="let plant of plants">
+            <div class="plant-box" (click)="setEdit(plant)" data-toggle="modal" data-target="#plantEdit">
+                <img src="{{plant.img}}" class="product-image">
+                <h5>{{plant.name}}</h5>
+                <div class="row justify-content-center align-items-end">
+                    <div class="col-auto">
+                        <div class="watered-icon" [ngClass]="getWaterIcon(plant.lastWater)"></div>
+                    </div>
+                    <div class="col-auto">
+                        <div class="last">{{getLast(plant.lastWater)}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <button *ngIf="user" class="btn btn-primary" data-toggle="modal" data-target="#plantAdd">Add Plant</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- Add Modal -->
+<div class="modal fade" id="plantAdd" tabindex="-1" role="dialog" aria-labelledby="plantAddLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content color5">
+            <button id="closeButton" type="button" class="color5 custom-close" data-dismiss="modal" aria-label="Close">
+                <span data-dismiss="modal" aria-label="Close">&times;</span>
+            </button>
+            <div class="modal-body d-flex ">
+                <h3>Add Plant</h3>
+                <input type="file" (change)="prep($event)" accept=".png,.jpeg,.jpg" />
+                <img *ngIf="this.preview" height="80" width="80" src="{{this.preview}}" class="product-image">
+                <input [(ngModel)]="name" placeholder="Name"/>
+                <textarea [(ngModel)]="care" placeholder="Care instructions"></textarea>
+                <button *ngIf="user" (click)="addPlant()">Save Plant</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Modal -->
+<div class="modal fade" id="plantEdit" tabindex="-1" role="dialog" aria-labelledby="plantEditLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content color5">
+            <button id="closeEdit" type="button" class="color5 custom-close" data-dismiss="modal" aria-label="Close">
+                <span data-dismiss="modal" aria-label="Close">&times;</span>
+            </button>
+            <div class="modal-body d-flex ">
+                <h3>{{selectedPlant.name}}</h3>
+                <img *ngIf="selectedPlant.img && !selectedPlant.imgLog" src="{{selectedPlant.img}}" class="product-image" (click)="updateImage =!updateImage">
+
+                <ngb-carousel *ngIf="selectedPlant.imgLog" class="text-center" [showNavigationIndicators]="false" data-interval="false">
+                    <ng-template class="text-center" ngbSlide *ngFor="let img of selectedPlant.imgLog.slice().reverse()">
+                            <img class="product-img" height="200" width="200" [src]="img.url" alt="plant">
+                    </ng-template>
+                </ngb-carousel>
+
+                <div *ngIf="user && updateImage">
+                    <input type="file" (change)="prep($event)" accept=".png,.jpeg,.jpg" />
+                    <img *ngIf="this.preview" height="80" width="80" src="{{this.preview}}" class="product-image">
+                </div>
+                <div class="row mb-3">
+                    <div class="col-6 text-center">
+                        <div (click)="waterPlant()">Track Watering:</div>
+                        <div class="water-drop" [ngClass]="{'uploading': uploading}" (click)="waterPlant()"></div>
+                    </div>
+                    <div class="col-6 text-center">
+                        <div class="last">Last Water: {{getLast(selectedPlant.lastWater)}}</div>
+                        <div class="watered-icon" [ngClass]="getWaterIcon(selectedPlant.lastWater)"></div>
+                    </div>
+                </div>
+                <textarea [(ngModel)]="selectedPlant.care" placeholder="Care instructions"></textarea>
+                <div>Water Log:</div>
+                <div *ngFor="let log of selectedPlant.waterLog">
+                    <div>{{log}}</div>
+                </div>
+                <!-- <button class="btn water-btn" (click)="waterPlant()">Water Plant</button> -->
+                <button *ngIf="user" class="btn btn-primary" (click)="editPlant()">Save Edit</button>
+            </div>
+        </div>
+    </div>
+</div>

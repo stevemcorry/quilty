@@ -20,6 +20,7 @@ import { SwolecityComponent } from './pages/swolecity/swolecity.component';
 import { NachoGalleryComponent } from './pages/nacho-gallery/nacho-gallery.component';
 import { ShowDemosComponent } from './pages/show-demos/show-demos.component';
 import { JsFunComponent } from './pages/js-fun/js-fun.component';
+import { PlantsComponent } from './pages/plants/plants.component';
 
 
 const routes: Routes = [
@@ -42,7 +43,8 @@ const routes: Routes = [
   { path: 'auth', component: AuthComponent },
   { path: 'travel-track', component: TravelStuffComponent },
   { path: 'nacho-gallery', component: NachoGalleryComponent },
-  { path: 'show-demos', component: ShowDemosComponent }
+  { path: 'show-demos', component: ShowDemosComponent },
+  { path: 'plants', component: PlantsComponent },
 ];
 
 @NgModule({

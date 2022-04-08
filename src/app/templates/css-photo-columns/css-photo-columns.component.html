@@ -1,0 +1,27 @@
+<div class="panels" (mouseleave)="activePanel = 0">
+    <div [ngClass]="{ 'open-active':  activePanel == 1}" (mouseenter)="activePanel = 1" class="panel panel1">
+        <p>Hey</p>
+        <p>Let's</p>
+        <p>Dance</p>
+    </div>
+    <div [ngClass]="{ 'open-active':  activePanel == 2}" (mouseenter)="activePanel = 2" class="panel panel2">
+        <p>Give</p>
+        <p>Take</p>
+        <p>Receive</p>
+    </div>
+    <div [ngClass]="{ 'open-active':  activePanel == 3}" (mouseenter)="activePanel = 3" class="panel panel3">
+        <p>Experience</p>
+        <p>It</p>
+        <p>Today</p>
+    </div>
+    <div [ngClass]="{ 'open-active':  activePanel == 4}" (mouseenter)="activePanel = 4" class="panel panel4">
+        <p>Give</p>
+        <p>All</p>
+        <p>You can</p>
+    </div>
+    <div [ngClass]="{ 'open-active':  activePanel == 5}" (mouseenter)="activePanel = 5" class="panel panel5">
+        <p>Life</p>
+        <p>In</p>
+        <p>Motion</p>
+    </div>
+</div>

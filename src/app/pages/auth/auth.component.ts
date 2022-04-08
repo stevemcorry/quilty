@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AngularFireAuth } from 'angularfire2/auth';
+import firebase from 'firebase';
 import { ScrapeService } from 'src/app/services/scrape.service';
-import { FacebookService, InitParams } from 'ngx-facebook';
+// import { FacebookService, InitParams } from 'ngx-facebook';
 
 @Component({
   selector: 'app-auth',
@@ -12,21 +14,30 @@ export class AuthComponent implements OnInit {
 
   loadingProgress = "";
   loadingTimer;
-  finishedVerify
+  finishedVerify;
+  user;
 
   constructor(
     private router: Router,
     private mainService: ScrapeService,
-    private fb: FacebookService
+    private auth: AngularFireAuth
     ) {
 
-      let initParams: InitParams = {
-        appId: '877305529444067',
-        xfbml: true,
-        version: 'v2.8'
-      };
+      // let initParams: InitParams = {
+      //   appId: '877305529444067',
+      //   xfbml: true,
+      //   version: 'v2.8'
+      // };
    
-      fb.init(initParams);
+      // fb.init(initParams);
+      
+      this.auth.authState.subscribe(user => {
+          console.log('true user', user)
+          this.user = user;
+          if(user){
+            this.finishedVerify = true;
+          }
+      })
 
     }
 
@@ -45,6 +56,7 @@ export class AuthComponent implements OnInit {
   }
 
   loadingCount(){
+    if(this.user) return;
     switch(this.loadingProgress){
       case "":
         this.loadingProgress = "s";
@@ -89,19 +101,26 @@ export class AuthComponent implements OnInit {
   }
 
 
+  login() {
+    return this.auth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+  }
+  logout() {
+    this.auth.auth.signOut();
+  }
+
   getLogin(){
     // this.fb.getLoginStatus().then(res=>{
     //   console.log('logged in?: ', res)
     // });
-    this.fb.login().then(res=>{
-      console.log('thien?', res)
-    })
+    // this.fb.login().then(res=>{
+    //   console.log('thien?', res)
+    // })
 
   }
   checkStatus(){
-    this.fb.getLoginStatus().then(res=>{
-      console.log('logged in?: ', res)
-    });
+    // this.fb.getLoginStatus().then(res=>{
+    //   console.log('logged in?: ', res)
+    // });
   }
 
   getUserData(code){
@@ -110,7 +129,6 @@ export class AuthComponent implements OnInit {
       console.log(data,'data')
     });
   }
-  accessToken = "EAAMd55xxJuMBAEIXakzPB6bgPtY71aQcsbG4UKH5i1TbfBFfhhNi0OoOmHffCoxSoEerFWV3yUYIZAm7uFs3iPnJGQ5cbQy0sopzRUbFLSPmFgv2UdegkBfg2JQ5FjvbrP4bgnSAL1xOyjwZBNTjCmubwXFeALudd7eLKmM8SqMtLza7XIPT6PGAR9ZCUUHFBr3L89u8xsbsglUICZCjJoumoT8zDM0ZD"
   
 
 }
