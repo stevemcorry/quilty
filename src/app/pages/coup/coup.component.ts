@@ -53,7 +53,7 @@ export class CoupComponent implements OnInit, OnDestroy {
   gameSub;
   players:PlayerObject[] = [];
   gameStarted = false;
-  @ViewChild(AlertyComponent, {static:false}) alerty: AlertyComponent;
+  @ViewChild(AlertyComponent) alerty: AlertyComponent;
 
   constructor(
     private route: ActivatedRoute,

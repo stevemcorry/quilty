@@ -7,7 +7,7 @@ import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input } from '
 })
 export class HomeCarouselComponent implements OnInit {
 
-  @ViewChild('htmlAnimation', {static: false }) intro: ElementRef; 
+  @ViewChild('htmlAnimation') intro: ElementRef; 
   text = `<html>*_<div class="container">*__<div class="row">*___<div class="col-auto">*____<h1>Sick bootstrap bro</h1>*___</div>*__</div>*_</div>*</html>`
   textArr = [];
   skillsHover:boolean = false;

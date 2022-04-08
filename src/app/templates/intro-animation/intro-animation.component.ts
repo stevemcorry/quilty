@@ -7,7 +7,7 @@ import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input } from '
 })
 export class IntroAnimationComponent implements OnInit, AfterViewInit {
 
-  @ViewChild('introAnimation', {static: false }) intro: ElementRef; 
+  @ViewChild('introAnimation') intro: ElementRef; 
   @Input() text = "";
   @Input() delay = 0;
   @Input() deleteDelay = 0;

@@ -8,8 +8,8 @@ import { Component, OnInit, HostListener, ViewChild, ElementRef } from '@angular
 export class HomeComponent implements OnInit {
 
   projectRotation = 0;
-  @ViewChild('projectsContainer', {static:false}) projectsContainer: ElementRef;
-  @ViewChild('homeCarousel', {static:false})homeCarousel:any;
+  @ViewChild('projectsContainer') projectsContainer: ElementRef;
+  @ViewChild('homeCarousel')homeCarousel:any;
   @HostListener("window:scroll", [])
   onScroll(): void {
     var element = this.projectsContainer.nativeElement;

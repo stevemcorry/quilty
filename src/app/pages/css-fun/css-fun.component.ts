@@ -9,7 +9,7 @@ import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, ViewEncapsulat
 export class CssFunComponent implements OnInit, AfterViewInit {
 
 
-  @ViewChild('svgboi', {static: false }) svgboi: ElementRef; 
+  @ViewChild('svgboi') svgboi: ElementRef; 
 
   constructor() { }
 

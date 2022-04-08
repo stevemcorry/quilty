@@ -13,7 +13,7 @@ export class CouphomeComponent implements OnInit {
   username = "";
   gameCode;
 
-  @ViewChild(AlertyComponent, {static:false}) alerty: AlertyComponent;
+  @ViewChild(AlertyComponent) alerty: AlertyComponent;
 
   constructor(
     private router: Router,

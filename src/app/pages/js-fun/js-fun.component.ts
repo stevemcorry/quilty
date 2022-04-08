@@ -68,10 +68,10 @@ export class JsFunComponent implements OnInit {
 
 
   //Day 3
-  @ViewChild('hike', { static: false }) hikePic;
-  @ViewChild('spacing', { static: false }) spacing:ElementRef;
-  @ViewChild('blur', { static: false }) blur:ElementRef;
-  @ViewChild('base', { static: false }) base:ElementRef;
+  @ViewChild('hike') hikePic;
+  @ViewChild('spacing') spacing:ElementRef;
+  @ViewChild('blur') blur:ElementRef;
+  @ViewChild('base') base:ElementRef;
   cssControl(){
     this.base.nativeElement
     let style = `border: ${this.spacing.nativeElement.value}px solid ${this.base.nativeElement.value};filter: blur(${this.blur.nativeElement.value}px)`;
@@ -258,7 +258,7 @@ export class JsFunComponent implements OnInit {
     lastY = 0;
     lineWidth = 0;
     hue = 0;
-    @ViewChild('canvasEl', { static: false }) canvasEl:ElementRef<HTMLCanvasElement>;
+    @ViewChild('canvasEl') canvasEl:ElementRef<HTMLCanvasElement>;
     day8(){
       this.canvasEl.nativeElement.width = window.innerWidth;
       this.canvasEl.nativeElement.height = window.innerHeight;

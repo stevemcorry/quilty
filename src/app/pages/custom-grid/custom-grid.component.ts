@@ -15,9 +15,9 @@ import { DemoComponent } from 'src/app/templates/demo/demo.component';
 })
 export class CustomGridComponent implements OnInit {
 
-  @ViewChild(ToolsComponent, {static: false}) toolsComp:ToolsComponent;
-  @ViewChild(StepsComponent, {static: false}) stepsComp:StepsComponent;
-  @ViewChild(DemoComponent, {static: false}) demoComp:DemoComponent;
+  @ViewChild(ToolsComponent) toolsComp:ToolsComponent;
+  @ViewChild(StepsComponent) stepsComp:StepsComponent;
+  @ViewChild(DemoComponent) demoComp:DemoComponent;
   customColor = "#00ccff";
   gridSize = 21;
   delayTime = 100;
