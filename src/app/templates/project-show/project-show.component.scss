@@ -3,7 +3,6 @@
     display: inline-block;
     height: 200px;
     width: 200px;
-    margin: 10px 20px;
     text-align: center;
     .project-box{
         position: relative;
@@ -91,5 +90,76 @@
         border-radius: 50%;
         height: 90%;
         width: 90%;
+    }
+}
+
+
+
+.neon-project{
+    position: relative;
+    display: inline-block;
+    z-index: 3;
+    height: 200px;
+    width: 200px;
+    text-align: center;
+    overflow: hidden;
+    .project-inner{
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: 0;
+        left: 0;
+        width: calc(100%);
+        height: calc(100%);
+        overflow: hidden;
+        transform: rotate(45deg);
+        transition: all .3s ease;
+    }
+    .project-img{
+        height: 100%;
+        width: 100%;
+        background-size: cover;
+        background-position: top;
+        transform: rotate(-45deg);
+        transition: all .3s ease;
+        background-color: white;
+        cursor: pointer;
+        &::before, &::after{
+            position: absolute;
+            content: "";
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            border: 6px solid #FF6500;
+            transition: all .3s ease;
+        }
+        &::after{
+            transform: rotate(45deg);
+        }
+    }
+    &:hover{
+        .project-img::before, .project-img::after{
+            border: 100px solid #FF6500;
+        }
+        .project-description{
+            opacity: 1;
+        }
+    }
+    .project-description{
+        position: absolute;
+        opacity: 0;
+        font-size: 24px;
+        color: white;
+        width: 200px;
+        height: 50px;
+        cursor: pointer;
+        top: calc(50% - 22px);
+        left: calc(50% - 100px);
+        transition: all .4s ease;
+        &.hover{
+            opacity: 1;
+        }
     }
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MessagesService } from 'src/app/services/messages.service';
+import { GridAnimationObj } from 'app/models/gridAnimation.model';
+import { GridService } from 'app/services/grid.service';
+import { MessagesService } from 'app/services/messages.service';
 
 @Component({
   selector: 'app-demo',
@@ -14,41 +16,55 @@ export class DemoComponent implements OnInit {
   sleeptime = 300;
   selectedPattern;
   selectedName;
-  selectedDelay = 100;
-  selectedBrightness = 100;
+  selectedImg;
+  selectedDelay = 500;
+  selectedBrightness = 20;
+  mainName;
+  mainImg;
+  loadingSavedPatterns = false;
 
-  constructor(private messageService: MessagesService) { }
+  constructor(private messageService: MessagesService,
+    private gridService: GridService) { }
 
   ngOnInit() {
     this.getSavedDesigns();
+    this.messageService.getMainCheck().subscribe((res:any)=>{
+      console.log(res)
+      this.selectedBrightness = res.brightness;
+      this.selectedDelay = res.delay;
+      this.mainName = res.name;
+      this.mainImg = res.img
+    })
   }
 
   getSavedDesigns(){
-    this.messageService.getPatterns().subscribe(res=>{
-      this.savedPatterns = res;
-      this.forBoard(res[3].steps)
+    console.log('getting saved')
+    if(this.loadingSavedPatterns){return}
+    this.loadingSavedPatterns = true;
+    this.gridService.items.subscribe((gridItems)=>{
+      console.log({gridItems})
     })
   }
-  forBoard(arr){
-    var stringy = ""
-    for(let x of arr){
-      if(x.type == "pattern"){
-        for(let i of x.data){
-          let splt = i.color.substring(3);
-          let plz = splt.split(', ');
-          plz[0] = plz[0].substring(1)
-          plz[2] = plz[2].substring(0, plz.length);
-          var hex = "0x" + this.fullColorHex(plz[0].substring(1,3),plz[1], plz[2]);
-          // let srng = "leds["+ i.id +"] = CHSV " + splt + ";";
-          let srng = "leds["+ i.id +"] = " + hex + ";";
-          stringy += srng;
-        }
-        stringy += "FastLED.show();";
-      } else {
-        stringy += "delay(" + x.data + ");";
-      }
-    }
-  }
+  // forBoard(arr){
+  //   var stringy = ""
+  //   for(let x of arr){
+  //     if(x.type == "pattern"){
+  //       for(let i of x.data){
+  //         let splt = i.color.substring(3);
+  //         let plz = splt.split(', ');
+  //         plz[0] = plz[0].substring(1)
+  //         plz[2] = plz[2].substring(0, plz.length);
+  //         var hex = "0x" + this.fullColorHex(plz[0].substring(1,3),plz[1], plz[2]);
+  //         // let srng = "leds["+ i.id +"] = CHSV " + splt + ";";
+  //         let srng = "leds["+ i.id +"] = " + hex + ";";
+  //         stringy += srng;
+  //       }
+  //       stringy += "FastLED.show();";
+  //     } else {
+  //       stringy += "delay(" + x.data + ");";
+  //     }
+  //   }
+  // }
   rgbToHex(rgb){ 
     var hex = Number(rgb).toString(16);
     if (hex.length < 2) {
@@ -111,6 +127,8 @@ export class DemoComponent implements OnInit {
     let arr = pattern.steps;
     this.selectedPattern = pattern.steps;
     this.selectedName = pattern.name;
+    this.selectedImg = pattern.img;
+    console.log(pattern)
     setTimeout(()=>{
       for(let x of arr){
         if(this.gridSize*this.gridSize != x.data.length){
@@ -142,16 +160,36 @@ export class DemoComponent implements OnInit {
       }
     }
   }
+  updateMain(){
+    let obj = {
+      brightness: this.selectedBrightness,
+      delay: this.selectedDelay,
+      img: this.mainImg,
+      name: this.mainName
+    }
+    this.messageService.updateMainPattern(obj);
+  }
   setMain(){
     let data = this.selectedPattern.slice(0);
     let newJson = [];
     for(let step of data){
       if(step.data){
         let mainData:any = [];
-        for( let indata of step.data){
+        let unshiftData = [];
+        for( let index = 0; index < step.data.length; index++){
+          let indata = step.data[index];
           delete indata.id;
           if(indata.color == ''){indata.color = "rgb(0, 0, 0)"}
-          mainData.push(indata.color);
+          if(this.selectedName == "Seeds of doubt" && indata.color == "rgb(255, 255, 255)"){indata.color = "rgb(0, 0, 0)"}
+          if(this.isEven(Math.floor(index/this.gridSize))){
+            unshiftData.unshift(indata.color);
+          } else{
+            unshiftData.unshift(indata.color);
+          }
+          if(unshiftData.length == 21){
+            mainData = mainData.concat(unshiftData);
+            unshiftData = [];
+          }
         }
         mainData = mainData.join('');
         mainData = mainData.replaceAll('rgb(', "");
@@ -162,9 +200,25 @@ export class DemoComponent implements OnInit {
     let obj = {
       name : this.selectedName,
       delay : this.selectedDelay,
-      brightness: this.selectedBrightness
+      brightness: this.selectedBrightness,
+      img: this.selectedImg
     }
     this.messageService.setMainPattern(newJson, obj);
+  }
+
+  resavePatterns(patterns){
+    patterns.forEach(element => {
+      // console.log(element)
+      if(element.steps[0].img){
+        let obj = new GridAnimationObj(element.name, element.steps[0].img, element.steps);
+        // console.log({obj});
+        this.messageService.updatePattern(element.key, obj);
+      } else{
+        let obj = new GridAnimationObj(element.name, element.img, element.steps);
+        // console.log(2, {obj});
+        this.messageService.updatePattern(element.key, obj);
+      }
+    });
   }
 
 }

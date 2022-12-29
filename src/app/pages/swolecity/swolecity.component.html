@@ -1,3 +1,73 @@
 <div class="swolecity-wrap">
-    <h1>Please contact us <a href="mailto:stevemcorry@gmail.com">here</a> for support.</h1>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col">
+                
+            </div>
+        </div>
+        
+        <button *ngIf="user" class="btn btn-primary" data-toggle="modal" data-target="#exerciseAdd">Add Exercise</button>
+    </div>
+    
+    <div class="footer">
+        <h1>Please contact us <a href="mailto:stevemcorry@gmail.com">here</a> for support.</h1>
+    </div>
+</div>
+
+
+
+<!-- Add Modal -->
+<div class="modal fade" id="exerciseAdd" tabindex="-1" role="dialog" aria-labelledby="exerciseAddLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content color5">
+            <button id="closeButton" type="button" class="color5 custom-close" data-dismiss="modal" aria-label="Close">
+                <span data-dismiss="modal" aria-label="Close">&times;</span>
+            </button>
+            <div class="modal-body">
+                <h3>Add Exercise</h3>
+                <input [(ngModel)]="newExercise.exerciseName" placeholder="Name"/>
+                <div class="checkbox">
+                    <section class="example-section">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>
+                                    <input type="checkbox" value="arms">
+                                    Arms
+                                </label>
+                                <label>
+                                    <input type="checkbox" value="legs">
+                                    Legs
+                                </label>
+                                <label>
+                                    <input type="checkbox" value="shoulders">
+                                    Shoulders
+                                </label>
+                                <label>
+                                    <input type="checkbox" value="chest">
+                                    Chest
+                                </label>
+                            </div>
+                            <div class="col-md-6">
+                                <label>
+                                    <input type="checkbox" value="back">
+                                    Back
+                                </label>
+                                <label>
+                                    <input type="checkbox" value="abs">
+                                    Abs
+                                </label>
+                                <label>
+                                    <input type="checkbox" value="cardio">
+                                    Cardio
+                                </label>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <button *ngIf="user" (click)="addExercise()">Save Exercise</button>
+            </div>
+        </div>
+    </div>
 </div>

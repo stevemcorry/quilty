@@ -1,14 +1,17 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { AngularFireStorage } from 'angularfire2/storage';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 
-import { storage } from 'firebase';
-import { MessagesService } from 'src/app/services/messages.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { MessagesService } from 'app/services/messages.service';
+
+import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-plants',
   templateUrl: './plants.component.html',
   styleUrls: ['./plants.component.scss'],
+  providers: [NgbCarouselConfig],
   encapsulation: ViewEncapsulation.None
 })
 export class PlantsComponent implements OnInit {
@@ -22,10 +25,12 @@ export class PlantsComponent implements OnInit {
   file;
   updateImage = false;
   uploading = false;
+  showWaterLog = false;
   selectedPlant = new Plant('test');
-  constructor(public messageSvc: MessagesService, public storage: AngularFireStorage, public auth:AngularFireAuth) { 
+  constructor(public messageSvc: MessagesService, public storage: AngularFireStorage, public auth:AngularFireAuth, config: NgbCarouselConfig) { 
+    
+    config.interval = 10000000;
     this.auth.authState.subscribe(user => {
-        console.log('true user', user)
         if(user){
           this.user = user.uid;
         }
@@ -34,7 +39,6 @@ export class PlantsComponent implements OnInit {
 
   ngOnInit() {
     this.messageSvc.getPlants().subscribe(res=>{
-      console.log('plant', res);
       this.plants = res;
     })
   }
@@ -52,6 +56,7 @@ export class PlantsComponent implements OnInit {
       return 
     }
     let plant = new Plant(this.name, this.care, this.plantImage);
+    plant.imgLog = [new Img(this.plantImage)];
     this.messageSvc.addPlant(plant).then(()=>{
       this.uploading = false;
       this.name = "";
@@ -63,12 +68,8 @@ export class PlantsComponent implements OnInit {
 
   setEdit(plant){
     this.selectedPlant = plant;
-    console.log(this.selectedPlant);
   }
   waterPlant(){
-    if(!this.user) return;
-    if(this.uploading) return;
-    this.uploading = true;
     this.selectedPlant.lastWater = (new Date()).toDateString();
     this.selectedPlant.waterLog.push(this.selectedPlant.lastWater);
     this.editPlant();
@@ -79,20 +80,27 @@ export class PlantsComponent implements OnInit {
       alert('You have no power here.');
       return;
     };
-    if(!this.validate()) return;
-    this.uploading = true;
-    let upload = await this.addProgressImage();
-    if(!this.plantImage){ 
-      alert('Something happened...')
-      return 
+    if(this.uploading) return false;
+    if(this.preview){
+      this.uploading = true;
+      let upload = await this.addProgressImage();
+      if(!this.plantImage){ 
+        alert('Something happened...')
+        return 
+      }
+      if(this.selectedPlant.imgLog){
+        this.selectedPlant.imgLog.push(new Img(this.plantImage));
+      }else{
+        let img = new Img(this.selectedPlant.img, 'Fri Mar 11 2022');
+        this.selectedPlant.imgLog = [img];
+        this.selectedPlant.imgLog.push(new Img(this.plantImage));
+      }
+      this.selectedPlant.img = this.plantImage;
     }
-    if(this.selectedPlant.imgLog){
-      this.selectedPlant.imgLog.push(new Img(this.selectedPlant.img));
-    }else{
-      this.selectedPlant.imgLog = [new Img(this.selectedPlant.img, 'Fri Mar 11 2022')];
-      this.selectedPlant.imgLog.push(this.plantImage);
+    if(!this.selectedPlant.imgLog){
+      let img = new Img(this.selectedPlant.img, 'Fri Mar 11 2022');
+      this.selectedPlant.imgLog = [img];
     }
-    this.selectedPlant.img = this.plantImage;
     this.messageSvc.editPlant(this.selectedPlant).then(()=>{
       this.uploading = false;
       this.plantImage = "";

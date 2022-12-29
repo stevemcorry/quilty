@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { GameServiceService } from 'src/app/services/game-service.service';
-import { AlertyComponent } from 'src/app/templates/alerty/alerty.component';
+import { GameServiceService } from 'app/services/game-service.service';
+import { AlertyComponent } from 'app/templates/alerty/alerty.component';
 
 @Component({
   selector: 'app-coup',

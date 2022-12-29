@@ -5,12 +5,37 @@
 </div>
 
 <div class="row">
-    <div class="col text-center mt-5 mb-5">
-        <h1>Look at other people's demos!</h1>
-        <div class="quick-color" 
-            *ngFor="let pattern of savedPatterns">
-            <div (click)="playSavedPattern(pattern)" data-toggle="modal" data-target="#demoModal">{{pattern.name}}</div>
-        </div>
+    <div class="col text-center">
+        <h1 *ngIf="savedPatterns[0]">All grid art:</h1>
+        <button *ngIf="!savedPatterns[0]" (click)="getSavedDesigns()">View other people's grid art</button>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="text-center col-4 col-md-3 col-lg-2" 
+        *ngFor="let pattern of savedPatterns"
+        (click)="playSavedPattern(pattern)"
+        data-toggle="modal" data-target="#demoModal">
+        <img [src]='pattern.img' alt="{{pattern.name}}" height="100" width="100">
+        <p>{{pattern.name}}</p>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-auto text-center">
+        <h1>Main Grid:</h1>
+        <br>
+        <img [src]='mainImg' alt="{{mainName}}" height="200" width="200">
+        <br>
+        <label for="" class="mr-2">{{ mainName }}</label>
+        <br>
+        <label for="" class="mr-2">Animation Speed (in miliseconds): </label>
+        <input type="text" placeholder="Animaion Speed" [(ngModel)]="selectedDelay">
+        <br>
+        <label for="" class="mr-2">Brighness</label>
+        <input type="num" min="0" max="100" placeholder="Brightness" [(ngModel)]="selectedBrightness">
+        <br>
+        <button type="button" class="btn btn-secondary float-left mt-3" (click)="updateMain()">Set As Main</button>
     </div>
 </div>
 
@@ -25,6 +50,9 @@
             <div class="text-center mt-3">
                 <label for="" class="mr-2">Animation Speed (in miliseconds): </label>
                 <input type="text" placeholder="Animaion Speed" [(ngModel)]="selectedDelay">
+                <br>
+                <label for="" class="mr-2">Brighness</label>
+                <input type="num" min="0" max="100" placeholder="Brightness" [(ngModel)]="selectedBrightness">
             </div>
         </div>
         <div class="modal-footer">

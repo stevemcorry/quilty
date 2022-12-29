@@ -1,22 +1,21 @@
 <div class="plant-wrap container">
     <div class="row">
         <div class="col">
-            <h3 class="text-center">My plants</h3>
+            <h3 class="text-center">My {{plants.length}} plants</h3>
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-6 col-md-auto" *ngFor="let plant of plants">
-            <div class="plant-box" (click)="setEdit(plant)" data-toggle="modal" data-target="#plantEdit">
+        <div class="col-6 col-md-auto" *ngFor="let plant of plants | plant">
+            <div class="plant-box" 
+                (click)="setEdit(plant)" 
+                data-toggle="modal" 
+                data-target="#plantEdit">
                 <img src="{{plant.img}}" class="product-image">
-                <h5>{{plant.name}}</h5>
-                <div class="row justify-content-center align-items-end">
-                    <div class="col-auto">
-                        <div class="watered-icon" [ngClass]="getWaterIcon(plant.lastWater)"></div>
-                    </div>
-                    <div class="col-auto">
-                        <div class="last">{{getLast(plant.lastWater)}}</div>
-                    </div>
-                </div>
+                <div class="bottom-bar text-left ">
+                    <h6 class="mb-0 mt-1">{{plant.name}}</h6>
+                    <div class="watered-icon" [ngClass]="getWaterIcon(plant.lastWater)"></div>
+                    <div class="last">{{getLast(plant.lastWater)}}</div>
+                 </div>
             </div>
         </div>
     </div>
@@ -55,12 +54,11 @@
                 <span data-dismiss="modal" aria-label="Close">&times;</span>
             </button>
             <div class="modal-body d-flex ">
-                <h3>{{selectedPlant.name}}</h3>
+                <h3 class="text-center">{{selectedPlant.name}}</h3>
                 <img *ngIf="selectedPlant.img && !selectedPlant.imgLog" src="{{selectedPlant.img}}" class="product-image" (click)="updateImage =!updateImage">
-
-                <ngb-carousel *ngIf="selectedPlant.imgLog" class="text-center" [showNavigationIndicators]="false" data-interval="false">
+                <ngb-carousel *ngIf="selectedPlant.imgLog" class="text-center" [showNavigationIndicators]="false">
                     <ng-template class="text-center" ngbSlide *ngFor="let img of selectedPlant.imgLog.slice().reverse()">
-                            <img class="product-img" height="200" width="200" [src]="img.url" alt="plant">
+                            <img style="object-fit: contain" height="200" width="200" [src]="img.url" alt="plant"  (click)="updateImage =!updateImage">
                     </ng-template>
                 </ngb-carousel>
 
@@ -68,23 +66,26 @@
                     <input type="file" (change)="prep($event)" accept=".png,.jpeg,.jpg" />
                     <img *ngIf="this.preview" height="80" width="80" src="{{this.preview}}" class="product-image">
                 </div>
-                <div class="row mb-3">
+                <div class="row my-3">
                     <div class="col-6 text-center">
-                        <div (click)="waterPlant()">Track Watering:</div>
                         <div class="water-drop" [ngClass]="{'uploading': uploading}" (click)="waterPlant()"></div>
+                        <div (click)="waterPlant()">Track Watering</div>
                     </div>
                     <div class="col-6 text-center">
-                        <div class="last">Last Water: {{getLast(selectedPlant.lastWater)}}</div>
-                        <div class="watered-icon" [ngClass]="getWaterIcon(selectedPlant.lastWater)"></div>
+                        <div class="watered-icon" [ngClass]="getWaterIcon(selectedPlant.lastWater)" (click)="showWaterLog = !showWaterLog"></div>
+                        <div class="last">Watered {{getLast(selectedPlant.lastWater)}}</div>
                     </div>
                 </div>
-                <textarea [(ngModel)]="selectedPlant.care" placeholder="Care instructions"></textarea>
-                <div>Water Log:</div>
-                <div *ngFor="let log of selectedPlant.waterLog">
-                    <div>{{log}}</div>
+                <div *ngIf="showWaterLog">
+                    <div>Water Log:</div>
+                    <div *ngFor="let log of selectedPlant.waterLog">
+                        <div>{{log}}</div>
+                    </div>
                 </div>
+                <textarea *ngIf="user" [(ngModel)]="selectedPlant.care" placeholder="Care instructions"></textarea>
+                <p *ngIf="!user">{{care}}</p>
                 <!-- <button class="btn water-btn" (click)="waterPlant()">Water Plant</button> -->
-                <button *ngIf="user" class="btn btn-primary" (click)="editPlant()">Save Edit</button>
+                <button *ngIf="user" class="btn btn-primary mt-4" (click)="editPlant()">Save Edit</button>
             </div>
         </div>
     </div>

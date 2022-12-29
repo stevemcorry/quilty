@@ -16,6 +16,8 @@ export class AppComponent {
       console.log(this.url.path());
       if(this.url.path()==='/phaser'){
         this.active=false; 
+      }else if(this.url.path()==='/'){
+        this.active=false; 
       }
 
   }

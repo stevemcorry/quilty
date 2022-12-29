@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-
 import { ColorEvent } from 'ngx-color';
+
+declare var EXIF: any;
 @Component({
   selector: 'app-tools',
   templateUrl: './tools.component.html',
@@ -18,13 +19,28 @@ export class ToolsComponent implements OnInit {
   colorOption = 'single';
   //customColor = "#00c3ff";
   colorArray = [
-    "#ffffff"
+    "#ffffff",
+    "#000000"
   ];
+  uploadImage;
 
   constructor() { }
 
   ngOnInit() {
 
+    var that = this;
+    this.uploadImage = undefined;
+      document.querySelector('input[type="file"]').addEventListener('change', function() {
+          if (this.files && this.files[0]) {
+              var img:any = document.querySelector('img');
+              img.src = URL.createObjectURL(this.files[0]);
+              img.onload = imageIsLoaded;
+              that.uploadImage = img;
+          }
+      });
+    function imageIsLoaded() {
+      that.tryimage();
+    }
   }
 
   colorChanged($event: ColorEvent){
@@ -57,7 +73,7 @@ export class ToolsComponent implements OnInit {
   }
   colorSingleCell(targetElement){
     if(targetElement.style.backgroundColor == this.hexToRgb(this.customColor)){
-      targetElement.style.backgroundColor = "rgb(255, 255, 255)";
+      targetElement.style.backgroundColor = "";
     } else {
       targetElement.style.backgroundColor = this.customColor;
     }
@@ -113,6 +129,98 @@ export class ToolsComponent implements OnInit {
     for(let x = 0; x < this.gridSize*this.gridSize; x++){
       var elm = document.getElementById('gridId'+x)
       elm.style.backgroundColor = "#ffffff";
+    }
+  }
+  addImage(){
+
+  }
+
+  tryimage() {
+    var img = new Image();    
+    var that = this;
+    var srcOrientation;
+    img.onload = function() {
+      EXIF.getData(this, function(){
+        srcOrientation = EXIF.getTag(this, 'Orientation');
+        that.checkOrientation(srcOrientation, img);
+      })
+    };
+    let src:any = this.uploadImage;
+    console.log(src)
+    src = src.src;
+    img.src = src;​
+  }
+  checkOrientation(srcOrientation, img){
+    var width = img.width,
+        height = img.height,
+        canvas = document.createElement('canvas'),
+        ctx = canvas.getContext("2d");
+    // set proper canvas dimensions before transform & export
+    if (4 < srcOrientation && srcOrientation < 9) {
+      canvas.width = height;
+      canvas.height = width;
+    } else {
+      canvas.width = width;
+      canvas.height = height;
+    }
+    // transform context before drawing image
+    console.log({srcOrientation})
+    switch (srcOrientation) {
+      case 2: ctx.transform(-1, 0, 0, 1, width, 0); break;
+      case 3: ctx.transform(-1, 0, 0, -1, width, height); break;
+      case 4: ctx.transform(1, 0, 0, -1, 0, height); break;
+      case 5: ctx.transform(0, 1, 1, 0, 0, 0); break;
+      case 6: ctx.transform(0, 1, -1, 0, height, 0); break;
+      case 7: ctx.transform(0, -1, -1, 0, height, width); break;
+      case 8: ctx.transform(0, -1, 1, 0, 0, width); break;
+      default: break;
+    }
+    // draw image
+    ctx.drawImage(img, 0, 0);
+    this.drawPixels(ctx, height, width);
+  }
+
+
+  drawPixels(ctx, h, w){
+    let dataArr = [];
+    let total = 0
+    let pixelArr = ctx.getImageData(0, 0, w, h).data;
+    let sample_size = Math.floor(h/this.gridSize);
+    let sample_size_w = Math.floor(w/this.gridSize);
+    
+    var yCount = 0;
+    var xCount = 0;
+
+    for (let y = 0; y < h; y += sample_size) {
+      if(yCount < this.gridSize){
+        yCount++;
+      }
+      xCount = 0;
+      let xdataArr = [];
+      for (let x = 0; x < w; x += sample_size_w) {
+        if(xCount < this.gridSize){
+          // dataArr.push(rgb);
+          total++
+          xCount++;
+        }
+
+        let p = (x + (y*w)) * 4;
+        var rgb = "rgb(" + pixelArr[p] + "," + pixelArr[p + 1] + "," + pixelArr[p + 2] + ")";
+        
+        let grid;
+        if(yCount % 2){
+          grid = (this.gridSize * this.gridSize) - (this.gridSize * yCount) + xCount - 1;
+        } else {
+          grid = (this.gridSize * this.gridSize) - total;
+        }
+        let td = document.getElementById('gridId'+grid);
+        if(td){
+          td.style.backgroundColor = rgb;
+          td.setAttribute('data-total', total.toString());
+          td.setAttribute('data-x', xCount.toString());
+          td.setAttribute('data-y', yCount.toString());
+        }
+      }
     }
   }
 

@@ -80,7 +80,7 @@ export class TravelStuffComponent implements OnInit {
     })
   }
   showPlacePromise(time){
-    return new Promise((res)=>{
+    return new Promise<void>((res)=>{
       setTimeout(()=>{
         return res();
       // },500)

@@ -1,29 +1,65 @@
 .plant-wrap{
     padding-top: 70px;
     .plant-box{
-        background: linear-gradient(rgb(236, 236, 236), rgb(245, 245, 245) );
         display: flex;
+        position: relative;
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
-        border-radius: 20px;
         padding: 15px;
         text-align: center;
         margin: auto;
         margin-top: 20px;
+        margin-bottom: 50px;
         width: 100%;
-        min-height: 260px;
+        height: 260px;
+        border-radius: 20px;
+        box-shadow: 3px 3px 5px darkgray;
         @media screen and (min-width: 768px) {
             width: 230px;
-            min-height: 240px;
+            height: 240px;
+        }
+        .last{
+            font-size: 12px;
+            display: inline-block;
+            padding-left: 8px;
         }
         .watered-icon{
             background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
-            height: 30px;
-            width: 30px;
+            height: 20px;
+            width: 20px;
             margin: auto;
+            display: inline-block;
+        }
+        .product-image{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            object-fit: cover;
+            object-position: bottom;
+        }
+        .bottom-bar{
+            position: absolute;
+            padding-left: 15px;
+            padding-right: 15px;
+            bottom: -40px;
+            width: 100%;
+            background: linear-gradient(to top left, #deeeff, #ffffff);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            box-shadow: 3px 3px 5px darkgray;
+        }
+        &:hover{
+            box-shadow: 1px 1px 3px darkgray;
+            .bottom-bar{
+                box-shadow: 1px 1px 3px darkgray;
+            }
         }
     }
 }
@@ -91,15 +127,9 @@
             outline: none;
         }
     }
-    .product-image{
-        margin: auto;
-        object-fit: contain;
-        height: 200px;
-        width: 200px;
-    }
     .carousel-control-next-icon, .carousel-control-prev-icon{
-        background-color: #02c22d;
+        background-color: #007bff;
         border-radius: 50%;
-        border: 5px solid #02c22d;
+        border: 5px solid #007bff;
     }
 }

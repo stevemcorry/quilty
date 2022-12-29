@@ -12,6 +12,7 @@ export class ProjectShowComponent implements OnInit {
   @Input() picture = "";
   @Input() projectRotation = 0;
   @Input() projectURL = "";
+  @Input() margins = "";
   @Output() projectClick = new EventEmitter;
   turnOnProject = false;
   imageActive = false;

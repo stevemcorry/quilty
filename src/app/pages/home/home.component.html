@@ -1,82 +1,70 @@
-<div class="home-wrapper color0-bg">
-    <div #homeCarousel 
-        id="homeCarousel" 
-        class="carousel slide" 
-        data-ride="carousel">
-        <div class="intro-animation color5">
-            <h1 class="stephen raleway">Stephen Corry</h1>
-            <app-intro-animation 
-                [text]="'Web'" 
-                [delay]="300" 
-                [delete]="true" 
-                [deleteDelay]="1800">
-            </app-intro-animation>
-            <app-intro-animation 
-                [text]="'App'" 
-                [delay]="2600"
-                [delete]="true" 
-                [deleteDelay]="1200">
-            </app-intro-animation>
-            <app-intro-animation 
-                [text]="'Software'" 
-                [delay]="4200"
-                [delete]="true" 
-                [deleteDelay]="1800">
-            </app-intro-animation>
-            <div class="ml-2 d-inline-block"></div>
-            <app-intro-animation 
-                [text]="'Developer'" 
-                [delay]="600">
-            </app-intro-animation>
+<div class="home-wrapper pb-15">
+    <div class="hero-wrap d-flex align-items-center">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 text-center">
+                    <h1 class="white raleway">STEPHEN CORRY</h1>
+                    <div class="light-underglow"></div>
+                    <hr>
+                    <!-- <h4 class="white raleway">DEVELOPER</h4> -->
+                    <div class="intro-animation raleway white">
+                        <app-intro-animation 
+                            [text]="'WEB'" 
+                            [delay]="2300" 
+                            [delete]="true" 
+                            [deleteDelay]="1800">
+                        </app-intro-animation>
+                        <app-intro-animation 
+                            [text]="'APP'" 
+                            [delay]="4600"
+                            [delete]="true" 
+                            [deleteDelay]="1200">
+                        </app-intro-animation>
+                        <app-intro-animation 
+                            [text]="'SOFTWARE'" 
+                            [delay]="6200"
+                            [delete]="true" 
+                            [deleteDelay]="1800">
+                        </app-intro-animation>
+                        <div class="ml-2 d-inline-block"></div>
+                        <app-intro-animation 
+                            [text]="'DEVELOPER'" 
+                            [delay]="00">
+                        </app-intro-animation>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="carousel-inner">
-          <!-- <div class="carousel-item active">
-            <div class="inner-background one"></div>
-          </div>
-          <div class="carousel-item">
-            <div class="inner-background two"></div>
-          </div> -->
-          <div class="carousel-item active">
-            <div class="inner-background three"></div>
-          </div>
-          <!-- <div class="carousel-item">
-            <div class="inner-background four"></div>
-          </div> -->
-        </div>
+        <div class="hero-img"></div>
     </div>
 
-    <app-nacho-header></app-nacho-header>
     <div class="projects-container">
         
-        <h1 class="text-center my-5">My Projects</h1>
+        <div class="my-20"></div>
     
         <div class="container projects-container mb-5" 
             [ngStyle]="{'transform': 'rotate('+ projectRotation +'deg)'}"
             #projectsContainer>
-            <div class="row justify-content-center">
-                <div class="col-auto">
+            <div class="row">
+                <div class="col-lg-3">
                     <app-project-show 
+                        [margins]="'ms-lg-18'"
                         [picture]="'./assets/images/projects/enrollPro.png'"
                         [projectTitle]="'EnrollPro'"
-                        [projectDescription]="'Contact management software for Doterra sellers to keep track of communitation with customers. Built in Angular 4.'"
+                        [projectDescription]="'Contact management software for Doterra sellers to keep track of communitation with customers. Built in Angular 4. Also used Ionic 3 to create an app for IOS and Android.'"
                         [projectRotation]="projectRotation"
                         [projectURL]="'https://enroll.pro'"
                         (projectClick)="projectClicked($event)">
                     </app-project-show>
-                </div>
-                <div class="col-auto">
                     <app-project-show 
-                        [picture]="'./assets/images/projects/enrollProMobile.jpeg'"
-                        [projectTitle]="'EnrollPro (App)'"
-                        [projectDescription]="'Contact management software for Doterra sellers to keep track of communitation with customers. Built in Ionic 3.'"
+                        [margins]="'mtm-7'"
+                        [picture]="'./assets/images/plants/happy.png'"
+                        [projectTitle]="'Plant tracker'"
+                        [projectDescription]="'A little web app to track my plants. It helps me keep them alive. Or at least thats the hope.'"
                         [projectRotation]="projectRotation"
-                        [projectURL]="'https://enroll.pro'"
+                        [projectURL]="'/plants'"
                         (projectClick)="projectClicked($event)">
                     </app-project-show>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-auto">
                     <app-project-show 
                         [picture]="'./assets/images/projects/couposts.png'"
                         [projectTitle]="'Couposts'"
@@ -86,8 +74,9 @@
                         (projectClick)="projectClicked($event)">
                     </app-project-show>
                 </div>
-                <div class="col-auto">
+                <div class="col-lg-3">
                     <app-project-show 
+                        [margins]="'ms-lg-14 ms-xl-8'"
                         [picture]="'./assets/images/projects/hackdays.png'"
                         [projectTitle]="'Code Sprint'"
                         [projectDescription]="'A side scroller game built with Phaser 3'"
@@ -96,19 +85,23 @@
                         (projectClick)="projectClicked($event)">
                     </app-project-show>
                 </div>
-                <div class="col-auto d-none d-lg-block">
-                    <app-project-show 
+                <div class="col-lg-3">
+                    <app-project-show class="invisible"></app-project-show>
+                    <!-- <hr class="mt-10 project-hr"> -->
+                    <h1 class="text-center raleway">My Projects</h1>
+                    <div class="light-underglow"></div>
+                    <app-project-show class="invisible"></app-project-show>
+                    <!-- <app-project-show 
+                        [margins]="'msm-14 mtm-7'"
                         [picture]="'./assets/images/projects/roomingboard.png'"
                         [projectTitle]="'Rooming Board'"
                         [projectDescription]="'A website built to help college students buy and sell housing contracts.'"
                         [projectRotation]="projectRotation"
                         [projectURL]="rooming"
                         (projectClick)="projectClicked($event)">
-                    </app-project-show>
+                    </app-project-show> -->
                 </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-auto">
+                <div class="col-lg-3">
                     <app-project-show 
                         [picture]="'./assets/images/projects/mouth3.png'"
                         [projectTitle]="'Dirty Mouth Co'"
@@ -117,8 +110,6 @@
                         [projectURL]="'https://dirty-mouth.web.app/'"
                         (projectClick)="projectClicked($event)">
                     </app-project-show>
-                </div>
-                <div class="col-auto">
                     <app-project-show 
                         [picture]="'./assets/images/projects/grid.png'"
                         [projectTitle]="'Custom Grid'"
@@ -127,9 +118,8 @@
                         [projectURL]="'/custom-grid'"
                         (projectClick)="projectClicked($event)">
                     </app-project-show>
-                </div>
-                <div class="col-auto d-lg-none">
                     <app-project-show 
+                        [margins]="'msm-18 mtm-7'"
                         [picture]="'./assets/images/projects/roomingboard.png'"
                         [projectTitle]="'Rooming Board'"
                         [projectDescription]="'A website built to help college students buy and sell housing contracts.'"
@@ -139,18 +129,18 @@
                     </app-project-show>
                 </div>
             </div>
-
         </div>
     </div>
 
+
+    <h1 class="text-center white raleway mt-9 mb-5">Nacho Art Gallery</h1>
+    <app-nacho-header></app-nacho-header>
+
     <!-- <app-home-carousel></app-home-carousel> -->
 
-    <div class="container">
-      <div class="jumbotron color2-bg">
-          <h1 class="text-center">Contact Me</h1>
-          <h4 class="text-center"><a href="mailto: stevemcorry@gmail.com">stevemcorry@gmail.com</a></h4>
-      </div>
-    </div>
+    <h1 class="text-center raleway white mt-9">CONTACT ME</h1>
+    <hr class="my-4">
+    <h1 class="text-center"><a href="mailto: stevemcorry@gmail.com" class="raleway  neon-orange neon-pink-hover">stevemcorry@gmail.com</a></h1>
 
     <!-- <app-js-collision></app-js-collision> -->
     
@@ -180,3 +170,128 @@
         </div>
     </div>
 </div>
+
+
+
+<!-- <div class="intro-animation color5">
+    <h1 class="stephen raleway">Stephen Corry</h1>
+    <app-intro-animation 
+        [text]="'Web'" 
+        [delay]="300" 
+        [delete]="true" 
+        [deleteDelay]="1800">
+    </app-intro-animation>
+    <app-intro-animation 
+        [text]="'App'" 
+        [delay]="2600"
+        [delete]="true" 
+        [deleteDelay]="1200">
+    </app-intro-animation>
+    <app-intro-animation 
+        [text]="'Software'" 
+        [delay]="4200"
+        [delete]="true" 
+        [deleteDelay]="1800">
+    </app-intro-animation>
+    <div class="ml-2 d-inline-block"></div>
+    <app-intro-animation 
+        [text]="'Developer'" 
+        [delay]="600">
+    </app-intro-animation>
+</div> -->
+
+<!-- <div class="carousel-inner">
+    <div class="carousel-item active">
+    <div class="inner-background three"></div>
+    </div>
+</div> -->
+
+
+<!-- 
+<div class="row justify-content-center">
+    <div class="col-auto">
+        <app-project-show 
+            [picture]="'./assets/images/projects/enrollPro.png'"
+            [projectTitle]="'EnrollPro'"
+            [projectDescription]="'Contact management software for Doterra sellers to keep track of communitation with customers. Built in Angular 4. Also used Ionic 3 to create an app for IOS and Android.'"
+            [projectRotation]="projectRotation"
+            [projectURL]="'https://enroll.pro'"
+            (projectClick)="projectClicked($event)">
+        </app-project-show>
+    </div>
+    <div class="col-auto">
+        <app-project-show 
+            [picture]="'./assets/images/plants/happy.png'"
+            [projectTitle]="'Plant tracker'"
+            [projectDescription]="'A little web app to track my plants. It helps me keep them alive. Or at least thats the hope.'"
+            [projectRotation]="projectRotation"
+            [projectURL]="'/plants'"
+            (projectClick)="projectClicked($event)">
+        </app-project-show>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-auto">
+        <app-project-show 
+            [picture]="'./assets/images/projects/couposts.png'"
+            [projectTitle]="'Couposts'"
+            [projectDescription]="'A website built to connect businesses and instagram users to post marketing images for coupons.'"
+            [projectRotation]="projectRotation"
+            [projectURL]="'https://coupost-7fc1b.web.app/'"
+            (projectClick)="projectClicked($event)">
+        </app-project-show>
+    </div>
+    <div class="col-auto">
+        <app-project-show 
+            [picture]="'./assets/images/projects/hackdays.png'"
+            [projectTitle]="'Code Sprint'"
+            [projectDescription]="'A side scroller game built with Phaser 3'"
+            [projectRotation]="projectRotation"
+            [projectURL]="'https://hackdaysgame.firebaseapp.com/'"
+            (projectClick)="projectClicked($event)">
+        </app-project-show>
+    </div>
+    <div class="col-auto d-none d-lg-block">
+        <app-project-show 
+            [picture]="'./assets/images/projects/roomingboard.png'"
+            [projectTitle]="'Rooming Board'"
+            [projectDescription]="'A website built to help college students buy and sell housing contracts.'"
+            [projectRotation]="projectRotation"
+            [projectURL]="rooming"
+            (projectClick)="projectClicked($event)">
+        </app-project-show>
+    </div>
+</div>
+<div class="row justify-content-center">
+    <div class="col-auto">
+        <app-project-show 
+            [picture]="'./assets/images/projects/mouth3.png'"
+            [projectTitle]="'Dirty Mouth Co'"
+            [projectDescription]="'Personal website I made for my girlfriend to show off and sell her art.'"
+            [projectRotation]="projectRotation"
+            [projectURL]="'https://dirty-mouth.web.app/'"
+            (projectClick)="projectClicked($event)">
+        </app-project-show>
+    </div>
+    <div class="col-auto">
+        <app-project-show 
+            [picture]="'./assets/images/projects/grid.png'"
+            [projectTitle]="'Custom Grid'"
+            [projectDescription]="'Create your own pixel art!'"
+            [projectRotation]="projectRotation"
+            [projectURL]="'/custom-grid'"
+            (projectClick)="projectClicked($event)">
+        </app-project-show>
+    </div>
+    <div class="col-auto d-lg-none">
+        <app-project-show 
+            [picture]="'./assets/images/projects/roomingboard.png'"
+            [projectTitle]="'Rooming Board'"
+            [projectDescription]="'A website built to help college students buy and sell housing contracts.'"
+            [projectRotation]="projectRotation"
+            [projectURL]="rooming"
+            (projectClick)="projectClicked($event)">
+        </app-project-show>
+    </div>
+</div> -->

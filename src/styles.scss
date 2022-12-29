@@ -12,6 +12,7 @@ $gainsboro: #dbdbdb;
 $light-sky-blue: #85c7f2;
 $granite-gray: #636363;
 $davys-grey: #4c4c4c;
+$white: white;
 
 $color0 : $very-light-gray;
 $color1 : $light-gray;
@@ -19,6 +20,11 @@ $color2 : $gainsboro;
 $color3 : $light-sky-blue;
 $color4 : $granite-gray;
 $color5 : $davys-grey;
+
+$neon-orange: #ff6500;
+$neon-pink: #FF0091;
+$neon-blue: #0218FF;
+$neon-green: #93FF03;
 
 //global stuff
 
@@ -40,7 +46,9 @@ body {
     font-family: 'Barlow Condensed', sans-serif;
 }
 
-
+.white{
+    color: $white;
+}
 .color0{
     color: $color0;
 }
@@ -58,6 +66,32 @@ body {
 }
 .color5{
     color: $color5;
+}
+
+.neon-orange{
+    color: $neon-orange;
+}
+.neon-pink{
+    color: $neon-pink;
+}
+.neon-blue{
+    color: $neon-blue;
+}
+.neon-green{
+    color: $neon-green
+}
+
+.neon-orange-hover:hover{
+    color: $neon-orange;
+}
+.neon-pink-hover:hover{
+    color: $neon-pink;
+}
+.neon-blue-hover:hover{
+    color: $neon-blue;
+}
+.neon-green-hover:hover{
+    color: $neon-green
 }
 
 .color0-bg{
@@ -79,6 +113,19 @@ body {
     background-color: $color5;
 }
 
+.neon-orange-bg{
+    background-color: $neon-orange;
+}
+.neon-pink-bg{
+    background-color: $neon-pink;
+}
+.neon-blue-bg{
+    background-color: $neon-blue;
+}
+.neon-green-bg{
+    background-color: $neon-green
+}
+
 
 //component library
 .main-btn{
@@ -92,5 +139,67 @@ body {
     }
     &:focus{
         outline: none;
+    }
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+@for $i from 0 through 25 {
+    .mt-#{$i} { margin-top: 8px * $i !important; }
+    .mb-#{$i} { margin-bottom: 8px * $i !important; } 
+    .ms-#{$i} { margin-left: 8px * $i !important; } 
+    .me-#{$i} { margin-right: 8px * $i !important; } 
+
+
+    .my-#{$i} { 
+        margin-top: 8px * $i !important; 
+        margin-bottom: 8px * $i !important; 
+    } 
+    .mx-#{$i} { 
+        margin-left: 8px * $i !important; 
+        margin-right: 8px * $i !important; 
+    
+    }
+    .pt-#{$i} { padding-top: 8px * $i !important; } 
+    .pb-#{$i} { padding-bottom: 8px * $i !important; } 
+    .ps-#{$i} { padding-left: 8px * $i !important; } 
+    .pe-#{$i} { padding-right: 8px * $i !important; } 
+    .py-#{$i} { 
+        padding-top: 8px * $i !important; 
+        padding-bottom: 8px * $i !important; 
+    } 
+    .px-#{$i} { 
+        padding-left: 8px * $i !important; 
+        padding-right: 8px * $i !important; 
+    }
+
+    @media screen and (min-width: 768px) {    
+        .mt-md-#{$i} { margin-top: 8px * $i !important; }
+        .mb-md-#{$i} { margin-bottom: 8px * $i !important; } 
+        .ms-md-#{$i} { margin-left: 8px * $i !important; } 
+        .me-md-#{$i} { margin-right: 8px * $i !important; } 
+    }
+}
+
+@for $i from 0 through 25 {
+    @media screen and (min-width: 992px) {    
+        .mt-lg-#{$i} { margin-top: 8px * $i !important; }
+        .mb-lg-#{$i} { margin-bottom: 8px * $i !important; } 
+        .ms-lg-#{$i} { margin-left: 8px * $i !important; } 
+        .me-lg-#{$i} { margin-right: 8px * $i !important; } 
+
+        .mtm-#{$i} { margin-top: -8px * $i !important; }
+        .mbm-#{$i} { margin-bottom: -8px * $i !important; } 
+        .msm-#{$i} { margin-left: -8px * $i !important; } 
+        .mem-#{$i} { margin-right: -8px * $i !important; } 
+    }
+}
+@for $i from 0 through 25 {
+    @media screen and (min-width: 1200px) {    
+        .mt-xl-#{$i} { margin-top: 8px * $i !important; }
+        .mb-xl-#{$i} { margin-bottom: 8px * $i !important; } 
+        .ms-xl-#{$i} { margin-left: 8px * $i !important; } 
+        .me-xl-#{$i} { margin-right: 8px * $i !important; } 
     }
 }

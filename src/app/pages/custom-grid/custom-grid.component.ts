@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewEncapsulation, HostListener, ViewChild } from '@angular/core';
-import { ToolsComponent } from 'src/app/templates/tools/tools.component';
-import { MessagesService } from 'src/app/services/messages.service';
-import { StepsComponent } from 'src/app/templates/steps/steps.component';
-import { DemoComponent } from 'src/app/templates/demo/demo.component';
+import { ToolsComponent } from 'app/templates/tools/tools.component';
+import { MessagesService } from 'app/services/messages.service';
+import { StepsComponent } from 'app/templates/steps/steps.component';
+import { DemoComponent } from 'app/templates/demo/demo.component';
+import { GridAnimationObj } from 'app/models/gridAnimation.model';
 
 // import { ColorEvent } from 'ngx-color';
 
@@ -160,7 +161,9 @@ export class CustomGridComponent implements OnInit {
     }
   }
   saveDesign(){
-    this.messageService.addPattern(this.executeArray, this.patternName)
+    let obj = new GridAnimationObj(this.patternName, this.executeArray[0].img, this.executeArray);
+    // console.log(obj);
+    this.messageService.addPattern(obj)
   }
   quickColorChange($event){
     this.customColor = $event;

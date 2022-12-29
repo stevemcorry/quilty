@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -28,21 +29,26 @@ sendMessage(text, user){
 
 }
 
-addPattern(pattern, name){
-  
-  var obj = {steps: pattern, name: name}
+addPattern(obj){
   return this.db.list('/patterns').push(obj)
 
 }
 
 async setMainPattern(main, name){
   await this.db.list('/').set("mainPattern", main);
-  return this.db.list('/').set("mainCheck", name)
+  return this.db.list('/').set("mainCheck", name);
+}
+updateMainPattern(main){
+  return this.db.list('/').set("mainCheck", main);
 }
 
-getPatterns(){
+getMainCheck(){
+  return this.db.object('/mainCheck').valueChanges();
+}
+getAllPatterns(){
 
   // return this.todos$ = this.db.list('/messages');
+  
   return this.db.list('/patterns').snapshotChanges()
   .pipe(map(items => {
     return items.map(a => {
@@ -50,6 +56,7 @@ getPatterns(){
       const key = a.payload.key;
       return {
         key: key,
+        img: data.img,
         name: data.name,
         steps: data.steps,
       }
@@ -57,11 +64,35 @@ getPatterns(){
   }));
 }
 
+getPatterns(x){
+
+  // return this.todos$ = this.db.list('/messages');
+  
+  return this.db.list('/patterns', ref => ref.limitToLast(x)).snapshotChanges()
+  .pipe(map(items => {
+    console.log({items})
+    return items.map(a => {
+      console.log({a}, a.payload)
+      const data:any = a.payload.val();
+      const key = a.payload.key;
+      return {
+        key: key,
+        img: data.img,
+        name: data.name,
+        steps: data.steps,
+      }
+    });
+  }));
+}
+updatePattern(key, data){
+  return this.db.object('/patterns/'+key).set(data);
+}
+
 helloWorld(){
 
   let url = `https://us-central1-steve-corry.cloudfunctions.net/helloWorld`;
   return this.http.get(url, this.httpOptions).subscribe(res=>{
-    console.log(res)
+    // console.log(res)
   }, err =>{
     console.log('error', err)
   })
@@ -144,7 +175,6 @@ getPlants(){
   .pipe(map(items => {
     return items.map(a => {
       const data:any = a.payload.val();
-      console.log({data})
       const key = a.payload.key;
       return {
         key: key,

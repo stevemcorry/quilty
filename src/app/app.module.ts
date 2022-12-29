@@ -1,12 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule }    from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // import { FacebookModule } from 'ngx-facebook';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { SETTINGS as AUTH_SETTINGS } from '@angular/fire/compat/auth';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -61,6 +62,15 @@ import { JsFunComponent } from './pages/js-fun/js-fun.component';
 import { CssPhotoColumnsComponent } from './templates/css-photo-columns/css-photo-columns.component';
 import { SortPipe } from './pipes/sort.pipe';
 import { PlantsComponent } from './pages/plants/plants.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { provideAnalytics,getAnalytics,ScreenTrackingService,UserTrackingService } from '@angular/fire/analytics';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideDatabase,getDatabase } from '@angular/fire/database';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideFunctions,getFunctions } from '@angular/fire/functions';
+import { provideStorage,getStorage } from '@angular/fire/storage';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PlantPipe } from './pipes/plant.pipe';
 
 @NgModule({
   declarations: [
@@ -101,14 +111,14 @@ import { PlantsComponent } from './pages/plants/plants.component';
     CssPhotoColumnsComponent,
     SortPipe,
     PlantsComponent,
+    PlantPipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    // FacebookModule.forRoot(),
-    AngularFireModule.initializeApp(environment.firebase),
+    ReactiveFormsModule,
     AngularFireStorageModule,
     ColorPickerModule,
     ColorHueModule,
@@ -116,8 +126,22 @@ import { PlantsComponent } from './pages/plants/plants.component';
     ColorSliderModule,
     ColorChromeModule,
     NgbModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAnalytics(() => getAnalytics()),
+    provideAuth(() => getAuth()),
+    provideDatabase(() => getDatabase()),
+    provideFirestore(() => getFirestore()),
+    provideFunctions(() => getFunctions()),
+    provideStorage(() => getStorage()),
+    BrowserAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebase),
   ],
-  providers: [AlertyComponent],
+  providers: [
+    AlertyComponent, 
+    ScreenTrackingService,
+    UserTrackingService,
+    { provide: AUTH_SETTINGS, useValue: { appVerificationDisabledForTesting: true } },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

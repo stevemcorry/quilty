@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed, waitForAsync as  } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { MessagesComponent } from './messages.component';
-import { MessagesService } from 'src/app/services/messages.service';
-import { ScrapeService } from 'src/app/services/scrape.service';
+import { MessagesService } from 'app/services/messages.service';
+import { ScrapeService } from 'app/services/scrape.service';
 
 describe('MessagesComponent', () => {
   let component: MessagesComponent;

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AngularFireAuth } from 'angularfire2/auth';
-import firebase from 'firebase';
-import { ScrapeService } from 'src/app/services/scrape.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import firebase from 'firebase/compat/app';
+// import { ScrapeService } from 'app/services/scrape.service';
 // import { FacebookService, InitParams } from 'ngx-facebook';
 
 @Component({
@@ -19,7 +19,6 @@ export class AuthComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private mainService: ScrapeService,
     private auth: AngularFireAuth
     ) {
 
@@ -102,10 +101,10 @@ export class AuthComponent implements OnInit {
 
 
   login() {
-    return this.auth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+    return this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
   }
   logout() {
-    this.auth.auth.signOut();
+    this.auth.signOut();
   }
 
   getLogin(){
@@ -123,12 +122,12 @@ export class AuthComponent implements OnInit {
     // });
   }
 
-  getUserData(code){
-    this.mainService.instaAccess(code)
-    .subscribe((data) =>{
-      console.log(data,'data')
-    });
-  }
+  // getUserData(code){
+  //   this.mainService.instaAccess(code)
+  //   .subscribe((data) =>{
+  //     console.log(data,'data')
+  //   });
+  // }
   
 
 }

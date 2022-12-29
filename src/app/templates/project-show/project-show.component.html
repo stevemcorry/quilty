@@ -1,4 +1,4 @@
-<div class="project-wrap" 
+<!-- <div class="project-wrap" 
     [ngClass]="{active: turnOnProject}"
     [ngStyle]="{'transform': 'rotate(-'+ projectRotation +'deg)'}"
     (mouseenter)="turnOnProject = true" 
@@ -16,12 +16,23 @@
                     [ngClass]="{active: imageActive}">
                     <div class="project-description barlow">{{projectTitle}}</div>
                 </div>
-                <!-- <img 
-                    src="{{picture}}" 
-                    alt="" 
-                    (click)="imageActive = true"
-                    [ngClass]="{active: imageActive}"> -->
-                </div>
             </div>
         </div>
+    </div>
+</div> -->
+
+<div class="neon-project {{margins}}" data-toggle="modal" 
+data-target="#projectShowModal">
+    <div class="project-inner">
+        <div class="project-img"
+            [style.background-image]="'url(' + picture + ')'"
+            (mouseenter)="turnOnProject = true" 
+            (mouseleave)="turnOnProject = false; imageActive = false"
+            (click)="openProject()"
+            alt="" 
+            (click)="imageActive = true"
+            [ngClass]="{active: imageActive}">
+        </div>
+    </div>
+    <div class="project-description barlow" (click)="openProject()">{{projectTitle}}</div>
 </div>
