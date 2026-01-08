@@ -170,7 +170,6 @@ submitBid(name, amount, key){
 //PLANTS
 
 getPlants(){
-  // return this.todos$ = this.db.list('/messages');
   return this.db.list('/plants').snapshotChanges()
   .pipe(map(items => {
     return items.map(a => {
@@ -184,6 +183,12 @@ getPlants(){
         imgLog: data.imgLog,
         lastWater: data.lastWater ? data.lastWater : null,
         waterLog: data.waterLog ? data.waterLog : [],
+        active: data.active,
+        birthdate: data.birthdate ? data.birthdate : new Date().toDateString(),
+        wateringNotes: data.wateringNotes ? data.wateringNotes : "",
+        sunAmmount: data.sunAmmount ? data.sunAmmount : "",
+        waterFrequency: data.waterFrequency ? data.waterFrequency : 7,
+        soilType: data.soilType ? data.soilType : "",
       }
     });
   }));
@@ -192,9 +197,13 @@ addPlant(plant){
   return this.db.list('/plants').push(plant);
 }
 editPlant(plant){
-  return this.db.object('/plants/'+plant.key).set(plant).then(()=>{
-    document.getElementById('closeButton').click();
-  })
+  if(plant.key){
+    return this.db.object('/plants/'+plant.key).set(plant);
+  } else {
+    return new Promise((res)=>{
+      res("something bad happened")
+    })
+  }
 }
 
 }

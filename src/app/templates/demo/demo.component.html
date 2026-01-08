@@ -4,10 +4,33 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row justify-content-center">
+    <div class="col-auto text-center">
+        <h1>Main Grid: <mat-slide-toggle *ngIf="mainName" [(ngModel)]="activeMainGrid" (change)="toggleMain()" ></mat-slide-toggle></h1>
+        <br>
+        <img [src]='mainImg' alt="{{mainName}}" height="200" width="200">
+        <br>
+        <label for="" class="mr-2">{{ mainName }}</label>
+        <br>
+        <label for="" class="mr-2">Animation Speed (in miliseconds): </label>
+        <input type="text" placeholder="Animaion Speed" [(ngModel)]="selectedDelay">
+        <br>
+        <label for="" class="mr-2">Brighness</label>
+        <input type="num" min="0" max="100" placeholder="Brightness" [(ngModel)]="selectedBrightness">
+        <br>
+    </div>
+</div>
+<div class="row justify-content-center">
+    <div class="col-auto">
+        <button type="button" class="btn btn-secondary float-left mt-3" (click)="updateMain()">Set As Main</button>
+    </div>
+</div>
+
+<div class="row align-items-center">
     <div class="col text-center">
         <h1 *ngIf="savedPatterns[0]">All grid art:</h1>
         <button *ngIf="!savedPatterns[0]" (click)="getSavedDesigns()">View other people's grid art</button>
+        <div *ngIf="loadingSavedPatterns">{{loadingText}}</div>
     </div>
 </div>
 
@@ -21,23 +44,12 @@
     </div>
 </div>
 
-<div class="row justify-content-center">
-    <div class="col-auto text-center">
-        <h1>Main Grid:</h1>
-        <br>
-        <img [src]='mainImg' alt="{{mainName}}" height="200" width="200">
-        <br>
-        <label for="" class="mr-2">{{ mainName }}</label>
-        <br>
-        <label for="" class="mr-2">Animation Speed (in miliseconds): </label>
-        <input type="text" placeholder="Animaion Speed" [(ngModel)]="selectedDelay">
-        <br>
-        <label for="" class="mr-2">Brighness</label>
-        <input type="num" min="0" max="100" placeholder="Brightness" [(ngModel)]="selectedBrightness">
-        <br>
-        <button type="button" class="btn btn-secondary float-left mt-3" (click)="updateMain()">Set As Main</button>
+<!-- <div class="row">
+    <div class="col">
+        <button (click)="loadMore()">Load more</button>
     </div>
-</div>
+</div> -->
+
 
 <div class="modal fade" id="demoModal" tabindex="-1" role="dialog" aria-labelledby="demoModal" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -56,6 +68,7 @@
             </div>
         </div>
         <div class="modal-footer">
+            <button type="button" class="btn btn-secondary mt-3" (click)="deletePattern()">Delete</button>
             <button type="button" class="btn btn-secondary float-left mt-3" (click)="setMain()">Set As Main</button>
             <button type="button" class="btn btn-danger float-right mt-3" data-dismiss="modal">Close</button>
         </div>

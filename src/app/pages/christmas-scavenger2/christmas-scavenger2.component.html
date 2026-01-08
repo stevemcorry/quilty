@@ -1,0 +1,110 @@
+<div class="container">
+    <div class="row pt-5">
+        <div class="col text-center mt-5">
+            <h2>Merry Christmas!</h2>
+        </div>
+    </div>
+</div>
+<div class="container" *ngIf="step == 0">
+    <div class="row pt-3">
+        <div class="col text-center">
+            <h3>21/33</h3>
+            <p>Wow. You think we'll ever stop referencing that ol log?</p>
+            <p>Let's keep going!</p>
+            <button (click)="nextClue(1)">Next</button>
+        </div>
+    </div>
+</div>
+<div class="container" *ngIf="step == 1">
+    <div class="row pt-3">
+        <div class="col text-center">
+            <h3>22/33</h3>
+            <p>I dont know about you</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <button (click)="annoyStep()">I'm feeling 22</button>
+        </div>
+        <div class="col-12">
+            <button (click)="annoyStep()">{{ annoyStepCount > 0 ?  "I'm feeling 22" : 'The next step is in view' }}</button>
+        </div>
+        <div class="col-12">
+            <button (click)="annoyStep()">{{ annoyStepCount > 1 ?  "I'm feeling 22" : 'I know what to do' }}</button>
+        </div>
+        <div class="col-12">
+            <button (click)="annoyStep()">{{ annoyStepCount > 2 ?  "I'm feeling 22" : 'This Clue is overdue' }}</button>
+        </div>
+        <div class="col-12" *ngIf="annoyStepCount > 3">
+            <button (click)="nextClue(2)">Are we out of the woods yet?</button>
+        </div>
+    </div>
+</div>
+<div class="container" *ngIf="step == 2">
+    <div class="row pt-3">
+        <div class="col text-center">
+            <h3>23/33</h3>
+            <p>This next one is some quick maths.</p>
+            <p>You'll have to solve some problems quick. But don't worry it will be multiple choice.</p>
+            <button (click)="nextClue(3)">Click to begin</button>
+        </div>
+    </div>
+</div>
+<div class="container" *ngIf="step == 3">
+    <div class="row pt-3">
+        <div class="col text-center">
+            <h3>24/33</h3>
+            <img class="img-fluid" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWR1aHZ3dW0wYTlkbTNza2k1YmJ0aWl0OGU5eHlpeDZ4cjkzMTB4eSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/M7IbYPHhWz5s1jSq7e/giphy.gif" alt="">
+            <p>^ you right now</p>
+            <p>Hahahaha nerd I was KIDDING!</p>
+            <p>you were probably looking forward to it too 😂</p>
+            <button (click)="nextClue(4)">Continue</button>
+        </div>
+    </div>
+</div>
+<div class="container" *ngIf="step == 4">
+    <div class="row pt-3">
+        <div class="col text-center">
+            <h3>25/33</h3>
+            <p>Classic double bluff</p>
+            <p>{{randomMathQuestion}}</p>
+            <div *ngFor="let choice of mathChoices">
+                <button (click)="answerMathQuestion(choice, 5)">{{ choice }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" *ngIf="step == 5">
+    <div class="row pt-3">
+        <div class="col text-center">
+            <h3>26/33</h3>
+            <p>Honestly great work. Lets run that back</p>
+            <p>{{randomMathQuestion}}</p>
+            <div *ngFor="let choice of mathChoices">
+                <button (click)="answerMathQuestion(choice, 6)">{{ choice }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" *ngIf="step == 6">
+    <div class="row pt-3">
+        <div class="col text-center">
+            <h3>27/33</h3>
+            <p>Great job! Just one more</p>
+            <p>{{randomMathQuestion}}</p>
+            <div *ngFor="let choice of mathChoices">
+                <button (click)="answerMathQuestion(choice, 7)">{{ choice }}</button>
+            </div>
+        </div>
+</div>
+</div>
+<div class="container" *ngIf="step == 7">
+    <div class="row pt-3">
+        <div class="col text-center">
+            <h3>28/33</h3>
+            <p>Great work! I can tell that ALPs program really paid off.</p>
+            <p>Now back to the real world.</p>
+            <p>You started strong, then walked away, Left the strings where they still stay. If you’re hunting sounds that never grew, You'll know exactly where to look next, too.</p>
+        </div>
+    </div>
+</div>

@@ -1,3 +1,6 @@
+import { ChristmasScavenger4Component } from './pages/christmas-scavenger4/christmas-scavenger4.component';
+import { ChristmasScavenger3Component } from './pages/christmas-scavenger3/christmas-scavenger3.component';
+import { ChristmasScavenger2Component } from './pages/christmas-scavenger2/christmas-scavenger2.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CssFunComponent } from './pages/css-fun/css-fun.component';
@@ -21,6 +24,7 @@ import { NachoGalleryComponent } from './pages/nacho-gallery/nacho-gallery.compo
 import { ShowDemosComponent } from './pages/show-demos/show-demos.component';
 import { JsFunComponent } from './pages/js-fun/js-fun.component';
 import { PlantsComponent } from './pages/plants/plants.component';
+import { ChristmasScavengerComponent } from './pages/christmas-scavenger/christmas-scavenger.component';
 
 
 const routes: Routes = [
@@ -45,6 +49,10 @@ const routes: Routes = [
   { path: 'nacho-gallery', component: NachoGalleryComponent },
   { path: 'show-demos', component: ShowDemosComponent },
   { path: 'plants', component: PlantsComponent },
+  { path: 'lol-jake-get-wrecked', component: ChristmasScavengerComponent },
+  { path: 'ho-ho-ho', component: ChristmasScavenger2Component },
+  { path: 'holly-and-jolly', component: ChristmasScavenger3Component },
+  { path: 'way-to-go-jake', component: ChristmasScavenger4Component }
 ];
 
 @NgModule({

@@ -1,3 +1,6 @@
+import { ChristmasScavenger4Component } from './pages/christmas-scavenger4/christmas-scavenger4.component';
+import { ChristmasScavenger3Component } from './pages/christmas-scavenger3/christmas-scavenger3.component';
+import { ChristmasScavenger2Component } from './pages/christmas-scavenger2/christmas-scavenger2.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -43,6 +46,7 @@ import { TravelStuffComponent } from './pages/travel-stuff/travel-stuff.componen
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 //colors
 import { ColorPickerModule } from 'ngx-color-picker';
@@ -71,6 +75,7 @@ import { provideFunctions,getFunctions } from '@angular/fire/functions';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PlantPipe } from './pipes/plant.pipe';
+import { ChristmasScavengerComponent } from './pages/christmas-scavenger/christmas-scavenger.component';
 
 @NgModule({
   declarations: [
@@ -112,6 +117,10 @@ import { PlantPipe } from './pipes/plant.pipe';
     SortPipe,
     PlantsComponent,
     PlantPipe,
+    ChristmasScavengerComponent,
+    ChristmasScavenger2Component,
+    ChristmasScavenger3Component,
+    ChristmasScavenger4Component,
   ],
   imports: [
     BrowserModule,
@@ -135,6 +144,7 @@ import { PlantPipe } from './pipes/plant.pipe';
     provideStorage(() => getStorage()),
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
+    MatSlideToggleModule,
   ],
   providers: [
     AlertyComponent, 

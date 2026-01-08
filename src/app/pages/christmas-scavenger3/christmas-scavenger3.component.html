@@ -1,0 +1,103 @@
+<div class="container">
+    <div class="row pt-5">
+        <div class="col text-center mt-5">
+            <h2>Merry Christmas (Part 3)!</h2>
+        </div>
+    </div>
+</div>
+<div class="container" *ngIf="step == 0">
+    <div class="row pt-3">
+        <div class="col text-center">
+            <h3>27/33</h3>
+            <h4>We're so back.</h4>
+            <p>You're in the home stretch now, just a couple of clues left to go!</p>
+            <button (click)="nextClue(1)">Let's do this</button>
+        </div>
+    </div>
+</div>
+<div class="container" *ngIf="step == 1">
+    <div class="row pt-3">
+        <div class="col text-center">
+            <h3>??/33</h3>
+            <h4>Quick Question</h4>
+            <p>Which clue step are we on?</p>
+            <input type="number" [(ngModel)]="currentQuestionInput">
+            <button (click)="checkCurrentQuestionInput()">Correct answers only</button>
+        </div>
+    </div>
+</div>
+<div class="container" *ngIf="step == 2">
+    <div class="row pt-3">
+        <div class="col text-center">
+            <h3>30/33</h3>
+            <h4>And now it's clue/step 30</h4>
+            <p>You know what else is 30?</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6" *ngFor="let item of [].constructor(stevePics); let i = index">
+            <img class="img-fluid" [src]="'assets/images/christmas/' + i + '.jpeg'" alt="">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h4>Thats right. Your lil secret santa.</h4>
+            <p>Enjoy this video of the neighborhood children chasing after me.</p>
+            <video controls>
+                <source src="assets/images/christmas/rocky.MOV" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <button (click)="nextClue(3)">Hooray Stephen!</button>
+        </div>
+    </div>
+</div>
+
+<div class="container" *ngIf="step == 3">
+    <div class="row pt-3">
+        <div class="col text-center">
+            <h3>31/33</h3>
+            <h4>Wow, what a great guy</h4>
+            <p>To Chonchy, You're a certifiably crazy insane mofo, who sometimes gets me a lil pissed... But other times you can be so real. You respect me, and i respect that. And i know that if i ever needed you, you'd be there for me in a second. Thats right you're my baby bubba!</p>
+            <button (click)="nextClue(4)">Tripple Threat Trio</button>
+            <button (click)="nextClue(4)">Rage Bregade</button>
+        </div>
+    </div>
+</div>
+<div class="container" *ngIf="step == 4">
+    <div class="row pt-3">
+        <div class="col text-center">
+            <h3>32/33</h3>
+            <h4>To Jake</h4>
+            <p>Wow, the gentle giant. Freaking grade A pimp right here! You're a true artist, on the canvas and off. You challenge me and inspire me to be a better person, you rule!</p>
+            <button (click)="nextClue(5)">True player for real.</button>
+        </div>
+    </div>
+</div>
+<div class="container" *ngIf="step == 5">
+    <div class="row pt-3">
+        <div class="col text-center">
+            <h3>33/33</h3>
+            <h4>Last one!</h4>
+            <iframe height="315" src="https://www.youtube.com/embed/HgvGgUby42I?si=9WHBTHm5hBWu_kt2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <p>What was the really really cool present kyle got for christmas?</p>
+            <button (click)="wrongAnswer()">A girlfriend</button>
+            <button (click)="wrongAnswer()">Friends at school</button>
+            <button (click)="nextClue(6)">Broke up with his dad</button>
+            <button (click)="wrongAnswer()">Tiny piece of crap boombox</button>
+        </div>
+    </div>
+</div>
+
+
+<div class="container" *ngIf="step == 6">
+    <div class="row pt-3">
+        <div class="col text-center">
+            <h3>33/33</h3>
+            <h4>Go scan your face</h4>
+        </div>
+    </div>
+</div>

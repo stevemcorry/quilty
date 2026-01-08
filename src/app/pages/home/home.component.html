@@ -1,5 +1,5 @@
 <div class="home-wrapper pb-15">
-    <div class="hero-wrap d-flex align-items-center">
+    <div class="hero-wrap d-flex align-items-lg-center">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-8 text-center">
@@ -40,13 +40,13 @@
 
     <div class="projects-container">
         
-        <div class="my-20"></div>
+        <div class="my-20 d-none d-lg-block"></div>
     
         <div class="container projects-container mb-5" 
             [ngStyle]="{'transform': 'rotate('+ projectRotation +'deg)'}"
             #projectsContainer>
             <div class="row">
-                <div class="col-lg-3">
+                <div class="col-lg-3 text-center order-2 order-lg-1">
                     <app-project-show 
                         [margins]="'ms-lg-18'"
                         [picture]="'./assets/images/projects/enrollPro.png'"
@@ -58,7 +58,7 @@
                     </app-project-show>
                     <app-project-show 
                         [margins]="'mtm-7'"
-                        [picture]="'./assets/images/plants/happy.png'"
+                        [picture]="'./assets/images/plants/fresh.png'"
                         [projectTitle]="'Plant tracker'"
                         [projectDescription]="'A little web app to track my plants. It helps me keep them alive. Or at least thats the hope.'"
                         [projectRotation]="projectRotation"
@@ -74,7 +74,7 @@
                         (projectClick)="projectClicked($event)">
                     </app-project-show>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-3 text-center order-2">
                     <app-project-show 
                         [margins]="'ms-lg-14 ms-xl-8'"
                         [picture]="'./assets/images/projects/hackdays.png'"
@@ -85,12 +85,12 @@
                         (projectClick)="projectClicked($event)">
                     </app-project-show>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-3 order-1 order-lg-3">
                     <app-project-show class="invisible"></app-project-show>
                     <!-- <hr class="mt-10 project-hr"> -->
                     <h1 class="text-center raleway">My Projects</h1>
                     <div class="light-underglow"></div>
-                    <app-project-show class="invisible"></app-project-show>
+                    <app-project-show class="invisible d-none d-lg-block"></app-project-show>
                     <!-- <app-project-show 
                         [margins]="'msm-14 mtm-7'"
                         [picture]="'./assets/images/projects/roomingboard.png'"
@@ -101,7 +101,7 @@
                         (projectClick)="projectClicked($event)">
                     </app-project-show> -->
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-3 text-center text-lg-left order-4">
                     <app-project-show 
                         [picture]="'./assets/images/projects/mouth3.png'"
                         [projectTitle]="'Dirty Mouth Co'"
@@ -140,7 +140,7 @@
 
     <h1 class="text-center raleway white mt-9">CONTACT ME</h1>
     <hr class="my-4">
-    <h1 class="text-center"><a href="mailto: stevemcorry@gmail.com" class="raleway  neon-orange neon-pink-hover">stevemcorry@gmail.com</a></h1>
+    <h2 class="text-center"><a href="mailto: stevemcorry@gmail.com" class="raleway  neon-orange neon-pink-hover">stevemcorry@gmail.com</a></h2>
 
     <!-- <app-js-collision></app-js-collision> -->
     

@@ -7,17 +7,22 @@ import { Observable } from 'rxjs';
 })
 export class GridService {
   items: Observable<any[]>;
-  pageSize = 5;
-  cursor: any;
+  pageSize = 15;
+  cursor: any = 6;
 
   constructor(private db: AngularFireDatabase) {
-    this.items = db.list('/patterns', ref => ref.limitToLast(this.pageSize)).valueChanges();
+    // this.items = db.list('/patterns', ref => ref).valueChanges();
+  }
+  loadItems(){
+    this.items = this.db.list('/patterns', ref => ref).valueChanges();
   }
 
   nextPage() {
+    console.log("Getting next")
     this.items = this.db.list('/patterns', ref => ref.startAt(this.cursor).limitToLast(this.pageSize + 1)).valueChanges();
 
     this.items.subscribe((items:any) => {
+      console.log({items})
       this.cursor = items[0];
       this.items = items.slice(1);
     });

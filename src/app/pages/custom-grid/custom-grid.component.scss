@@ -1,7 +1,12 @@
 .custom-wrap{
     padding-top: 60px;
+    padding-bottom: 60px;
     min-height: 100vh;
+    .sticky-top{
+        z-index: 0;
+    }
     .step-wrapper, .tools-wrapper{
+        z-index: 0;
         max-height: calc(100vh - 250px);
         overflow-y: scroll;
     }

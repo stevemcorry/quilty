@@ -1,0 +1,93 @@
+<div class="container">
+    <div class="row pt-5">
+        <div class="col text-center mt-5">
+            <h2>Merry Christmas Chüng¥!!</h2>
+        </div>
+    </div>
+</div>
+<div class="container" *ngIf="step == 0">
+    <div class="row pt-3">
+        <div class="col text-center">
+            <h4>Let's begin 😏</h4>
+            <p>Come with me down the vibe coded rabbit hole :)</p>
+            <img class="img-fluid" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnVwbWJsN2xzeGVpbGRpZTRnZmN3ODRqcm92OGU2NHFuZ3A2ZzlibyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/LoCDk7fecj2dwCtSB3/giphy.gif" alt="">
+        </div>
+    </div>
+</div>
+<div class="container" *ngIf="step == 0">
+    <div class="row pt-3">
+        <div class="col text-center">
+            <h4>First Clue</h4>
+            <h3>Press this button!</h3>
+            <button (click)="nextClue(1)">Click me</button>
+        </div>
+    </div>
+</div>
+
+<div class="container" *ngIf="step == 1">
+    <div class="row pt-3">
+        <div class="col text-center">
+            <h3>2/33</h3>
+            <p>Proud of you, Jake. A lot of trust went into letting me handle the button that moves the game forward. Placing that responsibility on me means more than you probably realize. Every step from here on out depends on that trust holding strong. Ride this momentum with me, my brother—we’re just getting started.</p>
+            <label for="">Enter the first letter of each sentence</label>
+            <input type="text" [(ngModel)]="firstClueInput">
+            <button (click)="checkFirstClueInput()">Submit</button>
+        </div>
+    </div>
+</div>
+
+
+<div class="container" *ngIf="step == 2">
+    <div class="row pt-3">
+        <div class="col text-center">
+            <h3>3/33</h3>
+            <p>great work! with that tenacity, you'll be out of here in no Time :)</p>
+            <button (click)="resetFadeIn()">Button</button>
+            <br>
+            <button class="slow-fade-in" [class.fade-in-trigger]="fadeIn" (animationend)="fadeIn = false" (click)="nextClue(3)">Click here</button>
+        </div>
+    </div>
+</div>
+
+<div class="container" *ngIf="step == 3">
+    <div class="row pt-3">
+        <div class="col text-center">
+            <h3>4/33</h3>
+            <p>They say patience is a virtue for a reason. Really grateful you waited for that button instead of rushing ahead. Everything you need for this next step is already in front of you. Enjoy the challenge, you already know what to do.</p>
+            <input type="text" [(ngModel)]="forthClueInput">
+            <button (click)="checkForthClueInput()">Click me</button>
+        </div>
+    </div>
+</div>
+
+<div class="container speed-runner" *ngIf="step == 4">
+    <div class="row pt-3">
+        <div class="col text-center">
+            <h3>{{speedRunClicks + 5}}/33</h3>
+            <p *ngIf="!speedRunActive">Speed run time.</p>
+            <button *ngIf="!speedRunActive" (click)="beginSpeedRun()">Begin</button>
+            <div *ngIf="speedRunActive">
+                <p>Click the button 15 times quickly!</p>
+                <button class="speen-run-button" (click)="speedRunClick()">Speed Run Click ({{speedRunClicks}}/{{speedRunTarget}})</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container" *ngIf="step == 19">
+    <div class="row pt-3">
+        <div class="col text-center">
+            <h3>20/33</h3>
+            <p>Kids these days are always on their phones, its time we get you off of yours hey jake?</p>
+            <p>Follow the path where old roots cling, Past shade and cloth and quiet things. Look for the mark time didn’t fling, Where stories turn and titles swing, where the duke became king</p>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row py-5">
+        <div class="col"></div>
+    </div>
+</div>

@@ -22,29 +22,53 @@ export class DemoComponent implements OnInit {
   mainName;
   mainImg;
   loadingSavedPatterns = false;
+  loadingText = "Loading...";
+  activeMainGrid = false;
 
   constructor(private messageService: MessagesService,
     private gridService: GridService) { }
 
   ngOnInit() {
-    this.getSavedDesigns();
-    this.messageService.getMainCheck().subscribe((res:any)=>{
+    this.messageService.getMainCheck().subscribe((res: any) => {
       console.log(res)
       this.selectedBrightness = res.brightness;
       this.selectedDelay = res.delay;
       this.mainName = res.name;
       this.mainImg = res.img
+      if(res.brightness){
+        this.activeMainGrid = true;
+      }
     })
   }
 
-  getSavedDesigns(){
-    console.log('getting saved')
-    if(this.loadingSavedPatterns){return}
+  getSavedDesigns() {
+    if (this.loadingSavedPatterns) { return }
     this.loadingSavedPatterns = true;
-    this.gridService.items.subscribe((gridItems)=>{
-      console.log({gridItems})
+    this.gridService.loadItems();
+    this.fancyLoadingText();
+    this.gridService.items.subscribe((gridItems) => {
+      this.loadingSavedPatterns = false;
+      this.savedPatterns = gridItems;
     })
   }
+  // adds a period at the end of loading text every second
+  fancyLoadingText() {
+    if (!this.loadingSavedPatterns) { return }
+
+    if (this.loadingText.length < 10) {
+      this.loadingText += ".";
+    } else {
+      this.loadingText = "Loading";
+    }
+    setTimeout(() => {
+      this.fancyLoadingText();
+    }, 1000);
+
+  }
+
+  // loadMore(){
+  //   this.gridService.loadItems();
+  // }
   // forBoard(arr){
   //   var stringy = ""
   //   for(let x of arr){
@@ -65,41 +89,41 @@ export class DemoComponent implements OnInit {
   //     }
   //   }
   // }
-  rgbToHex(rgb){ 
+  rgbToHex(rgb) {
     var hex = Number(rgb).toString(16);
     if (hex.length < 2) {
-         hex = "0" + hex;
+      hex = "0" + hex;
     }
     return hex;
   }
-  fullColorHex(r,g,b) {   
+  fullColorHex(r, g, b) {
     var red = this.rgbToHex(r);
     var green = this.rgbToHex(g);
     var blue = this.rgbToHex(b);
-    return red+green+blue;
+    return red + green + blue;
   };
 
-  showDemo(){
-    setTimeout(()=>{
+  showDemo() {
+    setTimeout(() => {
       this.playOnDemoGrid(this.executeArray)
-    },300)
+    }, 300)
   }
 
-  async playOnDemoGrid(arr){
+  async playOnDemoGrid(arr) {
     this.makeGrid(document.getElementById('demo-table'), "Demo");
-    for(let x of arr){
+    for (let x of arr) {
       // await this.timer(x.data);
       await this.sleep(this.sleeptime).then(v => this.executeFunction(x.data))
 
     }
   }
-  async timer(data){
+  async timer(data) {
     return this.sleep(this.sleeptime).then(v => this.executeFunction(data))
   }
-  sleep(ms){
+  sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms))
   }
-  makeGrid(table, demo){
+  makeGrid(table, demo) {
     while (table.firstChild) {
       table.removeChild(table.firstChild);
     }
@@ -107,15 +131,15 @@ export class DemoComponent implements OnInit {
       var row = document.createElement("div");
       row.setAttribute("id", "rowId" + demo + y);
       row.setAttribute("class", "grid-row");
-      row.style.height = (100/this.gridSize) + "%";
+      row.style.height = (100 / this.gridSize) + "%";
       table.prepend(row);
       for (let x = 0; x < this.gridSize; x++) {
         var td = document.createElement("div");
-        td.style.width = (100/this.gridSize) + "%";
+        td.style.width = (100 / this.gridSize) + "%";
         td.classList.add('individual-cell');
-        var place = ((y*this.gridSize)+x);
+        var place = ((y * this.gridSize) + x);
         td.setAttribute("id", "gridId" + demo + place);
-        if(this.isEven(y)){
+        if (this.isEven(y)) {
           row.appendChild(td);
         } else {
           row.prepend(td);
@@ -123,16 +147,17 @@ export class DemoComponent implements OnInit {
       }
     }
   }
-  playSavedPattern(pattern){
+  playSavedPattern(pattern) {
+    console.log({pattern})
     let arr = pattern.steps;
     this.selectedPattern = pattern.steps;
     this.selectedName = pattern.name;
     this.selectedImg = pattern.img;
     console.log(pattern)
-    setTimeout(()=>{
-      for(let x of arr){
-        if(this.gridSize*this.gridSize != x.data.length){
-          this.gridSize = Math.sqrt( x.data.length );
+    setTimeout(() => {
+      for (let x of arr) {
+        if (this.gridSize * this.gridSize != x.data.length) {
+          this.gridSize = Math.sqrt(x.data.length);
           this.makeGrid(document.getElementById('demo-table'), "");
           this.playOnDemoGrid(arr);
         } else {
@@ -140,27 +165,27 @@ export class DemoComponent implements OnInit {
         }
         break;
       }
-    },300)
+    }, 300)
   }
   isEven(value) {
-    if (value%2 == 0)
+    if (value % 2 == 0)
       return true;
     else
       return false;
   }
 
-  executeFunction(data){
-    for(let x in data){
-      if(data[x].id || data[x].id === 0){
+  executeFunction(data) {
+    for (let x in data) {
+      if (data[x].id || data[x].id === 0) {
         var grid = document.getElementById('gridIdDemo' + data[x].id);
         grid.style.backgroundColor = data[x].color;
-      } else{
+      } else {
         var grid = document.getElementById('gridIdDemo' + x);
         grid.style.backgroundColor = data[x].color;
       }
     }
   }
-  updateMain(){
+  updateMain() {
     let obj = {
       brightness: this.selectedBrightness,
       delay: this.selectedDelay,
@@ -169,24 +194,24 @@ export class DemoComponent implements OnInit {
     }
     this.messageService.updateMainPattern(obj);
   }
-  setMain(){
+  setMain() {
     let data = this.selectedPattern.slice(0);
     let newJson = [];
-    for(let step of data){
-      if(step.data){
-        let mainData:any = [];
+    for (let step of data) {
+      if (step.data) {
+        let mainData: any = [];
         let unshiftData = [];
-        for( let index = 0; index < step.data.length; index++){
+        for (let index = 0; index < step.data.length; index++) {
           let indata = step.data[index];
           delete indata.id;
-          if(indata.color == ''){indata.color = "rgb(0, 0, 0)"}
-          if(this.selectedName == "Seeds of doubt" && indata.color == "rgb(255, 255, 255)"){indata.color = "rgb(0, 0, 0)"}
-          if(this.isEven(Math.floor(index/this.gridSize))){
+          if (indata.color == '') { indata.color = "rgb(0, 0, 0)" }
+          if (this.selectedName == "Seeds of doubt" && indata.color == "rgb(255, 255, 255)") { indata.color = "rgb(0, 0, 0)" }
+          if (this.isEven(Math.floor(index / this.gridSize))) {
             unshiftData.unshift(indata.color);
-          } else{
+          } else {
             unshiftData.unshift(indata.color);
           }
-          if(unshiftData.length == 21){
+          if (unshiftData.length == 21) {
             mainData = mainData.concat(unshiftData);
             unshiftData = [];
           }
@@ -198,27 +223,55 @@ export class DemoComponent implements OnInit {
       }
     }
     let obj = {
-      name : this.selectedName,
-      delay : this.selectedDelay,
+      name: this.selectedName,
+      delay: this.selectedDelay,
       brightness: this.selectedBrightness,
       img: this.selectedImg
     }
     this.messageService.setMainPattern(newJson, obj);
   }
+  toggleMain(){
+    if(!this.activeMainGrid){
+      this.turnMainOff();
+    } else {
+      this.turnMainOn();
+    }
+  }
+  turnMainOn(){
+    let obj = {
+      brightness: 10,
+      delay: this.selectedDelay,
+      img: this.mainImg,
+      name: this.mainName
+    }
+    this.messageService.updateMainPattern(obj);
+  }
+  turnMainOff(){
+    let obj = {
+      brightness: 0,
+      delay: this.selectedDelay,
+      img: this.mainImg,
+      name: this.mainName
+    }
+    this.messageService.updateMainPattern(obj);
+  }
 
-  resavePatterns(patterns){
+  resavePatterns(patterns) {
     patterns.forEach(element => {
       // console.log(element)
-      if(element.steps[0].img){
+      if (element.steps[0].img) {
         let obj = new GridAnimationObj(element.name, element.steps[0].img, element.steps);
         // console.log({obj});
         this.messageService.updatePattern(element.key, obj);
-      } else{
+      } else {
         let obj = new GridAnimationObj(element.name, element.img, element.steps);
         // console.log(2, {obj});
         this.messageService.updatePattern(element.key, obj);
       }
     });
+  }
+  deletePattern(){
+    console.log(this.selectedPattern)
   }
 
 }
