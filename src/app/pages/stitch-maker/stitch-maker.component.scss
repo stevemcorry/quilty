@@ -1,0 +1,25 @@
+.stitch-maker-wrap{
+  padding-top: 70px;
+
+  .grid {
+    display: flex;
+    flex-direction: column;
+  }
+  .grid-row {
+    display: flex;
+    gap: 2px;
+  }
+  .grid-cell {
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    max-width: 20px;
+    max-height: 20px;
+    height: 30px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    transition: background 0.2s;
+    min-width: 10px;
+    min-height: 10px;
+  }
+
+}

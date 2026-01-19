@@ -1,0 +1,29 @@
+.wedding-wrap{
+  height: 100vh;
+  padding-top: 70px;
+  background-image: url('../../../assets/images/wedding/invitation-bg.png');
+  background-position: center;
+  background-size: contain;
+  .form-wrapper{
+    background-color: white;
+    border-radius: 5px;
+    padding: 24px;
+  }
+  button{
+    background-color: #60410c;
+    border: none;
+    color: white;
+    &:hover{
+      background-color: #a8874f;
+    }
+  }
+  table{
+    td, th{
+      border: 1px solid grey;
+      padding: 6px;
+    }
+    th{
+      border-bottom: 2px solid grey;
+    }
+  }
+}

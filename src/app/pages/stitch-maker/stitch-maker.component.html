@@ -1,0 +1,34 @@
+<div class="container-fluid stitch-maker-wrap">
+  <div class="row">
+    <div class="col text-center">
+      <h1>Hey Emily let me know what you think</h1>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div>
+        <label>
+          Columns (x):
+          <input type="number" [(ngModel)]="x" (change)="createGrid()" min="1" />
+        </label>
+        <label>
+          Rows (y):
+          <input type="number" [(ngModel)]="y" (change)="createGrid()" min="1" />
+        </label>
+      </div>
+
+      <div class="grid">
+        <div *ngFor="let row of grid; let rowIndex = index" class="grid-row">
+          <div
+            *ngFor="let cell of row; let colIndex = index"
+            class="grid-cell"
+            [ngStyle]="{ 'background-color': cell ? 'black' : 'white' }"
+            (click)="onCellClick(rowIndex, colIndex)"
+          ></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

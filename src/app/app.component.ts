@@ -8,16 +8,18 @@ import { LocationStrategy } from '@angular/common';
 })
 export class AppComponent {
   title = 'angular-firebase';
-  active: boolean = true;
-  constructor(private url:LocationStrategy) { }
+  active = true;
+  constructor(private url: LocationStrategy) { }
 
   ngOnInit() {
 
       console.log(this.url.path());
-      if(this.url.path()==='/phaser'){
-        this.active=false; 
-      }else if(this.url.path()==='/'){
-        this.active=false; 
+      if (this.url.path() === '/phaser'){
+        this.active = false;
+      }else if (this.url.path() === '/'){
+        this.active = false;
+      }else if (this.url.path() === '/wedding-rsvp'){
+        this.active = false;
       }
 
   }

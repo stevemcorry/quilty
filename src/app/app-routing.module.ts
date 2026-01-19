@@ -25,6 +25,8 @@ import { ShowDemosComponent } from './pages/show-demos/show-demos.component';
 import { JsFunComponent } from './pages/js-fun/js-fun.component';
 import { PlantsComponent } from './pages/plants/plants.component';
 import { ChristmasScavengerComponent } from './pages/christmas-scavenger/christmas-scavenger.component';
+import {StitchMakerComponent} from './pages/stitch-maker/stitch-maker.component';
+import {WeddingRsvpComponent} from './pages/wedding-rsvp/wedding-rsvp.component';
 
 
 const routes: Routes = [
@@ -52,7 +54,9 @@ const routes: Routes = [
   { path: 'lol-jake-get-wrecked', component: ChristmasScavengerComponent },
   { path: 'ho-ho-ho', component: ChristmasScavenger2Component },
   { path: 'holly-and-jolly', component: ChristmasScavenger3Component },
-  { path: 'way-to-go-jake', component: ChristmasScavenger4Component }
+  { path: 'way-to-go-jake', component: ChristmasScavenger4Component },
+  { path: 'stitch-maker', component: StitchMakerComponent },
+  { path: 'wedding-rsvp', component: WeddingRsvpComponent }
 ];
 
 @NgModule({

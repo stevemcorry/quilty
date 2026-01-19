@@ -136,7 +136,7 @@ export class ToolsComponent implements OnInit {
   }
 
   tryimage() {
-    var img = new Image();    
+    var img = new Image();
     var that = this;
     var srcOrientation;
     img.onload = function() {
@@ -187,7 +187,7 @@ export class ToolsComponent implements OnInit {
     let pixelArr = ctx.getImageData(0, 0, w, h).data;
     let sample_size = Math.floor(h/this.gridSize);
     let sample_size_w = Math.floor(w/this.gridSize);
-    
+
     var yCount = 0;
     var xCount = 0;
 
@@ -206,7 +206,7 @@ export class ToolsComponent implements OnInit {
 
         let p = (x + (y*w)) * 4;
         var rgb = "rgb(" + pixelArr[p] + "," + pixelArr[p + 1] + "," + pixelArr[p + 2] + ")";
-        
+
         let grid;
         if(yCount % 2){
           grid = (this.gridSize * this.gridSize) - (this.gridSize * yCount) + xCount - 1;

@@ -48,7 +48,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
-//colors
+// colors
 import { ColorPickerModule } from 'ngx-color-picker';
 import { ColorHueModule } from 'ngx-color/hue';
 import { ColorShadeModule } from 'ngx-color/shade';
@@ -66,16 +66,18 @@ import { JsFunComponent } from './pages/js-fun/js-fun.component';
 import { CssPhotoColumnsComponent } from './templates/css-photo-columns/css-photo-columns.component';
 import { SortPipe } from './pipes/sort.pipe';
 import { PlantsComponent } from './pages/plants/plants.component';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
-import { provideAnalytics,getAnalytics,ScreenTrackingService,UserTrackingService } from '@angular/fire/analytics';
-import { provideAuth,getAuth } from '@angular/fire/auth';
-import { provideDatabase,getDatabase } from '@angular/fire/database';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-import { provideFunctions,getFunctions } from '@angular/fire/functions';
-import { provideStorage,getStorage } from '@angular/fire/storage';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { provideAnalytics, getAnalytics, ScreenTrackingService, UserTrackingService } from '@angular/fire/analytics';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideDatabase, getDatabase } from '@angular/fire/database';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { provideFunctions, getFunctions } from '@angular/fire/functions';
+import { provideStorage, getStorage } from '@angular/fire/storage';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PlantPipe } from './pipes/plant.pipe';
 import { ChristmasScavengerComponent } from './pages/christmas-scavenger/christmas-scavenger.component';
+import { StitchMakerComponent } from './pages/stitch-maker/stitch-maker.component';
+import { WeddingRsvpComponent } from './pages/wedding-rsvp/wedding-rsvp.component';
 
 @NgModule({
   declarations: [
@@ -121,6 +123,8 @@ import { ChristmasScavengerComponent } from './pages/christmas-scavenger/christm
     ChristmasScavenger2Component,
     ChristmasScavenger3Component,
     ChristmasScavenger4Component,
+    StitchMakerComponent,
+    WeddingRsvpComponent,
   ],
   imports: [
     BrowserModule,
@@ -147,7 +151,7 @@ import { ChristmasScavengerComponent } from './pages/christmas-scavenger/christm
     MatSlideToggleModule,
   ],
   providers: [
-    AlertyComponent, 
+    AlertyComponent,
     ScreenTrackingService,
     UserTrackingService,
     { provide: AUTH_SETTINGS, useValue: { appVerificationDisabledForTesting: true } },
